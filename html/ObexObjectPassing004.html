@@ -1,0 +1,1405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+
+
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="hevea 1.08+10 of 2006-02-03">
+<LINK rel="stylesheet" type="text/css" href="ObexObjectPassing.css">
+<TITLE>
+Technische Grundlagen
+</TITLE>
+</HEAD>
+<BODY >
+<A HREF="ObexObjectPassing003.html"><IMG SRC="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
+<A HREF="ObexObjectPassing005.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
+<HR>
+<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
+<H1 CLASS="chapter"><A NAME="htoc7">Kapitel&nbsp;2</A>&nbsp;&nbsp;Technische Grundlagen</H1>
+<A NAME="tgl"></A>
+<A NAME="@default3"></A>
+<A NAME="@default4"></A>
+In diesem Kapitel werden die zur Umsetzung, bzw. zum Verständnis der
+vorliegenden Arbeit, notwendigen Technologien bzw. Spezifikationen
+kurz angesprochen. Ist der Leser mit den folgenden Technologien
+bereits vertraut, kann dieses Kapitel problemlos übersprungen werden.
+Die Technologien werden nicht in vollem Umfang diskutiert, lediglich
+der jeweils relevante Teil wird herausgegriffen und kurz
+zusammengefasst bzw. gegeneinander abgegrenzt. Ausgehend davon, dass
+die zukünftige Entwicklung im Bereich mobiler Endgeräte nicht
+stagniert, wird speziell nur auf die zum Zeitpunkt der Drucklegung
+aktuelle Version der entsprechenden Spezifikation eingegangen. Die
+einzige Ausnahme stellt die Bluetooth-Spezifikation dar, die lediglich
+in der Version 1.2 vorgestellt wird, da die Mehrzahl der aktuell
+verfügbaren Endgeräte lediglich diese Version unterstützt. Die
+aktuelle Version (zum Zeitpunkt der Drucklegung v2.0) kann unter
+<A HREF="https://www.bluetooth.org/spec/"><TT>https://www.bluetooth.org/spec/</TT></A> bezogen werden. Die ältere
+Version 1.1 der Bluetooth-Spezifikation, auf die der JSR-82 aufsetzt,
+kann unter der selben URL angefordert werden.<BR>
+<BR>
+Die angesprochenen Technologien und Spezifikationen umfassen dabei:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+Connected Limited Device Configuration (Version 1.0 siehe
+ [<A HREF="ObexObjectPassing010.html#sm:jsr30"><CITE>T+00</CITE></A>], Version 1.1 siehe [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A>])
+<LI CLASS="li-itemize">Mobile Information Device Profile (Version 1.0 siehe
+ [<A HREF="ObexObjectPassing010.html#sm:jsr37"><CITE>Van00</CITE></A>], Version 2.0 siehe [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A>])
+<LI CLASS="li-itemize">Bluetooth (Spezifikation v1.2 siehe [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A>])
+<LI CLASS="li-itemize">Java APIs for Bluetooth Wireless Technology (JSR-82) [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A>]
+</UL>
+<A NAME="toc6"></A>
+<H2 CLASS="section"><A NAME="htoc8">2.1</A>&nbsp;&nbsp;Bluetooth</H2>
+<A NAME="tgl:bt"></A>
+<A NAME="@default5"></A>
+<A NAME="@default6"></A>
+Die im Folgenden beschriebenen Grundlagen beziehen sich auf die
+Bluetooth-Spezifikation in der Version 1.2. Die Änderungen im
+Vergleich zur Version 1.1 beziehen sich hauptsächlich auf die
+Reduktion der Interferenzen mit anderen Funktechnologien und sind
+deshalb minimal. Die Version 1.1 hätte von der Bluetooth SIG speziell
+angefordert werden müssen, was somit vermieden werden konnte, da die
+Version 1.2 zum Zeitpunkt der Drucklegung ohne Registrierung
+verfügbar war. <BR>
+<BR>
+Die Bluetooth Funktechnologie ist ein Kurzstreckenfunkverfahren, das
+primär dazu entwickelt wurde mobile Endgeräte kabellos zu verbinden.
+Das Bluetooth Grundsystem besteht aus Basisband,
+Sende-/Empfangseinheit und dem zugehörigen
+Protokollstapel<SUP><A NAME="text1" HREF="#note1">1</A></SUP>. Das Kurzstreckenfunkverfahren wird im weltweit
+lizenzfreien 2.4 GHz ISM<SUP><A NAME="text2" HREF="#note2">2</A></SUP> Band betrieben. Um die Komplexität der Sende-
+und Empfangseinheit gering zu halten und somit die Kosten zu
+minimieren, wird als Modulationsverfahren dass
+<A NAME="@default7"></A><I><FONT COLOR=maroon>Gaussian Frequency Shift Keying
+ (GFSK)</FONT></I><SUP><A NAME="text3" HREF="#note3">3</A></SUP> eingesetzt (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architecture, S. 13; PDF, S.
+89</CITE>]).<BR>
+<BR>
+Die Reichweite des Bluetooth-Kurzstreckenfunks ist, wie bei jeder
+Funktechnologie, abhängig von der Sendeleistung des Geräts. Die
+Sendeleistung &ndash; und somit auch die Reichweite &ndash; des Funks wird in
+drei Klassen eingeteilt:<BR>
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <A NAME="@default8"></A><A NAME="@default9"></A><A NAME="@default10"></A>
+ <A NAME="@default11"></A><A NAME="@default12"></A><A NAME="@default13"></A>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD ALIGN=left NOWRAP><SPAN STYLE="font-variant:small-caps">Klassifikation</SPAN></TD>
+<TD ALIGN=left NOWRAP><SPAN STYLE="font-variant:small-caps">Reichweite</SPAN></TD>
+<TD ALIGN=left NOWRAP><SPAN STYLE="font-variant:small-caps">Sendeleistung</SPAN></TD>
+</TR>
+<TR><TD ALIGN=left NOWRAP>Klasse 1</TD>
+<TD ALIGN=left NOWRAP>100 m</TD>
+<TD ALIGN=left NOWRAP>100 mW</TD>
+</TR>
+<TR><TD ALIGN=left NOWRAP>Klasse 2</TD>
+<TD ALIGN=left NOWRAP>40 m</TD>
+<TD ALIGN=left NOWRAP>2.5 mW</TD>
+</TR>
+<TR><TD ALIGN=left NOWRAP>Klasse 3</TD>
+<TD ALIGN=left NOWRAP>10 m</TD>
+<TD ALIGN=left NOWRAP>1 mW</TD>
+</TR></TABLE>
+ <DIV CLASS="center">Tabelle 2.1: Reichweiten der einzelnen Bluetooth Klassen (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#wp:bt"><CITE>Wik06b</CITE></A>])</DIV>
+ <A NAME="tgl:bt:reich"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Die Datenübertragungsraten sind abhängig von der Spezifikation bzw.
+der Bluetooth-Version des jeweiligen Produkts. Die Übertragungsrate
+hat sich während der ersten drei Versionen nicht gesteigert, sie wurde
+erst mit der Bluetooth-Spezifikation Version 2.0 erhöht. Ein Überblick
+über die Übertragungsraten, sowie die grossen Änderungen/Probleme, der
+jeweilgen Bluetooth-Versionen ist in [Tab.: <A HREF="#tgl:bt:datarates">2.2</A>]
+dargestellt.
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <A NAME="@default14"></A><A NAME="@default15"></A>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Bluetooth-Version</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Maximale Datenübertragungsrate</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Änderung/Problem</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>1.0 und 1.0B</TD>
+<TD VALIGN=top ALIGN=left>723.2 Kbit/s</TD>
+<TD VALIGN=top ALIGN=left>Enthält Sicherheitsprobleme</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>1.1</TD>
+<TD VALIGN=top ALIGN=left>723.2 Kbit/s</TD>
+<TD VALIGN=top ALIGN=left>Indikator für die Signalstärke hinzugefügt
+ <I><FONT COLOR=maroon>Received Signal Strength Indicator</FONT></I>
+ (RSSI)</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>1.2</TD>
+<TD VALIGN=top ALIGN=left>723.2 Kbit/s</TD>
+<TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>Adaptive Frequency-Hopping spread
+ spectrum</FONT></I> (AFH) eingeführt;
+ reduziert Interferenzen mit anderen Funktechnologien (z.&nbsp;B. WLAN)</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>2.0</TD>
+<TD VALIGN=top ALIGN=left>2.1 Mbit/s</TD>
+<TD VALIGN=top ALIGN=left>Etwa dreifache Datenübertragungsgeschwindigkeit
+ durch <I><FONT COLOR=maroon>Enhanced Data Rate</FONT></I> (EDR)</TD>
+</TR></TABLE>
+ <DIV CLASS="center">Tabelle 2.2: Datenübertragungsraten von Bluetooth (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#wp:bt"><CITE>Wik06b</CITE></A><CITE>, Versionen</CITE>])</DIV>
+ <A NAME="tgl:bt:datarates"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Der <A NAME="@default16"></A>Datentransport innerhalb der
+Bluetooth-Architektur sowie sämtliche Betriebsmodi folgen dem selben
+generischen Ansatz. Dieser generische Ansatz ist mit Hilfe einer
+Schichtenarchitektur realisiert, die in [Abb.: <A HREF="#tgl:bt:dta">2.1</A>]
+dargestellt, und mit dem OSI-Schichtenmodell vergleichbar ist.
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing001.gif"><DIV CLASS="center">Abbildung 2.1: Allgemeine Datentransport
+ Architektur von Bluetooth (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architecture, S.25; PDF, S.
+ 101</CITE>])</DIV><A NAME="tgl:bt:dta"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+
+<H3 CLASS="subsection"><A NAME="htoc9">2.1.1</A>&nbsp;&nbsp;Physical Layer</H3>
+<A NAME="tgl:bt:pl"></A> 
+<A NAME="@default17"></A>
+Der Physical Layer bestimmt die Art und Weise wie die Daten übertragen
+werden, bzw. wie die Übertragung der Daten stattzufinden hat. Er
+spezifiziert bspw. was notwendig ist um Kollisionen zu vermeiden, oder
+welches Verfahren verwendet wird um parallele Operationen zu
+unterstützen.<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc10">2.1.1.1</A>&nbsp;&nbsp;Physical Channel</H4>
+<A NAME="tgl:bt:pl:pc"></A> 
+<A NAME="@default18"></A><BR>
+<BR>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing002.gif"></DIV> Auf der
+untersten Ebene dieser Architektur befindet sich der <I><FONT COLOR=maroon>Physical
+Channel</FONT></I>. Er wird von zwei Bluetooth Geräten zur Kommunikation
+genutzt. Um miteinander kommunizieren zu können, müssen beide Sende-
+und Empfangseinheiten in Reichweite sein und auf die selbe
+Funkfrequenz eingestellt werden. <A NAME="@default19"></A>Um
+unbeabsichtigte Kollisionen zu vermeiden wird der Kommunikation ein
+Zugriffscode angefügt. Dies verhindert Kollisionen, würden mehrere
+Geräte auf die selbe Frequenz eingestellt werden. In der
+Spezifikation sind vier physische Kanäle definiert, von denen jeder
+für einen bestimmten Anwendungszweck definiert und optimiert wurde.
+Um parallele Operationen zu unterstützen, wird das <I><FONT COLOR=maroon>Time Division
+Multiplexing</FONT></I><SUP><A NAME="text4" HREF="#note4">4</A></SUP> Verfahren verwendet.
+Durch diesen Mechanismus wird es ermöglicht, dass das Gerät während
+einer bestehenden Kommunikation auffindbar und zugänglich ist. Die
+Spezifikation nimmt weiterhin an, dass das Gerät lediglich in der Lage
+ist, sich ausschliesslich mit einem Übertragungskanal zu verbinden
+(Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architecture, S. 32; PDF, S. 108</CITE>]).<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc11">2.1.1.2</A>&nbsp;&nbsp;Physical Links</H4>
+<A NAME="tgl:bt:pl:plink"></A> 
+<A NAME="@default20"></A><BR>
+<BR>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing003.gif"></DIV> Der
+<I><FONT COLOR=maroon>Physical Link</FONT></I> repräsentiert die
+Basisbandverbindung<SUP><A NAME="text5" HREF="#note5">5</A></SUP> zwischen den Endgeräten. Eine solche physische
+Verbindung ist immer mit genau einem physischen Kanal verknüpft,
+obwohl ein physischer Kanal mehr als eine physische Verbindung
+unterstützen kann. Die physische Verbindung ist innerhalb eines
+Bluetooth-Systems lediglich ein virtuelles Konzept. Innerhalb eines
+Bluetooth-Pakets existiert kein Feld, welches es ermöglichen würde die
+physische Verbindung direkt zu identifizieren. Die physische
+Verbindung kann stattdessen über den logischen
+Transportkanal<SUP><A NAME="text6" HREF="#note6">6</A></SUP> identifiziert werden. Physische Verbindungen
+haben üblicherweise gemeinsame Eigenschaften, die auf alle logischen
+Transportkanäle &ndash; die zu dieser Verbindung gehören &ndash; angewandt werden.
+Beispiele solcher Eigenschaften sind die Verschlüsselung und
+Leistungssteuerung <I><FONT COLOR=maroon>(Power Control)</FONT></I> des Geräts. Soll eine
+Übertragung über mehrere physische Verbindungen hinweg ausgelöst
+werden <I><FONT COLOR=maroon>(Broadcast)</FONT></I>, werden die Sendeparameter entsprechend
+angepasst, sodass auf allen physischen Verbindungen gesendet werden
+kann (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architecture, S. 37; PDF: S. 113</CITE>]).<BR>
+<BR>
+
+
+<H3 CLASS="subsection"><A NAME="htoc12">2.1.2</A>&nbsp;&nbsp;Logical Layer</H3>
+<A NAME="tgl:bt:ll"></A> 
+<A NAME="@default21"></A>
+Der <I><FONT COLOR=maroon>Logical Layer</FONT></I> definiert, wie die logischen
+Transportverbindungen physisch zugeordnet werden.<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc13">2.1.2.1</A>&nbsp;&nbsp;Logical Transports</H4>
+<A NAME="tgl:bt:pl:lt"></A> 
+<A NAME="@default22"></A>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing004.gif"></DIV> Zwischen
+<I><FONT COLOR=maroon>Master</FONT></I> und <I><FONT COLOR=maroon>Slave</FONT></I> &ndash; <I><FONT COLOR=maroon>Master</FONT></I> und <I><FONT COLOR=maroon>Slave</FONT></I> ist
+das Analogon zum Client-/Server-Modell bei Protokollen wie z.&nbsp;B. FTP &ndash; können verschiedene
+Typen von logischen Transportverbindungen (<I><FONT COLOR=maroon>Logical Transports</FONT></I>)
+hergestellt werden. Dabei ist es jedem Gerät möglich, den
+<I><FONT COLOR=maroon>Master</FONT></I> oder <I><FONT COLOR=maroon>Slave</FONT></I> Status einzunehmen; der Status kann
+sogar während der bestehenden Verbindung gewechselt werden. Logische
+Transportverbindungen werden von aktiven physischen Verbindungen
+getragen und sind in der Lage, verschiedene Arten logischer
+Verbindungen zu beinhalten (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architectur, S. 39f; PDF, S.
+115f</CITE>]).<BR>
+<BR>
+In der Spezifikation sind fünf logische Transportverbindungen zwischen
+<I><FONT COLOR=maroon>Master</FONT></I> und <I><FONT COLOR=maroon>Slave</FONT></I> definiert:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+ <I><FONT COLOR=maroon>Synchronous Connection-Oriented
+ (SCO) logical transport</FONT></I>
+ <LI CLASS="li-itemize"><I><FONT COLOR=maroon>Extended Synchronous Connection-Oriented
+ (eSCO) logical transport</FONT></I>
+ <LI CLASS="li-itemize"><I><FONT COLOR=maroon>Asynchronous Connection-Oriented
+ (ACL) logical transport</FONT></I>
+ <LI CLASS="li-itemize"><I><FONT COLOR=maroon>Active Slave Broadcast (ASB) logical transport</FONT></I>
+ <LI CLASS="li-itemize"><I><FONT COLOR=maroon>Parked Slave Broadcast (PSB) logical transport</FONT></I>
+ </UL>
+Die synchronen Transportverbindungen stellen hierbei
+ Punkt-zu-Punkt-Verbindungen von einem <I><FONT COLOR=maroon>Master</FONT></I> zu einem
+ <I><FONT COLOR=maroon>Slave</FONT></I> dar. Sie unterstützen typischerweise zeitabhängige
+ Informationen wie z.&nbsp;B. Sprache. Das Master-Gerät regelt hierbei die
+ Verbindung indem es reservierte <I><FONT COLOR=maroon>Slots</FONT></I> in regelmäßigen
+ Abständen benutzt. Die ACL Verbindungen stellen ebenfalls eine
+ Punkt-zu-Punkt-Verbindung zwischen einem <I><FONT COLOR=maroon>Master</FONT></I> und einem
+ <I><FONT COLOR=maroon>Slave</FONT></I> dar. Der <I><FONT COLOR=maroon>Master</FONT></I> kann die ACL Verbindung zu einem
+ beliebigen <I><FONT COLOR=maroon>Slave</FONT></I> &ndash; inklusive der <I><FONT COLOR=maroon>Slaves</FONT></I> die bereits
+ eine bestehende synchrone Verbindung haben &ndash; herstellen, indem er
+ die <I><FONT COLOR=maroon>Slots</FONT></I> benutzt, die nicht für die synchrone Verbindung
+ reserviert sind. Eine genaue Beschreibung der einzelnen
+ Transportverbindungen ist unter [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Baseband Specification, S.
+ 85ff; PDF, S.243ff</CITE>] zu finden.<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc14">2.1.2.2</A>&nbsp;&nbsp;Logical Links</H4>
+<A NAME="tgl:bt:pl:ll"></A> 
+<A NAME="@default23"></A><BR>
+<BR>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing005.gif"></DIV> Um die
+verschiedenen Anforderungen einer Applikation bezüglich dem
+Datentransport abzudecken, ist eine Vielzahl logischer Verbindungen
+(<I><FONT COLOR=maroon>Logical Links</FONT></I>) verfügbar. Jede logische Verbindung wird mit
+einer logischen Transportverbindung assoziiert, die über verschiedene
+Charakteristika verfügt. Diese beinhalten z.&nbsp;B. Flusskontrolle,
+Sequenznummerierung sowie die Ablaufkoordination <I><FONT COLOR=maroon>(Scheduling)</FONT></I>.
+Innerhalb einer logischen Transportverbindung kann die logische
+Verbindung anhand des <I><FONT COLOR=maroon>Logical Link Identifiers
+(LLID)</FONT></I>
+erkannt werden, der im Header eines Basisbandpakets zu
+finden ist (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architectur, S. 46f; PDF,
+S. 122f</CITE>]).<BR>
+<BR>
+Die folgenden fünf logischen Verbindungen sind in der Spezifikation
+definiert (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Baseband Specification, S. 95ff; PDF, S.
+253ff</CITE>])
+<DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
+<A NAME="@default24"></A><B>Link Control (LC)</B><DD CLASS="dd-description">
+ Diese logische Verbindung trägt Kontrollinformationen der unteren
+ Ebenen, wie z.&nbsp;B. <I><FONT COLOR=maroon>Acknowledgement/Repeat Request
+ (ARQ)</FONT></I>,
+ Flusskontrolle und Nutzlastcharakterisierungen.
+<DT CLASS="dt-description"><A NAME="@default25"></A><B>ACL Control (ACL-C)</B><DD CLASS="dd-description"> Die ACL-C
+ Verbindung trägt Kontrollinformationen, die zwischen den <I><FONT COLOR=maroon>Link
+ Managern (LM)</FONT></I><SUP><A NAME="text7" HREF="#note7">7</A></SUP> der Endgeräte
+ ausgetauscht werden müssen. Der Austausch dieser Informationen
+ geschieht über das <I><FONT COLOR=maroon>Link Manager Protokoll
+ (LMP)</FONT></I>.
+<DT CLASS="dt-description"><A NAME="@default26"></A><B>User
+ Asynchronous/Isochronous (ACL-U)</B><DD CLASS="dd-description"> Die ACL-U Verbindung trägt
+ asynchrone, sowie isochrone L2CAP Benutzerdaten. Diese Nachrichten
+ können in einem oder mehreren Paketen übermittelt werden. Bei
+ fragmentierten Daten wird im Header der LLID auf den entsprechenden
+ Wert gesetzt.
+<DT CLASS="dt-description"><A NAME="@default27"></A><B>User Synchronous
+ (SCO-S)</B><DD CLASS="dd-description"> Die SCO-S Verbindung
+ transportiert synchrone Benutzerdaten.
+<DT CLASS="dt-description"><A NAME="@default28"></A><B>User Extended Synchronous
+ (eSCO-S)</B><DD CLASS="dd-description"> Die eSCO-S
+ Verbindung transportiert ebenfalls synchrone Benutzerdaten.
+</DL>
+
+
+<H3 CLASS="subsection"><A NAME="htoc15">2.1.3</A>&nbsp;&nbsp;L2CAP Layer</H3>
+<A NAME="tgl:bt:l2cap"></A> 
+<A NAME="@default29"></A><BR>
+<BR>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing006.gif"></DIV> Das
+ <I><FONT COLOR=maroon>Logical Link Control and Adaption Protocol
+ (L2CAP)</FONT></I> unterstützt Multiplexing zu Protokollen höherer
+ Ebenen, Paketsegmentierung und -reassemblierung, sowie das
+ Übermitteln von <I><FONT COLOR=maroon>Quality of Service</FONT></I><SUP><A NAME="text8" HREF="#note8">8</A></SUP> Informationen. Applikationen und
+ Service-Protokolle kommunizieren mit dem L2CAP-Layer über ein
+ sogenanntes <I><FONT COLOR=maroon>Channel-Orientated Interface</FONT></I>, um Verbindungen zu
+ anderen Geräten herzustellen. Die entsprechenden Endpunkte werden
+ über einen <I><FONT COLOR=maroon>Channel Identifier (CID)</FONT></I> gekennzeichnet, dessen Wert vom L2CAP-Layer zugewiesen
+ wird. Das Hauptaugenmerk des L2CAP-Layers liegt aber auf dessen
+ Multiplexing-Fähigkeit. Er ist dafür zuständig, dass die über das
+ <I><FONT COLOR=maroon>Channel Interface</FONT></I> ankommenden Daten (<I><FONT COLOR=maroon>Service Data Units
+ [SDUs]</FONT></I>) auf die ACL-U
+ Verbindungen verteilt werden. Ist ein HCI<SUP><A NAME="text9" HREF="#note9">9</A></SUP>
+ vorhanden, hat der L2CAP-Layer ebenfalls dafür Sorge zu tragen, dass
+ die Daten entprechend der Puffergrösse des Basisbands segmentiert
+ werden (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architectur, S. 48; PDF, S. 124</CITE>]).<BR>
+<BR>
+
+
+<H3 CLASS="subsection"><A NAME="htoc16">2.1.4</A>&nbsp;&nbsp;Bluetooth Sicherheit</H3>
+<A NAME="tgl:bt:sec"></A>
+<A NAME="@default30"></A>
+<A NAME="@default31"></A>
+Die Bluetooth-Spezifikation beschreibt das Sicherheitssystem, das
+bereits auf der Verbindungsebene <I><FONT COLOR=maroon>(Link Layer)</FONT></I> angewendet wird,
+sehr ausführlich. Verschlüsselung, Authentifizierung sowie
+Schlüsselerzeugungsschemata und die Erzeugung von Zufallszahlen sind
+spezifiziert. Die Authentifizierungs- und Verschlüsselungsalgorithmen
+müssen in jedem Gerät eine äquivalente Implementierung aufweisen. 
+Um die Sicherheit auf der Verbindungsebene zu realisieren, werden die
+vier in [Tab.: <A HREF="#tgl:bt:sec:ave">2.3</A>] aufgeführten Entitäten verwendet.
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Entität</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Grösse</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>Bluetooth Device Address (BD_ADDR)</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>48 Bit</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>Privater Schlüssel des Benutzers (Authentifizierung)</TD>
+<TD VALIGN=top ALIGN=left>128
+ Bit</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>Privater Schlüssel des Benutzers (Verschlüsselung)</TD>
+<TD VALIGN=top ALIGN=left>8-128
+ Bit</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>Pseudozufallszahl
+ (RAND)</TD>
+<TD VALIGN=top ALIGN=left>128 Bit</TD>
+</TR></TABLE>
+<DIV CLASS="center">Tabelle 2.3: In Authentifizierung und Verschlüsselung involvierte
+ Entitäten (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Security Specification, S. 749; PDF, S. 907
+ Tabelle 1.1</CITE>])</DIV>
+<A NAME="tgl:bt:sec:ave"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Die Authentifizierung beider Geräte erfolgt in zwei Schritten, das
+heisst es wird eine gegenseitige Authentifizierung beider Geräte
+vorgenommen. In direktem Anschluss der Authentifizierung des Geräts A
+bei Gerät B wird die Authentifizierung in entgegengesetzter Richtung
+vorgenommen<SUP><A NAME="text10" HREF="#note10">10</A></SUP> (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Security Specification, S. 758;
+PDF, S. 914</CITE>]).<BR>
+<BR>
+Benutzerdaten können mittels des angebotenen
+Verschlüsselungsalgorithmus geschützt werden. Es werden jedoch
+lediglich die Nutzdaten des zu sendenden Pakets verschlüsselt. Der
+Header des Pakets bleibt unangetastet. Der Algorithmus
+implementiert eine Stromchiffrierung mit Hilfe der SAFER+
+Methode, die frei erhältlich ist. Sie ist eine verbesserte
+Version des SAFER<SUP><A NAME="text11" HREF="#note11">11</A></SUP>
+Algorithmus [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Security Specification, S. 777ff; PDF, S.
+935ff</CITE>]. <BR>
+<BR>
+
+
+<H3 CLASS="subsection"><A NAME="htoc17">2.1.5</A>&nbsp;&nbsp;Generic Access Profile (GAP)</H3>
+<A NAME="tgl:bt:gap"></A>
+<A NAME="@default32"></A>
+<A NAME="@default33"></A>
+Sinn und Zweck des <I><FONT COLOR=maroon>Generic Access Profiles
+(GAP)</FONT></I> ist es,
+Definitionen, Empfehlungen sowie allgemeine Anforderungen in Bezug auf
+verschiedene Betriebsmodi und Zugriffsprozeduren zu beschreiben, die
+von Transport- und Applikationsprofilen verwendet werden sollten. Es
+wird weiterhin beschrieben, wie sich die Geräte im Ruhe- und im
+Verbindungsaufbauzustand verhalten sollten. Speziell wird der Fokus
+hierbei auf die Gerätesuche, Erzeugung der Verbindung sowie die
+Sicherheitsprozeduren gelegt. Das Schichtenmodell des GAP folgt dem
+in [Abb.: <A HREF="#tgl:bt:gap:stack">2.2</A>] dargestellten Aufbau [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Generic
+Access Profile, S. 179ff; PDF: S. 1127ff</CITE>].
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing007.gif"><DIV CLASS="center">Abbildung 2.2: GAP Schichtenmodell (Vgl.: Abbildung 2.1: Profile stack
+covered by this profile, S. 181 [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A>])</DIV><A NAME="tgl:bt:gap:stack"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Die Spezifikation des GAP beschäftigt sich hauptsächlich damit, zu
+beschreiben, welchem Zweck die unteren Schichten des Bluetooth
+Protokollstapels dienen (LC und LMP). Um Sicherheitsbezogene
+Alternativen zu diskutieren, wurden ebenfalls höhere Ebenen mit
+einbezogen (L2CAP, RFCOMM und OBEX) [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Generic Access Profile, S.
+181; PDF: S. 1129</CITE>].<BR>
+<BR>
+<A NAME="@default34"></A> <A NAME="@default35"></A> <A NAME="@default36"></A>
+<A NAME="@default37"></A> <A NAME="@default38"></A>
+<A NAME="@default39"></A>
+<A NAME="@default40"></A> <BR>
+<BR>
+In Bezug auf eine Suchanfrage <I><FONT COLOR=maroon>(inquiry)</FONT></I> kann sich ein
+Bluetooth-Gerät in drei verschiedenen Zuständen befinden. Die
+möglichen Zustände sind in [Tab.: <A HREF="#tgl:bt:gap:disc">2.4</A>] abgedruckt.
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Auffindbarkeitszustand</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Beschreibung</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>Non-discoverable mode</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>Ist das Gerät in diesem Zustand, so
+ kann es von einer Suchanfrage nicht gefunden werden. Ein
+ Bluetooth-Gerät in diesem Zustand wird als &#8220;Stilles Gerät&#8221;
+ <I><FONT COLOR=maroon>(silent device)</FONT></I> bezeichnet.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>Limited discoverable mode (LIAC)</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>Das Gerät ist für einen beschränkten Zeitraum
+ oder bis zum Eintritt eines bestimmten Ereignisses auffindbar. Es
+ sollte allerdings nicht länger als eine vordefinierte Zeit 
+ in diesem Zustand bleiben <I><FONT COLOR=maroon>(timeout)</FONT></I>. Ist ein Gerät in
+ diesem Zustand, antwortet es auf Suchanfragen die den <I><FONT COLOR=maroon>Limited Dedicated Inquiry Access
+ Code (LIAC)</FONT></I> verwenden.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>General discoverable mode
+ (GIAC)</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>Das Gerät befindet sich in einem dauerhaft
+ auffindbaren Zustand. Ist ein Gerät in
+ diesem Zustand, antwortet es auf Suchanfragen die den <I><FONT COLOR=maroon>General/Unlimited Inquiry Access
+ Code (GIAC)</FONT></I> verwenden.</TD>
+</TR></TABLE>
+ <DIV CLASS="center">Tabelle 2.4: Auffindbarkeitszustände eines Bluetooth-Geräts
+ [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, Generic Access Profile, S. 189ff; PDF, S.1137ff</CITE>]</DIV>
+<A NAME="tgl:bt:gap:disc"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Die spezifizierten Werte der Zugriffskennzeichner LIAC und GIAC sind
+auf der Bluetooth Homepage<SUP><A NAME="text12" HREF="#note12">12</A></SUP>
+zu finden [<A HREF="ObexObjectPassing010.html#btsig:anbb"><CITE>Blu06</CITE></A>]. 
+
+
+<H3 CLASS="subsection"><A NAME="htoc18">2.1.6</A>&nbsp;&nbsp;Bluetooth Implementierungen</H3>
+<A NAME="tgl:bt:stackimpl"></A>
+<A NAME="@default41"></A>
+Um Bluetooth auf einem Gerät verwenden zu können ist es notwendig,
+dass eine &ndash; zur Hardware passende &ndash; Implementierung eines
+Bluetooth-Stacks bereitgestellt wird. Für die mobilen Endgeräte ist in
+den meisten Fällen eine Bluetooth Implementierung des jeweiligen
+Herstellers auf dem Gerät vorhanden. Um allerdings auf einem
+Desktop-System Bluetooth-Unterstützung zu erhalten, muss i.&nbsp;d.&nbsp;R. ein
+entsprechender Stack nachträglich installiert werden.
+
+
+<A NAME="toc7"></A>
+<H2 CLASS="section"><A NAME="htoc19">2.2</A>&nbsp;&nbsp;Java 2 Micro Edition (J2ME)</H2>
+<A NAME="tgl:j2me"></A>
+<A NAME="@default42"></A>
+Die <I><FONT COLOR=maroon>Java 2 Platform, Micro Edition
+ (J2ME )</FONT></I> ist eine Plattform, die speziell auf die
+Bedürfnisse von <I><FONT COLOR=maroon>Embedded Devices</FONT></I> zugeschnitten ist. Die J2ME
+Architektur definiert Konfigurationen, Profile sowie optionale Pakete,
+mit deren Hilfe es möglich ist, Java Laufzeitumgebungen zu entwickeln,
+die eine möglichst breite Palette an Endgeräten des jeweiligen
+Zielmarktes abdecken. Konfigurationen bestehen aus der Kombination
+einer virtuellen Maschine (VM) sowie einem zugehörigen minimalen Set an
+Klassenbibliotheken. Um eine komplette Laufzeitumgebung für
+domänenspezifische Endgeräte zu schaffen, muss die Konfiguration um ein
+Set zusätzlicher Klassenbibliotheken erweitert werden, die in einem
+Profil oder optionalen Paket definiert sind. Die J2ME Plattform
+lässt sich, wie in [Abb.: <A HREF="#tgl:j2me:ein">2.3</A>] dargestellt, im Java Umfeld
+einordnen (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:j2me"><CITE>Sun06</CITE></A>]).
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing008.gif"><DIV CLASS="center">Abbildung 2.3: Einordnung von J2ME im Java
+ Umfeld (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:j2me"><CITE>Sun06</CITE></A>])</DIV><A NAME="tgl:j2me:ein"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Die J2ME Architektur folgt also prinzipiell dem in
+[Abb.: <A HREF="#tgl:j2me:arch">2.4</A>] dargestellten Aufbau. Die einzelnen
+Schichten der Architektur (CLDC [Kapitel <A HREF="#tgl:cldc">2.3</A>] und MIDP
+[Kapitel <A HREF="#tgl:midp">2.4</A>]) werden im Folgenden genauer beschrieben.
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing009.gif"><DIV CLASS="center">Abbildung 2.4: J2ME Architektur (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, Abb. 1, S.
+ 28</CITE>])</DIV><A NAME="tgl:j2me:arch"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+
+<A NAME="toc8"></A>
+<H2 CLASS="section"><A NAME="htoc20">2.3</A>&nbsp;&nbsp;Connected Limited Device Configuration (CLDC)</H2>
+<A NAME="tgl:cldc"></A>
+<A NAME="@default43"></A>
+<A NAME="@default44"></A>
+<A NAME="@default45"></A><BR>
+<BR>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing010.gif"></DIV> Die
+<I><FONT COLOR=maroon>Connected Limited Device Configuration
+ (CLDC)</FONT></I> stellt, zusammen mit dem <I><FONT COLOR=maroon>Mobile
+ Information Device Profile (MIDP)</FONT></I><SUP><A NAME="text13" HREF="#note13">13</A></SUP>, die Grundlage der J2ME dar. Wie nahezu alle
+Standards rund um Java, ist die CLDC ebenfalls Ergebnis eines
+<I><FONT COLOR=maroon>Java Specification Request (JSR)</FONT></I>. Die CLDC 1.0 wird als JSR-30 [<A HREF="ObexObjectPassing010.html#sm:jsr30"><CITE>T+00</CITE></A>], die
+Version 1.1 als JSR-139 [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A>] geführt<SUP><A NAME="text14" HREF="#note14">14</A></SUP>. Die
+CLDC 1.1 ist nicht als komplette Neuerung, sondern lediglich als
+Erweiterung der CLDC 1.0 zu sehen. Das bedeutet, dass die CLDC 1.1,
+mit ein paar wenigen Ausnahmen wie z.&nbsp;B. der Unterstützung für
+Gleitpunktoperationen, abwärtskompatibel zur CLDC 1.0 ist. Die CLDC
+Spezifikation hat zum Ziel, eine Entwicklungsplattform für
+netzwerkfähige, jedoch in ihren Ressourcen limitierte, portable,
+Geräte zu standardisieren. Solche Geräte sind bspw. ein Mobiltelefon
+oder ein Personal Digital Assistant (PDA). Eine Konfiguration der J2ME Plattform spezifiziert
+hierbei die Basismenge der Java Programmiersprache sowie die
+Funktionalität der zugehörigen VM. <I><FONT COLOR=maroon>Sun Microsystems, Inc.</FONT></I>
+bietet eine Referenzimplementierung einer solchen virtuellen Maschine
+an, die in der Spezifikation als <I><FONT COLOR=maroon>K Virtual Machine
+ (KVM)</FONT></I> bezeichnet wird, aber
+mittlerweile unter der Bezeichnung <I><FONT COLOR=maroon>CLDC HotSpot
+ Implementation Virtual
+ Machine</FONT></I><SUP><A NAME="text15" HREF="#note15">15</A></SUP> bekannt
+ist, die die 8-10 fache Geschwindigkeit der KVM erreicht. Die CLDC
+dient als Basis für ein oder mehrere Profile, die ein dem Gerät
+entsprechendes API anbieten (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, S. xi</CITE>]).<BR>
+<BR>
+Da die CLDC darauf ausgerichtet wurde, eine möglichst grosse Anzahl
+verschiedener Geräte zu unterstützen, besitzt sie, ausser der
+Mindestanforderung an den Speicher, keine weiteren Anforderungen bzgl.
+der zu Grunde liegenden Hardware. Typischerweise besitzen die
+angesprochenen Geräte jedoch <A NAME="@default46"></A>
+<A NAME="@default47"></A> limitierte Ressourcen:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+<A NAME="tgl:cldc:hwr"></A>
+160 Kilobyte nichtflüchtiger Speicher
+<LI CLASS="li-itemize">32 Kilobyte flüchtiger Speicher
+<LI CLASS="li-itemize">16 Bit oder 32 Bit Prozessor
+<LI CLASS="li-itemize">Möglichkeit, eine Verbindung zu einem Netzwerk herzustellen
+</UL>
+In keinem Fall ist die CLDC mit der <I><FONT COLOR=maroon>Connected Device
+ Configuration (CDC)</FONT></I><SUP><A NAME="text16" HREF="#note16">16</A></SUP> zu
+verwechseln, die einen erheblich grösseren Umfang als die CLDC bietet.
+Innerhalb der CDC ist z.&nbsp;B. der Mechanismus der Serialisierung und
+Deserialisierung von Objekten implementiert, was in der CLDC nicht der
+Fall ist. Die CDC ist für portable High-End-Geräte entwickelt worden.<BR>
+<BR>
+Die Implementierung der CLDC kann keine Kenntnis eines Dateisystems
+auf dem Endgerät voraussetzen. Viele, in ihren Ressourcen
+eingeschränkte Geräte, verfügen nicht über die Kenntnis eines
+<A NAME="tgl:cldc:fs"></A>Dateisystems oder Ähnlichem, welches es ermöglicht
+dynamisch bezogene Daten persistent auf dem Gerät zu speichern. Die
+Implementierung muss lediglich in der Lage sein, die Applikation zu
+laden und sie direkt nach ihrer Ausführung wieder zu verwerfen.
+Verfügt das Gerät allerdings über einen Persistenzmechanismus, ist es
+Aufgabe des Betriebssystems, einen Mechanismus zur Verwaltung der
+Applikationen zur Verfügung zu stellen. Auf Grund der variablen
+Bandbreite verfügbarer Geräte, ist ein solcher Mechanismus allerdings
+stark abhängig vom Gerät selbst und wird aufgrunddessen nicht von der
+Spezifikation behandelt (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, S. 29</CITE>]).<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc21">2.3.1</A>&nbsp;&nbsp;Generic Connection Framework (GCF)</H3>
+<A NAME="tgl:cldc:gcf"></A>
+<A NAME="@default48"></A>
+In einer einheitlichen, erweiterbaren Art und Weise bietet das
+<I><FONT COLOR=maroon>Generic Connection Framework (GCF)</FONT></I> die
+Möglichkeit, auf Ein- und Ausgabeoperationen sowie Netzwerkressourcen
+zuzugreifen. Anstatt auf eine Vielzahl verschiedener
+Abstraktionsmechanismen für jeden Kommunikationstyp zurückzugreifen,
+wird eine Menge zugehöriger Abstraktionen auf Ebene der
+Applikationsprogrammierung benutzt. Dieser generische Mechanismus besitzt
+folgende Form: <BR>
+<BR>
+<TT>Connector.open(&#0171;protocol&gt;:&lt;address&gt;;&lt;parameters&gt;");</TT><BR>
+<BR>
+Das GCF, das in der CLDC spezifiziert wird, definiert allerdings kein
+zwingend zu unterstützendes Netzwerkprotokoll. Sie fordert ebensowenig
+eine Implementierung bereits bestehender Protokolle. Sie bietet jedoch
+ein erweiterbares Rahmenwerk, das von J2ME Profilen, wie z.&nbsp;B. dem
+MIDP<SUP><A NAME="text17" HREF="#note17">17</A></SUP> angepasst werden kann. Die
+tatsächliche Implementierung der entsprechenden Protokolle erfolgt
+also auf Ebene des Profils (Vgl.: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, S. 56ff</CITE>]).
+
+
+<H3 CLASS="subsection"><A NAME="htoc22">2.3.2</A>&nbsp;&nbsp;CLDC Sicherheit</H3>
+<A NAME="tgl:cldc:sec"></A>
+<A NAME="@default49"></A>
+<A NAME="@default50"></A>
+Das von der J2SE bekannte, sehr mächtige, Sicherheitsmodell konnte
+aufgrund des Code-Umfangs nicht übernommen werden, da es die
+spezifizierten Speichergrenzen der CLDC bei weitem überschreitet. Das
+Sicherheitsmodell ist deshalb in drei verschiedene Ebenen eingeteilt.
+<DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
+<A NAME="@default51"></A>
+<A NAME="@default52"></A>
+<B>Low-level security</B><DD CLASS="dd-description"> Der Begriff <I><FONT COLOR=maroon>low-level security</FONT></I> ist
+ auch unter der Bezeichnung <I><FONT COLOR=maroon>Virtual machine security</FONT></I> bekannt.
+ <I><FONT COLOR=maroon>Low-level security</FONT></I> stellt sicher, dass Applikationen, die in
+ der VM ausgeführt werden, die Semantik der Java Programmiersprache
+ einhalten. Sie stellt weiterhin sicher, dass jedweder fehlerhafte
+ oder schädliche Programm-Code nicht in der Lage ist, das Gerät zu
+ beschädigen oder es zum Absturz zu bringen (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, S.
+ 30</CITE>]). <A NAME="@default53"></A>
+ <A NAME="@default54"></A>
+<A NAME="tgl:cldc:sec:als"></A>
+<DT CLASS="dt-description"><B>Application-level security</B><DD CLASS="dd-description"> <I><FONT COLOR=maroon>Application-level security</FONT></I>
+ bedeutet, dass die Applikation nur auf Ressourcen, Bibliotheken und
+ andere Komponenten zugreifen kann, die von der Java Laufzeitumgebung
+ und dem Gerät genehmigt worden sind. Realisiert wird das durch ein
+ sogenanntes Sandbox-Modell. Es muss gewährleisten, dass Java
+ Applikationen nicht aus ihrer Sandbox ausbrechen können. Das
+ CLDC Sandbox-Modell verbietet ebenfalls ein herunterladen beliebiger
+ neuer Bibliotheken, die nicht zum Umfang der Java Bibliotheken der
+ CLDC oder des Herstellers gehören. Das Ausführen nativen Codes ist
+ ebenfalls verboten (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, S. 31</CITE>]).
+<A NAME="@default55"></A>
+<A NAME="@default56"></A>
+<DT CLASS="dt-description"><B>End-to-end security</B><DD CLASS="dd-description"> Mit <I><FONT COLOR=maroon>end-to-end security</FONT></I> bezeichnet
+ man ein Modell, das gewährleistet, dass die über ein Netzwerk
+ gesendeten Daten &ndash; während ihres Transports durch diese Netze &ndash;
+ geschützt werden. Um dies zu gewährleisten ist ein Verschlüsselungs-
+ oder ein äquivalenter anderer Schutzmechanismus notwendig. Aufgrund
+ des breiten Spektrums verfügbarer Endgeräte kann allerdings keine
+ einheitliche Lösung des Problems geschaffen werden. Die
+ Spezifikation deklariert die <I><FONT COLOR=maroon>end-to-end security</FONT></I>
+ diesbezüglich als implementierungsabhängig (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr139"><CITE>T+03</CITE></A><CITE>, S. 32</CITE>]).
+</DL>
+<A NAME="toc9"></A>
+<H2 CLASS="section"><A NAME="htoc23">2.4</A>&nbsp;&nbsp;Mobile Information Device Profile (MIDP)</H2>
+<A NAME="tgl:midp"></A>
+<A NAME="@default57"></A>
+<A NAME="@default58"></A><BR>
+<BR>
+<DIV style="float: left; margin: 0ex 1.5ex 0ex 0ex;"><IMG SRC="ObexObjectPassing011.gif"></DIV> Das <I><FONT COLOR=maroon>Mobile
+ Information Device Profile (MIDP)</FONT></I> spezifiziert ein Profil, welches
+auf die Fähigkeiten eines kleinen mobilen Endgeräts &ndash; einem sogenannten
+<I><FONT COLOR=maroon>Mobile Information Device (MID)</FONT></I> &ndash; abgestimmt ist. Das MIDP 2.0 ist das
+Ergebnis des JSR-118, basiert auf dem MIDP 1.0 (JSR-37) und ist zu
+diesem abwärtskompatibel, sodass MIDlets<SUP><A NAME="text18" HREF="#note18">18</A></SUP>, die für das MIDP 1.0
+geschrieben wurden, ebenfalls auf dem MIDP 2.0 lauffähig
+sind<SUP><A NAME="text19" HREF="#note19">19</A></SUP>. Das
+MIDP spezifiziert eine auf der CLDC<SUP><A NAME="text20" HREF="#note20">20</A></SUP>
+aufgesetzte Schicht. MIDP 2.0 setzt mindestens die Version 1.0 der
+CLDC voraus, jedoch wird angenommen, dass die meisten MIDP 2.0
+Implementierungen auf der CLDC 1.1 aufsetzen werden. Da MIDs
+typischerweise eine sehr breite Spanne an Ressourcen zur Verfügung
+stellen, ist die Anzahl der Programmierschnittstellen auf das
+Wesentliche reduziert worden, um eine möglichst hohe Portabilität zu
+gewährleisten. Aus diesem Grund sind einige Funktionsbereiche
+abgegrenzt worden. Die abgegrenzten Bereiche sind die systemnahen
+Programmierschnittstellen <I><FONT COLOR=maroon>(System-level APIs)</FONT></I> sowie die
+Sicherheit der virtuellen Maschine <I><FONT COLOR=maroon>(Low-level security)</FONT></I> (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 5f</CITE>]).<BR>
+<BR>
+Die spezifizierten Mindestanforderungen an das MID sind als
+zusätzliche Anforderungen zur CLDC zu betrachten. Die Anforderungen
+sind unterteilt in Hard- und Softwareanforderungen. Die für die
+vorliegende Arbeit relevanten Spezifikationspunkte sind das Netzwerk
+sowie der spezifizierte Persistenzmechanismus:
+<DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
+<B>Netzwerk</B><DD CLASS="dd-description"> Die Netzwerkhardware muss eine
+ Zwei-Wege-Funkverbindung (mit limitierter Bandbreite) zur Verfügung
+ stellen. Um das Netzwerk API zu unterstützen, muss der Software
+ lesender und schreibender Zugriff auf die Funkverbindung gewährt
+ werden.
+<DT CLASS="dt-description"><B>Persistenzmechanismus</B><DD CLASS="dd-description"> Ein Mechanismus, um auf den
+ nichtflüchtigen Speicher zu schreiben und von ihm zu lesen, um die
+ Anforderungen des <I><FONT COLOR=maroon>Record Management Systems</FONT></I><SUP><A NAME="text21" HREF="#note21">21</A></SUP> abzudecken.
+</DL>
+In der Spezifikation sind weitere Anforderungen an des Gerät
+definiert, die weitere Punkte wie Anzeige, Eingabemechanismen,
+Speicheranforderungen und Audioeigenschaften festlegen. Es wird
+weiterhin festgelegt, wie die Software-Landschaft des Geräts
+auszusehen hat. Dies umfasst z.&nbsp;B. einen minimalistischen Kernel sowie
+einen Mechanismus, der den Lebenszyklus der Applikation auf dem Gerät
+verwaltet (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 7ff</CITE>]).<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc24">2.4.1</A>&nbsp;&nbsp;Record Management System (RMS)</H3>
+<A NAME="tgl:midp:rms"></A>
+<A NAME="@default59"></A>
+<A NAME="@default60"></A>
+<A NAME="@default61"></A>
+<A NAME="@default62"></A>
+<A NAME="@default63"></A>
+Das <I><FONT COLOR=maroon>Record Management System (RMS)</FONT></I> ist ein Mechanismus, der es
+MIDlets ermöglicht, Daten persistent auf dem Gerät abzulegen. Der
+Mechanismus ist wie eine einfache datensatzorientierte Datenbank
+modelliert (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 463</CITE>]). <BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc25">2.4.1.1</A>&nbsp;&nbsp;Record Store</H4>
+<A NAME="tgl:midp:rms:rs"></A>
+<A NAME="@default64"></A>
+<A NAME="@default65"></A>
+<A NAME="@default66"></A>
+Ein <I><FONT COLOR=maroon>Record Store</FONT></I> ist eine Ansammlung an Datensätzen, die, über
+mehrere Aufrufe der Applikation hinweg, persistent erhalten
+bleiben. Die zu Grunde liegende Plattform ist für die Integrität der
+Datensätze verantwortlich. Sie ist auch für das Erzeugen des
+<I><FONT COLOR=maroon>Record Stores</FONT></I> verantwortlich, der an einem der Plattform
+spezifischen Ort liegt. Dieser Speicherort darf dem MIDlet, aus
+Sicherheitsgründen, nicht bekanntgegeben werden. Der Name des
+<I><FONT COLOR=maroon>Records Stores</FONT></I> wird allerdings auf Ebene des MIDlets
+festgelegt. Dieser Name muss innerhalb eines MIDlets eindeutig
+sein. Das RMS-API definiert keinen
+Locking-Mechanismus. Schreiboperationen auf das Datenbanksystem werden
+automatisch synchronisiert, was bedeutet, dass das API
+<I><FONT COLOR=maroon>Thread-Safe</FONT></I><SUP><A NAME="text22" HREF="#note22">22</A></SUP> ist (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 463f</CITE>]).<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc26">2.4.1.2</A>&nbsp;&nbsp;Records</H4>
+<A NAME="tgl:midp:rms:records"></A>
+<A NAME="@default67"></A>
+<A NAME="@default68"></A>
+<A NAME="@default69"></A>
+<I><FONT COLOR=maroon>Records</FONT></I> sind als Byte-Arrays implementiert. Der Entwickler kann
+also <TT>DataInputStream</TT> und <TT>DataOutputStream</TT> sowie
+<TT>ByteArrayInputStream</TT> und <TT>ByteArrayOutputStream</TT>
+verwenden, um Daten in einen Datensatz zu schreiben bzw. von ihm zu
+lesen. Jeder <I><FONT COLOR=maroon>Record</FONT></I> kann innerhalb eines <I><FONT COLOR=maroon>Record Stores</FONT></I>
+anhand seiner eindeutigen Identifikationsnummer
+(ID) zugeordnet werden. Das
+bedeutet; wird ein Datensatz eingefügt, erhält er die ID &#8222;n&#8220;. Der
+nächste eingefügte Datensatz erhält die ID &#8222;n+1&#8220; (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S.
+464</CITE>]).<BR>
+<BR>
+Dieses Konzept der Enumeration wird konsequent verfolgt. Wird z.&nbsp;B. ein Datensatz gelöscht, wird die ID nicht wiederverwendet. Das
+bedeutet; sind drei Datensätze mit den IDs &gt;&gt;1&lt;&lt;, &gt;&gt;2&lt;&lt; und &gt;&gt;3&lt;&lt;
+eingefügt worden und wird der Datensatz mit der ID &gt;&gt;2&lt;&lt; gelöscht,
+erhält der nächste eingefügte Datensatz die ID &gt;&gt;4&lt;&lt; und nicht wie
+evtl. angenommen werden könnte, die ID &gt;&gt;2&lt;&lt;.
+
+
+<H3 CLASS="subsection"><A NAME="htoc27">2.4.2</A>&nbsp;&nbsp;MIDP Sicherheit</H3>
+<A NAME="tgl:midp:sec"></A>
+<A NAME="@default70"></A>
+<A NAME="@default71"></A>
+Da sich das MIDP auf die Bereitstellung eines APIs für die
+Applikationsentwicklung bezieht, wurden die <I><FONT COLOR=maroon>System-level</FONT></I> APIs
+nicht weiter spezifiziert. Das heisst sie unterliegen der korrekten
+Implementierung und den Sicherheitsanforderungen des Herstellers. Es
+werden seitens der Spezifikation explizit keine weiteren
+<I><FONT COLOR=maroon>Low-level</FONT></I> Sicherheitsmechanismen definiert (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 6</CITE>]).<BR>
+<BR>
+Da das MIDP jedoch auf der CLDC aufsetzt, erbt es die bereits in der
+CLDC vorhandenen Sicherheitsmechanismen. Das <I><FONT COLOR=maroon>System-level</FONT></I> API
+wird prinzipiell von der <I><FONT COLOR=maroon>Application-level security</FONT></I>, die
+<I><FONT COLOR=maroon>Low-level</FONT></I> Sicherheit von der gleichnamigen Sicherheit in der
+CLDC abgedeckt<SUP><A NAME="text23" HREF="#note23">23</A></SUP>.<BR>
+<BR>
+Das MIDP 1.0 zwingt jedes MIDlet dazu, innerhalb einer Sandbox
+ausgeführt zu werden, die jeglichen Zugriff auf sensitive
+Schnittstellen oder Funktionen des Geräts unterbindet. Dieses Konzept
+wird vom MIDP 2.0 ebenfalls für jedes nicht vertrauenswürdige
+<I><FONT COLOR=maroon>(untrusted)</FONT></I> MIDlet verlangt. Jede MIDP 2.0 Implementierung ist
+verpflichtet, Unterstützung für <I><FONT COLOR=maroon>untrusted</FONT></I> MIDlets
+anzubieten. Mit dem MIDP 2.0 ist das Konzept vertrauter
+<I><FONT COLOR=maroon>(trusted)</FONT></I> Applikationen eingeführt worden, das den Zugriff auf
+sensitive Schnittstellen erlaubt. Nicht vertrauenswürdige MIDlets
+müssen innerhalb der vom MIDP 1.0 spezifizierten Sandbox
+ausgeführt werden. Findet beim Ausführen eines solchen MIDlets ein
+Zugriff auf nicht vertrauenswürdige Schnittstellen statt, muss der
+Zugriff entweder verworfen, oder, nach einer explizit angeforderten
+Genehmigung des Benutzers, erlaubt werden. Das <I><FONT COLOR=maroon>trusted</FONT></I> Modell
+definiert im Gegensatz dazu drei verschiedene Interaktionsmuster, die
+als <I><FONT COLOR=maroon>User Permission Modes</FONT></I> bezeichnet werden. Sie ermöglichen es
+dem Benutzer, den Zugriff auf ein bestimmtes API zu erlauben oder zu
+verwehren (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 23ff</CITE>]).<BR>
+<BR>
+Die verschiedenen Zugriffsmodi, die vom Benutzer festgelegt werden
+können, sowie deren Gültigkeitszeitraum sind in
+[Tab.: <A HREF="#tgl:midp:sec:gzr">2.5</A>] festgehalten.
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <A NAME="@default72"></A>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">User Permission</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Gültigkeitszeitraum</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>blanket</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>Gültig für jede Ausführung der MIDlet-Applikation bis
+ sie deinstalliert oder die Rechte vom Benutzer geändert werden.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>session</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>Gültig vom Start eines MIDlets, bis zu dessen
+ Termination. Der &#8220;session&#8221; Modus ist verpflichtet, den Benutzer
+ beim oder vor dem ersten Aufruf einer geschützten Funktion einen
+ Dialog anzuzeigen, in dem der Benutzer entweder den Zugriff
+ gestattet oder ablehnt. Bei einem erneuten Start des MIDlets muss
+ diese Abfrage erneut erfolgen.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>oneshot</FONT></I></TD>
+<TD VALIGN=top ALIGN=left>Eine Interaktion mit dem Benutzer ist bei jedem
+ Zugriff auf ein geschütztes API notwendig.</TD>
+</TR></TABLE>
+ <DIV CLASS="center">Tabelle 2.5: Gültigkeitszeitraum der Rechte eines MIDlets (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 26</CITE>])</DIV>
+<A NAME="tgl:midp:sec:gzr"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+ 
+
+<A NAME="toc10"></A>
+<H2 CLASS="section"><A NAME="htoc28">2.5</A>&nbsp;&nbsp;Java API for Bluetooth (JSR-82)</H2>
+<A NAME="tgl:jbt"></A>
+<A NAME="@default73"></A>
+<A NAME="@default74"></A>
+Um die Bluetooth Funktionalität von einem MIDlet aus ansprechen zu
+können, ist ein entsprechendes API notwendig. Der
+JSR-82<SUP><A NAME="text24" HREF="#note24">24</A></SUP>
+definiert ein solches API sowie dessen Architektur, um
+Drittherstellern die Möglichkeit zu geben, Programme zu entwickeln, die
+eine Bluetooth Funkverbindung zur gegenseitigen Kommunikation nutzen.
+Das mit dem JSR-82 entwickelte API, das auch unter dem Akronym
+JABWT
+<I><FONT COLOR=maroon>(Java API for Bluetooth Wireless Technology)</FONT></I> bekannt ist, baut
+auf der Grundlage der CLDC [Kapitel <A HREF="#tgl:cldc">2.3</A>] auf und basiert auf der
+Bluetooth Spezifikation in der Version 1.1<SUP><A NAME="text25" HREF="#note25">25</A></SUP>. Es
+ist als optionale Erweiterung eines MIDP [Kapitel <A HREF="#tgl:midp">2.4</A>] zu sehen
+(Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 11</CITE>]).<BR>
+<BR>
+Mit der Spezifikation wurde beabsichtigt, eine Grundlage zu schaffen,
+mit der es ermöglicht wird, weitere Profile zu entwickeln. Dazu werden
+APIs für das L2CAP und OBEX<SUP><A NAME="text26" HREF="#note26">26</A></SUP> Protokoll angeboten, auf deren Basis
+zukünftige Profile entwickelt werden können. Das API bietet folgende
+Dienste an:
+<OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">
+Registrierung eines Dienstes
+<LI CLASS="li-enumerate">Gerät- und Dienstsuche
+<LI CLASS="li-enumerate">Möglichkeit, L2CAP und OBEX Verbindungen herzustellen.
+<LI CLASS="li-enumerate">Sichere Ausführung dieser Aktivitäten.
+</OL>
+Da nicht alle Profile und Ebenen der Bluetooth Spezifikation
+übernommen werden können, beschränkt sich der Umfang des APIs
+lediglich auf Datendienste. Sprachdienste können nicht verarbeitet
+bzw. angesteuert werden (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 14</CITE>]).<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc29">2.5.1</A>&nbsp;&nbsp;Anforderungen</H3>
+<A NAME="tgl:jbt:anf"></A> 
+<A NAME="@default75"></A>
+<A NAME="@default76"></A>
+Die vom JSR-82 definierten Anforderungen sind als Zusätze zu den
+bereits bestehenden Anforderungen der CLDC zu betrachten. Sie umfassen
+Anforderungen an die Spezifikation selbst, wie z.&nbsp;B. eine alleinige
+Abhängigkeit zu den CLDC Bibliotheken. Auf die
+Spezifikationsanforderungen soll jedoch nicht näher eingegangen
+werden. Es sind vielmehr die Anforderungen an das Gerät sowie die des zu
+Grunde liegenden Bluetooth-Systems von Interesse.
+<DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
+<B>Hardware-Anforderungen</B><DD CLASS="dd-description"> Das JSR-82 API ist entwickelt worden, um
+ auf Geräte mit folgenden Hardware-Charakteristika eingesetzt werden
+ zu können.
+ <UL CLASS="itemize"><LI CLASS="li-itemize">
+ <A NAME="tgl:jbt:anf:hw"></A>
+ Mindestens 512 Kilobyte Speicher für die Java Plattform
+ (ROM/Flash und
+ RAM). Der für die
+ Applikationen notwendige Speicher ist im Speicherkontingent nicht
+ enthalten und muss additiv bereitgestellt werden.
+ <LI CLASS="li-itemize">Bluetooth Kommunikations-Hardware, mit zugehörigem Stack und
+ Funkmodul.
+ <LI CLASS="li-itemize">Implementierung der J2ME CLDC APIs oder einem Superset derer,
+ wie z.&nbsp;B. der CDC.
+ </UL>
+<DT CLASS="dt-description"><B>Bluetooth-Anforderungen</B><DD CLASS="dd-description"> Die Anforderungen an das zu Grunde
+ liegende Bluetooth-System sind folgende:
+ <UL CLASS="itemize"><LI CLASS="li-itemize">
+ Das System muss das <I><FONT COLOR=maroon>Bluetooth Qualification Program</FONT></I> für
+ mindestens das <I><FONT COLOR=maroon>Generic Access Profile</FONT></I>, das <I><FONT COLOR=maroon>Service
+ Discovery Application Profile</FONT></I> und das <I><FONT COLOR=maroon>Serial Port
+ Profile</FONT></I> durchlaufen haben.
+ <LI CLASS="li-itemize">Die folgenden Schichten müssen, wie in der Bluetooth
+ Spezifikation (Version 1.1) unterstützt werden und die
+ Implementierung muss Zugriff auf diese haben.
+ <UL CLASS="itemize"><LI CLASS="li-itemize">
+ <I><FONT COLOR=maroon>Service Discovery Protocol
+ (SDP)</FONT></I>
+ <LI CLASS="li-itemize">RFCOMM<SUP><A NAME="text27" HREF="#note27">27</A></SUP> (Typ 1
+ Unterstützung)
+ <LI CLASS="li-itemize"><I><FONT COLOR=maroon>Logical Link Control and Adaption Protocol (L2CAP)</FONT></I>
+ </UL>
+ <LI CLASS="li-itemize">Eine vom System bereitgestellte Entität, das <I><FONT COLOR=maroon>Bluetooth
+ Control Center (BCC)</FONT></I>, welches es einem Benutzer oder
+ <I><FONT COLOR=maroon>Original Equipment Manufacturer
+ (OEM)</FONT></I>
+ erlaubt, spezifische Bluetooth-Parameter zu konfigurieren.
+ </UL>
+</DL>
+<A NAME="tgl:jbt:anf:obeximpl"></A>
+Die Unterstützung für das <I><FONT COLOR=maroon>OBject EXchange
+ (OBEX)</FONT></I> Protokoll kann
+entweder bereits vom zu Grunde liegenden Bluetooth-System, oder durch
+Implementierung des JSR-82 APIs bereitgestellt werden [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S.
+14f</CITE>].<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc30">2.5.2</A>&nbsp;&nbsp;Paketierung</H3>
+<A NAME="tgl:jbt:pkg"></A>
+<A NAME="@default77"></A>
+In der Spezifikation sind zwei Pakete definiert:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>javax.bluetooth</TT>
+<LI CLASS="li-itemize"><TT>javax.obex</TT>
+</UL>
+Auf Grund der Tatsache, dass das OBEX API unabhängig ist von Bluetooth,
+wird es in einem separaten Paket ausgeliefert. Eine CLDC ist somit in
+der Lage, entweder nur eines der beiden, oder beide auszuliefern. Das
+Paket <TT>javax.bluetooth</TT> beinhaltet die Bluetooth
+Basisbibliotheken, wohingegen das <TT>javax.obex</TT> Paket die
+Implementierung des OBEX APIs beinhaltet. Aus diesem Grund werden auch
+zwei verschiedene <I><FONT COLOR=maroon>Technology Compatibility Kits
+ (TCK)</FONT></I> zur Verfügung gestellt, mit Hilfe derer die Implementierung
+ gegenüber der Spezifikation getestet werden kann [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 21</CITE>].<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc31">2.5.3</A>&nbsp;&nbsp;Bluetooth Control Center</H3>
+<A NAME="tgl:jbt:bcc"></A>
+Bei Geräten die das JSR-82 API implementieren, kann es u.&nbsp;U. möglich
+sein, dass mehrere Applikationen zeitgleich ausgeführt werden. Die
+Notwendigkeit eines <I><FONT COLOR=maroon>Bluetooth Control Centers
+ (BCC)</FONT></I> ergibt sich aus dem Wunsch, zu verhindern, dass eine
+Applikation eine andere nachteilig beeinflusst. Es ist als zentrale
+Anlaufstelle des lokalen Bluetooth-Geräts zu sehen. Die
+Implementierung des BCC kann entweder als native Applikation bzw. als
+Applikation mit separatem API oder als fixe Gruppe von Eigenschaften,
+die nicht vom Benutzer geändert werden können, umgesetzt werden. Das
+BCC ist nicht als Klasse oder Schnittstelle innerhalb des JSR-82 APIs
+spezifiziert, stellt jedoch eine wichtige Rolle für die
+Sicherheitsarchitektur des JSR-82 dar. Das BCC muss der JSR-82
+Implementierung folgende Funktionen zur Verfügung stellen:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+Basissicherheitseinstellungen des Geräts, inklusive der in der
+ Bluetooth-Spezifikation definierten Sicherheitsmodi.
+<LI CLASS="li-itemize">Liste der dem Gerät bereits bekannten Bluetooth-Geräte, die sich
+ nicht zwingend in Reichweite befinden müssen.
+<LI CLASS="li-itemize">Liste der vom Gerät bereits als vertrauenswürdig eingestuften
+ Bluetooth-Geräte, die sich nicht zwingend in Reichweite befinden
+ müssen.
+</UL>
+Keine dieser Informationen darf von einer Applikation aus geändert
+werden können. Die einzige Applikation, die berechtigt ist dies zu
+tun, ist das BCC. Das BCC kann weitere Eigenschaften des Geräts
+zugänglich machen, wie z.&nbsp;B. die Einstellung des Gerätenamens
+<I><FONT COLOR=maroon>(friendly name)</FONT></I> oder die Möglichkeit, das Gerät auf die
+Werkseinstellungen zurückzusetzen [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 22</CITE>].<BR>
+<BR>
+
+
+<H3 CLASS="subsection"><A NAME="htoc32">2.5.4</A>&nbsp;&nbsp;Eigenschaften des Geräts</H3>
+<A NAME="tgl:jbt:dp"></A>
+<A NAME="@default78"></A>
+<A NAME="@default79"></A> <A NAME="@default80"></A> Da sich je nach Einsatzzweck
+die Konfiguration der Bluetooth-Geräte unterscheidet, besteht die
+Notwendigkeit, bestimmte Eigenschaften des Geräts abzufragen. Das API
+definiert eine Reihe von Eigenschaften, die durch einen Aufruf der
+Funktion <TT>LocalDevice.getProperty()</TT> abgefragt werden können.
+Die Werte, die abgefragt werden können, sind in
+[Tab.: <A HREF="#tgl:jbt:dp:dpt">2.6</A>] dargestellt. Soll ein solcher Wert
+abgefragt werden, ist zu beachten, dass die Zeichenketten <I><FONT COLOR=maroon>case
+ sensitive</FONT></I><SUP><A NAME="text28" HREF="#note28">28</A></SUP> sind.
+Ist die Eigenschaft nicht definiert, oder unbekannt, muss <TT>null</TT>
+zurückgegeben werden. Sämtliche Eigenschaften, die durch
+<TT>LocalDevice.getProperty()</TT> abgefragt werden können, müssen
+ebenfalls durch die von der CLDC bereitgestellte Funktion
+<TT>System.getProperty()</TT> zugänglich sein [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 23f</CITE>].
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Eigenschaft</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Beschreibung</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>bluetooth.api.version obex.api.version</TD>
+<TD VALIGN=top ALIGN=left>Version des <I><FONT COLOR=maroon>Java APIs for Bluetooth
+ wireless technology</FONT></I> die unterstützt wird. Für die Version 1.1
+ wird entsprechend &#8220;1.1&#8221; zurückgeliefert.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>bluetooth.l2cap.receiveMTU.max</TD>
+<TD VALIGN=top ALIGN=left><I><FONT COLOR=maroon>Maximum Transfer Unit</FONT></I> (MTU) in Empfangsrichtung, die
+ von L2CAP unterstützt wird. Der zurückgelieferte Wert ist dezimal
+ in einem <TT>java.lang.String</TT> kodiert.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.connected.devices.max</TD>
+<TD VALIGN=top ALIGN=left>Maximale Anzahl verbundener Geräte.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.connected.inquiry</TD>
+<TD VALIGN=top ALIGN=left>Kann eine Gerätesuche durchgeführt
+ werden, während das Gerät bereits verbunden ist?</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>bluetooth.connected.page</TD>
+<TD VALIGN=top ALIGN=left>Kann das lokale Gerät eine Verbindung
+ zu einem entfernten Gerät herstellen, wenn das lokale Gerät bereits
+ verbunden ist?</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.connected.inquiry.scan</TD>
+<TD VALIGN=top ALIGN=left>Kann das lokale Gerät auf eine
+ Suchanfrage antworten, während es mit einem anderen Gerät verbunden
+ ist?</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.connected.page.scan</TD>
+<TD VALIGN=top ALIGN=left>Kann das lokale Gerät eine
+ Verbindung von einem anderen Gerät annehmen, während es bereits mit
+ einem anderen Gerät verbunden ist?</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.master.switch</TD>
+<TD VALIGN=top ALIGN=left>Ist der <I><FONT COLOR=maroon>master/slave</FONT></I> Wechsel erlaubt?</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.sd.trans.max</TD>
+<TD VALIGN=top ALIGN=left>Maximale Anzahl zeitgleicher Dienstsuchen
+ <I><FONT COLOR=maroon>(Service Discovery)</FONT></I></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left> bluetooth.sd.attr.retrievable.max</TD>
+<TD VALIGN=top ALIGN=left>Maximale Anzahl der
+ <I><FONT COLOR=maroon>Service</FONT></I>-Attribute die mit einem <I><FONT COLOR=maroon>Service Record</FONT></I>
+ empfangen werden können.</TD>
+</TR></TABLE>
+ <DIV CLASS="center">Tabelle 2.6: Übersicht der
+ Eigenschaften des Geräts (Vgl. [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 24, Tabelle
+ 3-2 Device Properties</CITE>])</DIV>
+<A NAME="tgl:jbt:dp:dpt"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+
+<H3 CLASS="subsection"><A NAME="htoc33">2.5.5</A>&nbsp;&nbsp;Client-/Server Modell</H3>
+<A NAME="tgl:jbt:cs"></A>
+<A NAME="@default81"></A>
+Ein Bluetooth-Dienst (Service) ist eine Server-Applikation, die einem
+Client eine bestimmte Funktionalität ermöglicht. Ein Service zum
+Drucken über Bluetooth wäre bspw. eine solche Applikation. Entwickler,
+die mit Bluetooth arbeiten, können ihre eigenen Server-Applikationen
+schreiben, die sie anderen (Clients) zur Verfügung stellen. 
+Dies wird realisiert, indem der <I><FONT COLOR=maroon>Service Discovery Database
+ (SDDB)</FONT></I> des lokalen
+Bluetooth-Geräts ein sogenannter <I><FONT COLOR=maroon>Service Record</FONT></I> hinzugefügt
+wird, der den angebotenen Dienst beschreibt. Nachdem der Service
+registriert wurde, wartet der Server auf einen Client, der die
+Verbindung zu dem gewünschten Service initiiert [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S.
+24</CITE>].<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc34">2.5.6</A>&nbsp;&nbsp;Discovery</H3>
+<A NAME="tgl:jbt:disc"></A>
+<A NAME="@default82"></A>
+Da die meisten mit Bluetooth ausgestatteten Geräte tragbar sind, wird
+ein Mechanismus benötigt, der es ermöglicht, dass sich zwei oder
+mehr Geräte finden können. Dieser Prozess wird als
+<I><FONT COLOR=maroon>Discovery</FONT></I> bezeichnet. Es existieren hierbei zwei
+Discovery-Arten; Device- und Service-Discovery [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 27</CITE>].<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc35">2.5.6.1</A>&nbsp;&nbsp;Device Discovery</H4>
+<A NAME="tgl:jbt:disc:dd"></A>
+<A NAME="@default83"></A> <A NAME="@default84"></A>
+<A NAME="@default85"></A> Geräte können von einer Applikation mit
+Hilfe der Funktion <TT>startInquiry()</TT>, die nicht blockierend
+implementiert ist, oder mit ihrem blockierenden Äquivalent
+<TT>retrieveDevices()</TT> gefunden werden. Die
+<TT>retrieveDevices()</TT> Methode ist jedoch nicht in der Lage,
+&#8220;neue&#8221; Geräte zu finden, sondern liefert lediglich eine Liste der
+dem Gerät bereits bekannten Geräte. Das sind Geräte, die bspw. in einer
+vorhergehenden Suche bereits gefunden wurden oder Geräte die als
+<I><FONT COLOR=maroon>Pre-known</FONT></I> klassifiziert sind. Als <I><FONT COLOR=maroon>Pre-known</FONT></I> Geräte
+bezeichnet man Geräte, die im BCC definiert wurden. Die
+<TT>retrieveDevices()</TT> Methode führt keine aktive Suche durch,
+stellt aber die Möglichkeit dar, eine Liste von Geräten zu erhalten,
+die sich im näheren Umfeld befinden könnten. Wird die
+<TT>startInquiry()</TT> Methode verwendet, muss zusätzlich ein Listener
+implementiert werden, der benachrichtigt wird sobald ein neues Gerät
+gefunden wurde. Der zu implementierende Listener ist im Interface
+<TT>javax.bluetooth.DiscoveryListener</TT> definiert. Die Klasse
+<TT>javax.bluetooth.DiscoveryAgent</TT> bietet die entsprechenden
+Methoden zur Geräte- und Dienstsuche an [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 28f</CITE>].<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc36">2.5.6.2</A>&nbsp;&nbsp;Service Discovery</H4>
+<A NAME="tgl:jbt:disc:sd"></A>
+<A NAME="@default86"></A>
+Nachdem ein Gerät mittels einer <I><FONT COLOR=maroon>Device Discovery</FONT></I>
+ausfindig gemacht werden konnte, ist es i.&nbsp;d.&nbsp;R. von Interesse
+herauszufinden, ob auf dem gefundenen Gerät der gewünschte Dienst
+vorhanden ist. Die Suche nach einem solchen Dienst wird als
+<I><FONT COLOR=maroon>Service Discovery</FONT></I> bezeichnet. Eine lokale Service-Suche wird
+vom JSR-82 API allerdings nicht unterstützt. Die in eine Service-Suche
+involvierten Klassen sind Folgende [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 30f</CITE>]:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>javax.bluetooth.UUID</TT>
+<LI CLASS="li-itemize"><TT>javax.bluetooth.DataElement</TT>
+<LI CLASS="li-itemize"><TT>javax.bluetooth.ServiceRecord</TT>
+<LI CLASS="li-itemize"><TT>javax.bluetooth.DiscoveryAgent</TT>
+<LI CLASS="li-itemize"><TT>javax.bluetooth.DiscoveryListener</TT>
+</UL>
+In der Spezifikation ist zu jeder der aufgelisteten Klassen
+Beispielcode zu finden, der die Anwendung der Klassen verdeutlicht.<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc37">2.5.7</A>&nbsp;&nbsp;Generic Access Profile (GAP)</H3>
+<A NAME="tgl:jbt:gap"></A>
+Im Kapitel 7 der JSR-82 Spezifikation sind die Klassen aufgeführt, die
+dazu dienen, Eigenschaften des Geräts zu manipulieren, die Teil des
+GAPs<SUP><A NAME="text29" HREF="#note29">29</A></SUP> sind. Die
+Standardmechanismen zur Manipulation des lokalen Geräts befinden sich
+in der Klasse <TT>javax.bluetooth.LocalDevice</TT>, die Methoden um
+Informationen von einem entfernten Gerät zu erhalten befinden sich in
+der Klasse <TT>javax.bluetooth.RemoteDevice</TT>. Die Klasse
+<TT>javax.bluetooth.DeviceClass</TT> definiert Werte, mit Hilfe derer
+es möglich ist den Gerätetyp sowie den Typ des Angebotenen Dienstes
+zu identifizieren [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 50f</CITE>].<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc38">2.5.8</A>&nbsp;&nbsp;Kommunikation</H3>
+<A NAME="tgl:jbt:comm"></A>
+<A NAME="@default87"></A>
+<A NAME="@default88"></A>
+Um den Dienst eines anderen Bluetooth-Geräts in Anspruch nehmen zu
+können, müssen beide Geräte in der Lage sein miteinander zu
+kommunizieren. Dies erfordert die Kenntnis eines gemeinsamen
+Kommunikationsprotokolls, sodass verschiedene Applikationen
+miteinander kommunizieren können. Der JSR-82 stellt APIs zur Verfügung,
+mit deren Hilfe man Verbindungen zu RFCOMM, L2CAP oder OBEX Diensten
+herstellen kann. Das <I><FONT COLOR=maroon>Generic Connection Framework
+ (GCF)</FONT></I><SUP><A NAME="text30" HREF="#note30">30</A></SUP> der CLDC stellt dabei
+den Basismechanismus der Protokollimplementierung dar (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S.
+63</CITE>]).<BR>
+<BR>
+
+<H4 CLASS="subsubsection"><A NAME="htoc39">2.5.8.1</A>&nbsp;&nbsp;Serial Port Profile</H4>
+<A NAME="tgl:jbt:comm:spp"></A>
+<A NAME="@default89"></A>
+<A NAME="@default90"></A>
+<A NAME="@default91"></A>
+Das RFCOMM Protokoll emuliert mehrere RS-232
+Ports zwischen zwei Bluetooth Endgeräten. Die Bluetooth-Adressen der
+beiden Endgeräte identifizieren hierbei die RFCOMM Sitzung. Zwischen
+zwei Geräten darf immer nur eine Sitzung bestehen, die jedoch über
+mehr als eine Verbindung verfügen darf. Die Anzahl gleichzeitiger
+Verbindungen ist hierbei abhängig von der jeweiligen Implementierung.
+Eine Applikation, die einen Dienst auf Basis des <I><FONT COLOR=maroon>Serial Port
+ Profiles (SPP)</FONT></I> anbietet,
+wird dabei als SPP Server, eine die zu einem solchen eine Verbindung
+initiiert, als SPP Client bezeichnet. Nachdem eine Verbindung
+hergestellt ist, können Daten in beiden Richtungen ausgetauscht werden.
+Die Aushandlung der Verbindungsparameter sowie der Flusskontrolle muss
+hierbei automatisch zwischen den an der Kommunikation teilnehmenden
+Endgeräten von der SPP Implementierung gehandhabt werden (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S.
+64ff</CITE>]).<BR>
+<BR>
+Innerhalb eines Code-Fragments sind SPP Verbindungen (Client- oder
+Serverseitig) am String <TT>"btspp://"</TT> innerhalb von
+<A NAME="@default92"></A><TT>Connector.open()</TT> zu erkennen. Stellt
+die Applikation einen Dienst zur Verfügung, ist
+<TT>"btspp://localhost"</TT> zu Beginn des Strings enthalten.<BR>
+<BR>
+URLs, die einen Verbindungsaufbau zu einem
+entfernten Gerät ermöglichen, sind nach folgendem Schema aufgebaut:<BR>
+<BR>
+<TT>{scheme}:[{target}{params}]</TT><BR>
+<BR>
+Um RFCOMM zu benutzen ist das Schema (<TT>{scheme}</TT>), das für
+Client und Server verwendet wird, <TT>btspp</TT>. Die beiden anderen
+Platzhalter (<TT>{target}</TT> und <TT>{params}</TT>) unterscheiden
+sich, je nachdem, ob die Applikation einen Client oder Server
+darstellt. Alle gültigen Parameter, die in einem RFCOMM, L2CAP oder
+OBEX über RFCOMM Verbindungskennzeichner vorkommen können, sind in
+[Tab.: <A HREF="#tgl:jbt:comm:spp:vp">2.7</A>] aufgelistet.<BR>
+<BR>
+<A NAME="@default93"></A>
+<A NAME="@default94"></A>
+<A NAME="@default95"></A>
+<A NAME="@default96"></A>
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Name</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Beschreibung</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Zulässige Werte</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Client oder Server</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>master</TD>
+<TD VALIGN=top ALIGN=left>Gibt an, ob das Gerät master der Verbindung sein muss.</TD>
+<TD VALIGN=top ALIGN=left><TT>true</TT>, <TT>false</TT></TD>
+<TD VALIGN=top ALIGN=left>Beide</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>authenticate</TD>
+<TD VALIGN=top ALIGN=left>Gibt an, ob das entfernte Gerät authentifiziert
+ werden muss bevor eine Verbindung hergestellt werden kann.</TD>
+<TD VALIGN=top ALIGN=left><TT>true</TT>, <TT>false</TT></TD>
+<TD VALIGN=top ALIGN=left>Beide</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>encrypt</TD>
+<TD VALIGN=top ALIGN=left>Gibt an, ob die Verbindung verschlüsselt werden muss.</TD>
+<TD VALIGN=top ALIGN=left><TT>true</TT>, <TT>false</TT></TD>
+<TD VALIGN=top ALIGN=left>Beide</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>authorize</TD>
+<TD VALIGN=top ALIGN=left>Gibt an, ob alle Verbindungen zu diesem Gerät
+ authorisiert werden müssen um den Dienst zu nutzen.</TD>
+<TD VALIGN=top ALIGN=left><TT>true</TT>, <TT>false</TT></TD>
+<TD VALIGN=top ALIGN=left>Server</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left>name</TD>
+<TD VALIGN=top ALIGN=left>Der Name des angebotenen Dienstes, der in der SDDB
+ gespeichert wird.</TD>
+<TD VALIGN=top ALIGN=left>Jeder gültige String</TD>
+<TD VALIGN=top ALIGN=left>Server</TD>
+</TR></TABLE>
+ <DIV CLASS="center">Tabelle 2.7: Gültige Parameter für RFCOMM
+ Verbindungskennzeichner (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#cbk:bap"><CITE>BJJ04</CITE></A><CITE>, S. 59, Tabelle
+ 4.1 Valid Parameters for RFCOMM Connection Strings</CITE>])</DIV>
+<A NAME="tgl:jbt:comm:spp:vp"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+
+<H4 CLASS="subsubsection"><A NAME="htoc40">2.5.8.2</A>&nbsp;&nbsp;Object Exchange Protocol (OBEX)</H4>
+<A NAME="tgl:jbt:comm:obex"></A>
+<A NAME="@default97"></A>
+<A NAME="@default98"></A>
+Das OBEX Protokoll wurde ursprünglich von der <I><FONT COLOR=maroon>Infrared Data
+ Association (IrDA)</FONT></I><SUP><A NAME="text31" HREF="#note31">31</A></SUP>
+entwickelt, um Objekte auf einen Client oder Server zu &#8220;schieben&#8221;
+<I><FONT COLOR=maroon>(push)</FONT></I> oder sie von diesem zu &#8220;ziehen&#8221; <I><FONT COLOR=maroon>(pull)</FONT></I>. Um
+Objekte zu transferieren, etabliert OBEX zunächst eine Sitzung. Eine
+OBEX Sitzung beginnt mit einer <SPAN STYLE="font-variant:small-caps">CONNECT</SPAN> Anforderung und endet
+mit einer <SPAN STYLE="font-variant:small-caps">DISCONNECT</SPAN> Anforderung. Während die Sitzung etabliert
+ist, kann der Client Objekte vom Server holen <SPAN STYLE="font-variant:small-caps">(GET)</SPAN> oder
+Objekte am Server ablegen <SPAN STYLE="font-variant:small-caps">(PUT)</SPAN>. Diese Objekte können Dateien,
+Visitenkarten (vCards<SUP><A NAME="text32" HREF="#note32">32</A></SUP>) oder Byte-Arrays darstellen. Indem der Client das
+<SPAN STYLE="font-variant:small-caps">SETPATH</SPAN> Kommando sendet, kann er den Server dazu veranlassen,
+sein aktuelles Verzeichnis zu wechseln (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 93</CITE>]).<BR>
+<BR>
+OBEX skaliert sehr gut, egal ob es sich um grosse oder kleine Dateien
+handelt die übertragen werden müssen. Erreicht wird dies dadurch, dass
+OBEX die zu übertragenden Daten in mehreren Paketen schickt. Sobald
+der Client eine <SPAN STYLE="font-variant:small-caps">PUT</SPAN> oder <SPAN STYLE="font-variant:small-caps">GET</SPAN> Anforderung sendet, wird
+eine OBEX-Operation gestartet. Diese Operation besteht solange, bis
+die Datei vollständig übertragen ist oder ein Fehler eintritt. Um
+eine <SPAN STYLE="font-variant:small-caps">PUT</SPAN> Operation durchzuführen, bricht der Client
+(Applikation oder Protokoll-Stack) das zu sendende Objekt in kleine
+Stücke und sendet jedes einzeln an den Server. Der Client sendet das
+nachfolgende Stück nicht bevor der korrekte Versand des
+Vorgängerstücks bestätigt wurde (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 93</CITE>]).<BR>
+<BR>
+<A NAME="@default99"></A> OBEX bietet, wie das <I><FONT COLOR=maroon>Hypertext Transfer
+ Protocol (HTTP)</FONT></I><SUP><A NAME="text33" HREF="#note33">33</A></SUP>, die Möglichkeit,
+zusätzliche Informationen zwischen Client und Server auszutauschen.
+Diese zusätzlichen Meta-Informationen befinden sich im OBEX-Header,
+der im vergleich zum HTTP-Header lediglich Byte-Werte
+akzeptiert<SUP><A NAME="text34" HREF="#note34">34</A></SUP>. OBEX bietet Standard-Header an, wie z.&nbsp;B. Name-,
+Länge- und Beschreibungsfelder. Zusätzlich existieren noch 64 Header
+die vom Anwender definiert &ndash; und belegt &ndash; werden dürfen (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 93</CITE>]).<BR>
+<BR>
+Das vom JSR-82 definierte API erlaubt es einer Applikation
+OBEX-Operationen zwischen Client und Server auszuführen. Allerdings
+adressiert das API das <A NAME="@default100"></A>verbindungslose OBEX
+nicht, wie dies in der OBEX Spezifikation der IrDA der Fall ist. Das
+bereitgestellte OBEX API stellt die in
+[Tab.: <A HREF="#tgl:jbt:comm:obex:ops">2.8</A>] dargestellten Operationen zur
+Verfügung.<BR>
+<BR>
+<A NAME="@default101"></A>
+<BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+ <TABLE CELLSPACING=2 CELLPADDING=0>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Operation</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Beschreibung</SPAN></TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">CONNECT</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Stellt die Verbindung zum Server her.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">PUT</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Überträgt Daten vom Client an den Server.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">GET</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Überträgt Daten vom Server an den Client.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">SETPATH</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Ändert das Arbeitsverzeichnis auf dem Server.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">ABORT</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Bricht eine <SPAN STYLE="font-variant:small-caps">PUT</SPAN> oder <SPAN STYLE="font-variant:small-caps">GET</SPAN> Operation ab.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">CREATE-EMPTY</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Erzeugt ein leeres Objekt mit dem im Header
+ angegebenen Namen auf dem Server.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">PUT-DELETE</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Löscht das im Header angegebene Objekt auf dem
+ Server.</TD>
+</TR>
+<TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">DISCONNECT</SPAN></TD>
+<TD VALIGN=top ALIGN=left>Beendet die Verbindung zum Server.</TD>
+</TR></TABLE>
+<DIV CLASS="center">Tabelle 2.8: OBEX Operationen</DIV>
+<A NAME="tgl:jbt:comm:obex:ops"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
+Da das OBEX Protokoll über verschiedene Transportprotokolle verwendet
+werden kann, muss der String, der die Verbindung spezifiziert, das
+Transportprotokoll beinhalten. Die URL, um eine Verbindung zu einem
+entfernten Gerät herzustellen, hat folgenden Aufbau:<BR>
+<BR>
+<TT>{scheme}:[{target}{params}]</TT><BR>
+<BR>
+Um die zusätzliche Verwendung des Protokolls bei OBEX deutlich zu
+machen, wird, mit Ausnahme von OBEX über RFCOMM, folgendes Schema
+verwendet:<BR>
+<BR>
+<TT>{transport}obex://{target}{params}</TT>. <BR>
+<BR>
+Wird RFCOMM als Transportprotokoll verwendet, ist der als
+<TT>{scheme}</TT> gekennzeichnete Teil mit <TT>btgoep</TT> zu ersetzen
+und <TT>{target}</TT> spezifiziert die Bluetooth-Adresse, sowie die
+RFCOMM Kanalnummer. Alle für RFCOMM gültigen Parameter
+(<TT>{params}</TT>) sind ebenfalls für OBEX über RFCOMM
+gültig<SUP><A NAME="text35" HREF="#note35">35</A></SUP>. Ein gültiger
+OBEX über RFCOMM Verbindungskennzeichner hat also die Form:<BR>
+<BR>
+Client: <TT>btgoep://0123456789ab:1;authenticate=yes</TT><BR>
+Server: <TT>btgoep://localhost:DEADBEEFCAFEBABE5DADD115A1D1DEAD</TT><BR>
+<BR>
+Die von den anderen Verbindungskennzeichnern differente Schreibweise
+rührt daher, dass das OBEX Protokoll mit Hilfe des in der
+Bluetooth-Spezifikation definierten <I><FONT COLOR=maroon>Generic Object Exchange
+ Profiles (GOEP)</FONT></I><SUP><A NAME="text36" HREF="#note36">36</A></SUP>
+realisiert wurde [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 98</CITE>].
+<BR>
+<BR>
+
+<H3 CLASS="subsection"><A NAME="htoc41">2.5.9</A>&nbsp;&nbsp;JSR-82 Sicherheit</H3>
+<A NAME="tgl:jbt:sec"></A>
+Im JSR-82 werden Methoden beschrieben, die es ermöglichen, eine
+gesicherte Bluetooth-Kommunikation herzustellen. Es ist möglich,
+bereits beim Aufbau der Verbindung, durch einen entsprechend
+angepassten <I><FONT COLOR=maroon>Connection String</FONT></I>, die Sicherheitsparameter
+festzulegen. Methoden der <TT>javax.bluetooth.RemoteDevice</TT> Klasse
+können benutzt werden, um Sicherheitsänderungen der bestehenden
+Verbindung zu veranlassen. Die Definition und Belegung der Parameter
+ist sehr umfangreich und wird in Kapitel 8 des JSR-82 detailliert
+beschrieben. Die Beschreibung umfasst dabei, wie die
+Sicherheitsanforderungen bereits beim Verbindungsaufbau festgelegt
+oder Client und Server Authentifikations- oder
+Verschlüsselungsforderungen stellen können [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 52ff</CITE>].
+
+<BR>
+<BR>
+
+<HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note1" HREF="#text1"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Engl.&nbsp;: baseband, transceiver,
+ protocolstack
+<DT CLASS="dt-list"><A NAME="note2" HREF="#text2"><FONT SIZE=5>2</FONT></A><DD CLASS="dd-list"><I><FONT COLOR=maroon>Industrial, Scientific, and Medical
+ Band</FONT></I> [<A HREF="ObexObjectPassing010.html#wp:ism"><CITE>Wik06c</CITE></A>]
+<DT CLASS="dt-list"><A NAME="note3" HREF="#text3"><FONT SIZE=5>3</FONT></A><DD CLASS="dd-list">Illustration: [<A HREF="ObexObjectPassing010.html#bt:gfsk"><CITE>Bec05</CITE></A><CITE>, Folie
+ 9</CITE>]
+<DT CLASS="dt-list"><A NAME="note4" HREF="#text4"><FONT SIZE=5>4</FONT></A><DD CLASS="dd-list">Siehe [<A HREF="ObexObjectPassing010.html#wp:mpv"><CITE>Wik06d</CITE></A>]
+<DT CLASS="dt-list"><A NAME="note5" HREF="#text5"><FONT SIZE=5>5</FONT></A><DD CLASS="dd-list">Frequenzbereich des Nutzsignals (siehe
+ [<A HREF="ObexObjectPassing010.html#wp:bb"><CITE>Wik06a</CITE></A>])
+<DT CLASS="dt-list"><A NAME="note6" HREF="#text6"><FONT SIZE=5>6</FONT></A><DD CLASS="dd-list">engl.: <I><FONT COLOR=maroon>Logical Transport</FONT></I>, siehe
+ [Kapitel <A HREF="#tgl:bt:pl:lt">2.1.2.1</A>]
+<DT CLASS="dt-list"><A NAME="note7" HREF="#text7"><FONT SIZE=5>7</FONT></A><DD CLASS="dd-list">Der LM ist verantwortlich für die
+ Erzeugung, Modifikation und Freigabe logischer Verbindungen
+ [<A HREF="ObexObjectPassing010.html#bt:spez12"><CITE>Blu03</CITE></A><CITE>, Architecture, S. 23; PDF, S. 99</CITE>].
+<DT CLASS="dt-list"><A NAME="note8" HREF="#text8"><FONT SIZE=5>8</FONT></A><DD CLASS="dd-list">Kurz: QoS,
+ bezeichnet ein Verfahren, das einem (Paket-)Dienst eine
+ Mindestbandbreite zusichert.
+<DT CLASS="dt-list"><A NAME="note9" HREF="#text9"><FONT SIZE=5>9</FONT></A><DD CLASS="dd-list">Das <I><FONT COLOR=maroon>Host
+ Controller Interface (HCI)</FONT></I> befindet sich zwischen logischem und L2CAP-Layer und stellt
+ eine einheitliche Schnittstelle zum Bluetooth-Controller dar.
+<DT CLASS="dt-list"><A NAME="note10" HREF="#text10"><FONT SIZE=5>10</FONT></A><DD CLASS="dd-list">Sogenanntes <I><FONT COLOR=maroon>Challenge-Response</FONT></I> Verfahren (siehe
+[<A HREF="ObexObjectPassing010.html#jfms:kry"><CITE>FS06</CITE></A><CITE>, S. 56</CITE>])
+<DT CLASS="dt-list"><A NAME="note11" HREF="#text11"><FONT SIZE=5>11</FONT></A><DD CLASS="dd-list">Siehe [<A HREF="ObexObjectPassing010.html#schb:ak"><CITE>Sch96</CITE></A><CITE>, S. 392ff</CITE>]
+<DT CLASS="dt-list"><A NAME="note12" HREF="#text12"><FONT SIZE=5>12</FONT></A><DD CLASS="dd-list">Siehe <A HREF="https://www.bluetooth.org/"><TT>https://www.bluetooth.org/</TT></A>
+<DT CLASS="dt-list"><A NAME="note13" HREF="#text13"><FONT SIZE=5>13</FONT></A><DD CLASS="dd-list">Siehe
+ [Kapitel <A HREF="#tgl:midp">2.4</A>]
+<DT CLASS="dt-list"><A NAME="note14" HREF="#text14"><FONT SIZE=5>14</FONT></A><DD CLASS="dd-list">Alle JSRs
+ sind abrufbar unter: <A HREF="http://www.jcp.org/en/home/index"><TT>http://www.jcp.org/en/home/index</TT></A>
+<DT CLASS="dt-list"><A NAME="note15" HREF="#text15"><FONT SIZE=5>15</FONT></A><DD CLASS="dd-list">Siehe <A HREF="http://java.sun.com/products/cldc/"><TT>http://java.sun.com/products/cldc/</TT></A>
+<DT CLASS="dt-list"><A NAME="note16" HREF="#text16"><FONT SIZE=5>16</FONT></A><DD CLASS="dd-list">Siehe [<A HREF="ObexObjectPassing010.html#sm:jsr218"><CITE>C+05</CITE></A>]; Einordnung
+ siehe [Abb.: <A HREF="#tgl:j2me:ein">2.3</A>]
+<DT CLASS="dt-list"><A NAME="note17" HREF="#text17"><FONT SIZE=5>17</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="#tgl:midp">2.4</A>]
+<DT CLASS="dt-list"><A NAME="note18" HREF="#text18"><FONT SIZE=5>18</FONT></A><DD CLASS="dd-list">Programme, die auf
+ einem MID ausgeführt werden können.
+<DT CLASS="dt-list"><A NAME="note19" HREF="#text19"><FONT SIZE=5>19</FONT></A><DD CLASS="dd-list">JSR-118: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A>]; JSR-37 [<A HREF="ObexObjectPassing010.html#sm:jsr37"><CITE>Van00</CITE></A>]
+<DT CLASS="dt-list"><A NAME="note20" HREF="#text20"><FONT SIZE=5>20</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="#tgl:cldc">2.3</A>]
+<DT CLASS="dt-list"><A NAME="note21" HREF="#text21"><FONT SIZE=5>21</FONT></A><DD CLASS="dd-list">Siehe
+ [Kapitel <A HREF="#tgl:midp:rms">2.4.1</A>]
+<DT CLASS="dt-list"><A NAME="note22" HREF="#text22"><FONT SIZE=5>22</FONT></A><DD CLASS="dd-list">Parallele Aufrufe einer Funktion auf einen
+Datensatz/-block führen nicht zu Inkonsistenzen dessen.
+<DT CLASS="dt-list"><A NAME="note23" HREF="#text23"><FONT SIZE=5>23</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="#tgl:cldc:sec">2.3.2</A>]
+<DT CLASS="dt-list"><A NAME="note24" HREF="#text24"><FONT SIZE=5>24</FONT></A><DD CLASS="dd-list">Siehe <A HREF="http://www.jcp.org/en/jsr/detail?id=82"><TT>http://www.jcp.org/en/jsr/detail?id=82</TT></A>
+<DT CLASS="dt-list"><A NAME="note25" HREF="#text25"><FONT SIZE=5>25</FONT></A><DD CLASS="dd-list">Version 1.1 kann
+ unter <A HREF="https://www.bluetooth.org/spec/"><TT>https://www.bluetooth.org/spec/</TT></A> angefordert werden.
+<DT CLASS="dt-list"><A NAME="note26" HREF="#text26"><FONT SIZE=5>26</FONT></A><DD CLASS="dd-list">Siehe
+ [Kapitel <A HREF="#tgl:jbt:comm:obex">2.5.8.2</A>]
+<DT CLASS="dt-list"><A NAME="note27" HREF="#text27"><FONT SIZE=5>27</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="#tgl:jbt:comm:spp">2.5.8.1</A>]
+<DT CLASS="dt-list"><A NAME="note28" HREF="#text28"><FONT SIZE=5>28</FONT></A><DD CLASS="dd-list">Gross-/Kleinschreibung ist zu beachten.
+<DT CLASS="dt-list"><A NAME="note29" HREF="#text29"><FONT SIZE=5>29</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="#tgl:bt:gap">2.1.5</A>]
+<DT CLASS="dt-list"><A NAME="note30" HREF="#text30"><FONT SIZE=5>30</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="#tgl:cldc:gcf">2.3.1</A>]
+<DT CLASS="dt-list"><A NAME="note31" HREF="#text31"><FONT SIZE=5>31</FONT></A><DD CLASS="dd-list">Siehe <A HREF="http://www.irda.org/"><TT>http://www.irda.org/</TT></A>
+<DT CLASS="dt-list"><A NAME="note32" HREF="#text32"><FONT SIZE=5>32</FONT></A><DD CLASS="dd-list">Datenformat für eine elektronische
+ Visitenkarte
+<DT CLASS="dt-list"><A NAME="note33" HREF="#text33"><FONT SIZE=5>33</FONT></A><DD CLASS="dd-list">Siehe
+ <A HREF="http://www.ietf.org/rfc/rfc2616.txt"><TT>http://www.ietf.org/rfc/rfc2616.txt</TT></A>
+<DT CLASS="dt-list"><A NAME="note34" HREF="#text34"><FONT SIZE=5>34</FONT></A><DD CLASS="dd-list">OBEX wird aus diesem Grund auch gerne als binäres
+ HTTP bezeichnet.
+<DT CLASS="dt-list"><A NAME="note35" HREF="#text35"><FONT SIZE=5>35</FONT></A><DD CLASS="dd-list">Siehe [Tab.: <A HREF="#tgl:jbt:comm:spp:vp">2.7</A>]
+<DT CLASS="dt-list"><A NAME="note36" HREF="#text36"><FONT SIZE=5>36</FONT></A><DD CLASS="dd-list">Spezifikation: [<A HREF="ObexObjectPassing010.html#btsig:goep"><CITE>Blu05</CITE></A>]
+</DL>
+<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="http://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
+<A HREF="ObexObjectPassing003.html"><IMG SRC="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
+<A HREF="ObexObjectPassing005.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
+</BODY>
+</HTML>
