@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-            "http://www.w3.org/TR/REC-html40/loose.dtd">
+            "https://www.w3.org/TR/REC-html40/loose.dtd">
 <HTML>
 <HEAD>
 
@@ -17,14 +17,14 @@ Einleitung
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing004.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
 <HR>
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
 <H1 CLASS="chapter"><A NAME="htoc1">Kapitel&nbsp;1</A>&nbsp;&nbsp;Einleitung</H1>
 <A NAME="el"></A>
-Die Bluetooth Technologie erfreut sich in letzter Zeit immer grösserer
-Beliebtheit, wird doch durch sie das lästige Kabel endlich obsolet. Im
+Die Bluetooth Technologie erfreut sich in letzter Zeit immer grï¿½sserer
+Beliebtheit, wird doch durch sie das lï¿½stige Kabel endlich obsolet. Im
 Bereich der Applikationsentwicklung fehlt dem Programmierer jedoch die
-Möglichkeit Java Objekte zwischen zwei Endgeräten auszutauschen. Diese
-Lücke wird durch die vorliegende Arbeit geschlossen.<BR>
+Mï¿½glichkeit Java Objekte zwischen zwei Endgerï¿½ten auszutauschen. Diese
+Lï¿½cke wird durch die vorliegende Arbeit geschlossen.<BR>
 <BR>
 <A NAME="toc1"></A>
 <H2 CLASS="section"><A NAME="htoc2">1.1</A>&nbsp;&nbsp;Aufbau der Arbeit</H2>
@@ -34,7 +34,7 @@ Die Arbeit ist wie folgt aufgeteilt:
 <B>Kapitel 1</B><DD CLASS="dd-description"> beschreibt die Zielsetzung, technische
  Randbedingungen, sowie denkbare Anwendungsszenarien, und
  Bezugsquellen der vorliegenden Arbeit.
-<DT CLASS="dt-description"><B>Kapitel 2</B><DD CLASS="dd-description"> gibt einen kurzen Überblick über die zur Realisierung
+<DT CLASS="dt-description"><B>Kapitel 2</B><DD CLASS="dd-description"> gibt einen kurzen ï¿½berblick ï¿½ber die zur Realisierung
  der Bibliothek eingesetzten Technologien.
 <DT CLASS="dt-description"><B>Kapitel 3</B><DD CLASS="dd-description"> beschreibt das Design der entwickelten Bibliothek,
  sowie deren Funktionsweise.
@@ -42,7 +42,7 @@ Die Arbeit ist wie folgt aufgeteilt:
  anhand eines einfachen Beispiels, und vermittelt die Grundlagen der
  J2ME Applikationsentwicklung.
 <DT CLASS="dt-description"><B>Kapitel 5</B><DD CLASS="dd-description"> fasst die Arbeit zusammen und gibt einen Ausblick auf
- Weiterentwicklungsmöglichkeiten der Bibliothek.
+ Weiterentwicklungsmï¿½glichkeiten der Bibliothek.
 <DT CLASS="dt-description"><B>Anhang A</B><DD CLASS="dd-description"> demonstriert, wie innerhalb der eingesetzten Netbeans
  IDE ein J2ME Projekt erstellt werden kann, das die entwickelte
  Bibliothek einsetzt. Ferner wird beschrieben wie die
@@ -53,41 +53,41 @@ Die Arbeit ist wie folgt aufgeteilt:
 <A NAME="el:ziel"></A>
 <A NAME="@default0"></A>
 Ziel der Arbeit ist es eine Bibliothek zu erstellen, mit deren Hilfe
-sich Java Objekte über ein Bluetooth Funknetzwerk übertragen lassen.
+sich Java Objekte ï¿½ber ein Bluetooth Funknetzwerk ï¿½bertragen lassen.
 Ein solcher Mechanismus findet Anwendung, wenn man gezwungen ist,
-Objekte über ein Netzwerk transportieren zu müssen, wie es in
-grösseren Implementierungen der Fall ist. Dies ist bspw. dann
-notwendig, wenn Daten aus einer Datenbank an ein bestimmes Endgerät
+Objekte ï¿½ber ein Netzwerk transportieren zu mï¿½ssen, wie es in
+grï¿½sseren Implementierungen der Fall ist. Dies ist bspw. dann
+notwendig, wenn Daten aus einer Datenbank an ein bestimmes Endgerï¿½t
 oder einen Serverprozess auf einer physisch differenten Maschine zu
 senden sind.<BR>
 <BR>
-Die Anwendungsentwicklung &ndash; im Bereich der Datenübertragung &ndash; wird
+Die Anwendungsentwicklung &ndash; im Bereich der Datenï¿½bertragung &ndash; wird
 mit der entwickelten Bibliothek merklich vereinfacht. Der
-Programmierer wird lediglich angehalten, in seinen Entitätsobjekten
+Programmierer wird lediglich angehalten, in seinen Entitï¿½tsobjekten
 eine vorgegebene Schnittstelle zu implementieren. Sofern die
 Schnittstelle implementiert wurde, ist die Bibliothek in der Lage, das
-gegebene Objekt selbstständig zu übertragen.<BR>
+gegebene Objekt selbststï¿½ndig zu ï¿½bertragen.<BR>
 <BR>
 Diese Arbeit bildet <I><FONT COLOR=maroon>keinen</FONT></I> Serialisierungsmechanismus nach,
 auch wenn es auf Grund der Schnittstellendefinition danach
 aussehen mag. Die Implementierung der Serialisierung muss vom
-Programmierer selbst durchgeführt werden.<BR>
+Programmierer selbst durchgefï¿½hrt werden.<BR>
 <BR>
 <A NAME="toc3"></A>
 <H2 CLASS="section"><A NAME="htoc4">1.3</A>&nbsp;&nbsp;Anwendungsszenarien</H2>
 <A NAME="el:awz"></A>
 <A NAME="@default1"></A>
-Die Anwendungsszenarien der Bibliothek sind vielfältig. Sie kann
-prinzipiell bei jeder Art von Objektdatenübertragung eingesetzt
+Die Anwendungsszenarien der Bibliothek sind vielfï¿½ltig. Sie kann
+prinzipiell bei jeder Art von Objektdatenï¿½bertragung eingesetzt
 werden.<BR>
 <BR>
-Eine konkrete Anwendung wäre bspw. eine Applikation, die mit einem
-Kühlschrank interagiert. Die Software des Kühlschranks verwaltet einen
-&#8222;Einkaufszettel&#8220; mit Hilfe von Produktobjekten. Diese Objekte können
-mit Hilfe der Bibliothek leicht auf ein mobiles Endgerät übertragen
-werden, das im Geschäft als &#8222;Einkaufszettel&#8220; dient.<BR>
+Eine konkrete Anwendung wï¿½re bspw. eine Applikation, die mit einem
+Kï¿½hlschrank interagiert. Die Software des Kï¿½hlschranks verwaltet einen
+&#8222;Einkaufszettel&#8220; mit Hilfe von Produktobjekten. Diese Objekte kï¿½nnen
+mit Hilfe der Bibliothek leicht auf ein mobiles Endgerï¿½t ï¿½bertragen
+werden, das im Geschï¿½ft als &#8222;Einkaufszettel&#8220; dient.<BR>
 <BR>
-Eine andere Anwendungsmöglichkeit wäre z.&nbsp;B. die Übertragung von
+Eine andere Anwendungsmï¿½glichkeit wï¿½re z.&nbsp;B. die ï¿½bertragung von
 Punktobjekten, die von einer Landkartenapplikation ausgewertet
 werden. <BR>
 <BR>
@@ -103,20 +103,20 @@ Open Source Bereich eingesetzt worden.<BR>
 <A NAME="toc5"></A>
 <H2 CLASS="section"><A NAME="htoc6">1.5</A>&nbsp;&nbsp;Bezugsquellen</H2>
 <A NAME="el:bq"></A>
-Die vorliegende Arbeit, sowie deren zugehöriger Quellcode kann unter
-der URL <A HREF="http://oop.coffeecrew.org/"><TT>http://oop.coffeecrew.org/</TT></A> bezogen werden. <BR>
+Die vorliegende Arbeit, sowie deren zugehï¿½riger Quellcode kann unter
+der URL <A HREF="https://oop.coffeecrew.org/"><TT>https://oop.coffeecrew.org/</TT></A> bezogen werden. <BR>
 <BR>
-An dieser Stelle soll speziell auf die verfügbare JavaDoc hingewiesen
-werden, die direkt unter der URL <A HREF="http://oop.coffeecrew.org/doc/"><TT>http://oop.coffeecrew.org/doc/</TT></A>
-erreicht werden kann. Sie ist zusätzlich mit Beispielen versehen
-worden, um die Einarbeitungszeit des Entwicklers zu verkürzen.<BR>
+An dieser Stelle soll speziell auf die verfï¿½gbare JavaDoc hingewiesen
+werden, die direkt unter der URL <A HREF="https://oop.coffeecrew.org/doc/"><TT>https://oop.coffeecrew.org/doc/</TT></A>
+erreicht werden kann. Sie ist zusï¿½tzlich mit Beispielen versehen
+worden, um die Einarbeitungszeit des Entwicklers zu verkï¿½rzen.<BR>
 <BR>
-Sämtliche Beispielprogramme sind unter der angegebenen Adresse
-verfügbar. Die Webseite ist zusätzlich auf der beigelegten CD-ROM
-offline verfügbar gemacht.<BR>
+Sï¿½mtliche Beispielprogramme sind unter der angegebenen Adresse
+verfï¿½gbar. Die Webseite ist zusï¿½tzlich auf der beigelegten CD-ROM
+offline verfï¿½gbar gemacht.<BR>
 <BR>
 
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="http://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="https://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
 <A HREF="ObexObjectPassing002.html"><IMG SRC="previous_motif.gif" ALT="Previous"></A>
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing004.html"><IMG SRC="next_motif.gif" ALT="Next"></A>

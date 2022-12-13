@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-            "http://www.w3.org/TR/REC-html40/loose.dtd">
+            "https://www.w3.org/TR/REC-html40/loose.dtd">
 <HTML>
 <HEAD>
 
@@ -17,15 +17,15 @@ Entwickeln mit OOP
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing007.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
 <HR>
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
 <H1 CLASS="chapter"><A NAME="htoc54">Kapitel&nbsp;4</A>&nbsp;&nbsp;Entwickeln mit OOP</H1>
 <A NAME="oopdev"></A>
 <A NAME="@default131"></A>
 In diesem Kapitel wird demonstriert, wie die OOP Bibliothek eingesetzt
 werden kann. Um die zur Demonstration entwickelte Beispielapplikation
-verstehen zu können, wird an dieser Stelle kurz auf die Grundlagen der
+verstehen zu kï¿½nnen, wird an dieser Stelle kurz auf die Grundlagen der
 J2ME Programmierung eingegangen. Die Kenntnis der Grundlegenden
-Sprachkonstrukte von Java sowie das Verständnis einfacher
+Sprachkonstrukte von Java sowie das Verstï¿½ndnis einfacher
 Datenstrukturen und -container wird vorausgesetzt.<BR>
 <BR>
 <A NAME="toc15"></A>
@@ -33,30 +33,30 @@ Datenstrukturen und -container wird vorausgesetzt.<BR>
 <A NAME="oopdev:gdjp"></A>
 <A NAME="@default132"></A>
 Die J2ME ist, wie bereits in [Abb.: <A HREF="ObexObjectPassing004.html#tgl:j2me:ein">2.3</A>] gezeigt, im
-Java Umfeld einzuordnen. Java Programme, die auf einem mobilen Endgerät
-ausgeführt werden können, werden als MIDlets bezeichnet. Die
+Java Umfeld einzuordnen. Java Programme, die auf einem mobilen Endgerï¿½t
+ausgefï¿½hrt werden kï¿½nnen, werden als MIDlets bezeichnet. Die
 Namensgebung folgt aus dem Zusammenschluss von MID <I><FONT COLOR=maroon>(Mobile
- Information Device)</FONT></I> und Applet. Der hauptsächliche Unterschied zur
+ Information Device)</FONT></I> und Applet. Der hauptsï¿½chliche Unterschied zur
 J2SE besteht im limiterten Sprachumfang der J2ME. Der signifikante
 Unterschied der beiden Umgebungen ist auf die Beschaffenheit der
-Hardware zurückzuführen, die wie bereits in [Kapitel <A HREF="ObexObjectPassing004.html#tgl:cldc:hwr">2.3</A>] und
+Hardware zurï¿½ckzufï¿½hren, die wie bereits in [Kapitel <A HREF="ObexObjectPassing004.html#tgl:cldc:hwr">2.3</A>] und
 [Kapitel <A HREF="ObexObjectPassing004.html#tgl:jbt:anf:hw">2.5.1</A>] gezeigt, im J2ME Umfeld mit starken
-Einschränkungen belegt ist.<BR>
+Einschrï¿½nkungen belegt ist.<BR>
 <BR>
 
 <H3 CLASS="subsection"><A NAME="htoc56">4.1.1</A>&nbsp;&nbsp;Lebenszyklus eines MIDlets</H3>
 <A NAME="oopdev:gdjp:mlc"></A>
 <A NAME="@default133"></A>
 Jedes MIDlet ist gezwungen von der <TT>MIDlet</TT> Klasse zu erben. Sie
-ermöglicht das korrekte starten, stoppen und aufräumen des
-MIDlets. Eine MIDlet darf, im Gegenteil zu J2SE Programmen, nicht über
-eine <TT>public static void main()</TT> Methode verfügen. Ist dies
+ermï¿½glicht das korrekte starten, stoppen und aufrï¿½umen des
+MIDlets. Eine MIDlet darf, im Gegenteil zu J2SE Programmen, nicht ï¿½ber
+eine <TT>public static void main()</TT> Methode verfï¿½gen. Ist dies
 trotzdem der Fall wird sie von der <I><FONT COLOR=maroon>Application Management
  Software (AMS)</FONT></I>
 ignoriert [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 438</CITE>]. <BR>
 <BR>
-Die AMS ist Bestandteil des Betriebssystems des mobilen Endgeräts. Sie
-ermöglicht die Ausführung des MIDlets (und ggf. auch die
+Die AMS ist Bestandteil des Betriebssystems des mobilen Endgerï¿½ts. Sie
+ermï¿½glicht die Ausfï¿½hrung des MIDlets (und ggf. auch die
 Installation/Deinstallation dessen). Weiterhin ist die AMS in der Lage
 das MIDlet zu pausieren oder es zu stoppen. Der Zustandsautomat eines
 MIDlets ist in [Abb.: <A HREF="#oopdev:gdjp:mlc:mll">4.1</A>] dargestellt.
@@ -65,11 +65,11 @@ MIDlets ist in [Abb.: <A HREF="#oopdev:gdjp:mlc:mll">4.1</A>] dargestellt.
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing020.gif"><DIV CLASS="center">Abbildung 4.1: Zustandsautomat
 eines MIDlets (Vgl.: [<A HREF="ObexObjectPassing010.html#sm:jsr118"><CITE>VW02</CITE></A><CITE>, S. 440</CITE>])</DIV><A NAME="oopdev:gdjp:mlc:mll"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 Die Struktur des Zustandsautomaten wird im Code durch die an den
-Zustandübergängen in [Abb.: <A HREF="#oopdev:gdjp:mlc:mll">4.1</A>] annotierten Methoden
+Zustandï¿½bergï¿½ngen in [Abb.: <A HREF="#oopdev:gdjp:mlc:mll">4.1</A>] annotierten Methoden
 realisiert. Das Betriebssystem ist dadurch in der Lage beim Eintreffen
 eines externen Ereignisses, wie z.&nbsp;B. einem eingehenden Anruf, die
 Methode <TT>pauseApp()</TT> aufzurufen, durch die das MIDlet bis zu
-Fortführung pausiert wird. [Listing <A HREF="#oopdev:gdjp:mlc:hwm">1</A>] zeigt ein
+Fortfï¿½hrung pausiert wird. [Listing <A HREF="#oopdev:gdjp:mlc:hwm">1</A>] zeigt ein
 einfaches &#8222;Hello World&#8220; MIDlet um den Sachverhalt zu verdeutlichen.<BR>
 <BR>
 <A NAME="@default136"></A>
@@ -103,22 +103,22 @@ ein sogenannter <I><FONT COLOR=maroon>Screen Designer</FONT></I> eingesetzt werd
 Entwicklungsumgebung bietet einen solchen mit dem <I><FONT COLOR=maroon>Mobility Pack</FONT></I>
 an<SUP><A NAME="text64" HREF="#note64">1</A></SUP>. Des weiteren bietet
 es einen sogenannten <I><FONT COLOR=maroon>Flow Designer</FONT></I>, mit dessen Hilfe einzelne
-&#8222;Seiten&#8220;, sogenannte <I><FONT COLOR=maroon>Forms</FONT></I>, leicht untereinander verküpft
-werden können. Möchte man keine Spiele oder Programme mit
-anspruchsvollen graphischen Elementen entwickeln, lässt sich mit den
+&#8222;Seiten&#8220;, sogenannte <I><FONT COLOR=maroon>Forms</FONT></I>, leicht untereinander verkï¿½pft
+werden kï¿½nnen. Mï¿½chte man keine Spiele oder Programme mit
+anspruchsvollen graphischen Elementen entwickeln, lï¿½sst sich mit den
 dargebotenen Werkzeugen relativ schnell das Frontend einer Applikation
 entwickeln. Um das Basisset der graphischen Elemente dennoch mit einer
 ansprechenderen Optik zu versehen, wurde das <I><FONT COLOR=maroon>J2ME
  Polish</FONT></I><SUP><A NAME="text65" HREF="#note65">2</A></SUP> Projekt ins
-Leben gerufen. J2ME Polish lässt sich, zumindest laut Angabe der
+Leben gerufen. J2ME Polish lï¿½sst sich, zumindest laut Angabe der
 Entwickler, ebenfalls in die Netbeans IDE integrieren<SUP><A NAME="text66" HREF="#note66">3</A></SUP>.
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing021.gif"><DIV CLASS="center">Abbildung 4.2: Netbeans Flow Designer</DIV><A NAME="oopdev:gdjp:uid:flow"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 Die [Abb.: <A HREF="#oopdev:gdjp:uid:flow">4.2</A>] zeigt den <I><FONT COLOR=maroon>Flow Designer</FONT></I>
-für ein &#8222;Hello World&#8220; Projekt. Wie zu sehen ist, verbindet man den
+fï¿½r ein &#8222;Hello World&#8220; Projekt. Wie zu sehen ist, verbindet man den
 Startpunkt der Applikation direkt mit der nach dem Start des MIDlets
 anzuzeigenden Form. Wird der mit Exit beschriftete Button des MIDlets
-gedrückt, terminiert die Applikation. Die Handhabung der Netbeans
-IDE, bezüglich
+gedrï¿½ckt, terminiert die Applikation. Die Handhabung der Netbeans
+IDE, bezï¿½glich
 der Applikationsentwicklung im J2ME Umfeld, soll an dieser Stelle
 nicht weiter vertieft werden<SUP><A NAME="text67" HREF="#note67">4</A></SUP>.
 
@@ -127,31 +127,31 @@ nicht weiter vertieft werden<SUP><A NAME="text67" HREF="#note67">4</A></SUP>.
 <A NAME="oopdev:po"></A>
 <A NAME="@default137"></A>
 <A NAME="@default138"></A>
-Wie bei jedem grösseren Projekt, ist es auch bei der Entwicklung von
-Applikationen für mobile Endgeräte sinnvoll, für die verwendeten
-Entitätsobjekte eine Bibliothek zu erzeugen. Dadurch kann eine
-mehrfache Implementierung der Entitätsobjekte für differente
-Plattformen vermieden werden. Möchte man also eine Applikation
-entwickeln, die es ermöglicht, Daten zwischen einem Desktop-Computer
-und einem mobilen Endgerät auszutauschen, ist dieser Ansatz jedem
+Wie bei jedem grï¿½sseren Projekt, ist es auch bei der Entwicklung von
+Applikationen fï¿½r mobile Endgerï¿½te sinnvoll, fï¿½r die verwendeten
+Entitï¿½tsobjekte eine Bibliothek zu erzeugen. Dadurch kann eine
+mehrfache Implementierung der Entitï¿½tsobjekte fï¿½r differente
+Plattformen vermieden werden. Mï¿½chte man also eine Applikation
+entwickeln, die es ermï¿½glicht, Daten zwischen einem Desktop-Computer
+und einem mobilen Endgerï¿½t auszutauschen, ist dieser Ansatz jedem
 anderen vorzuziehen. Da die OOP Bibliothek in der Lage ist, sowohl im
 J2SE, als auch im J2ME Umfeld zu operieren, bietet es sich an diese
 Form der Projektorganisation prinzipiell zu verwenden, da man sich so
-die Möglichkeit offen hält, einen Client für andere Plattformen zu
+die Mï¿½glichkeit offen hï¿½lt, einen Client fï¿½r andere Plattformen zu
 implementieren. Eine beispielhafte Projektkonfiguration ist dann wie
 folgt gestaltet.
 <DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
 <B>MeineApplikation-J2ME</B><DD CLASS="dd-description"> Dieses Projekt beinhaltet den Code der
- notwendig ist, um die Logik und die Anzeige des mobilen Endgeräts
+ notwendig ist, um die Logik und die Anzeige des mobilen Endgerï¿½ts
  entsprechend der Anforderung zu manipulieren. 
 <DT CLASS="dt-description"><B>MeineApplikation-J2SE</B><DD CLASS="dd-description"> Dieses Projekt beinhaltet den Code der
  Applikationslogik sowie die notwendigen Manipulationen der Anzeige,
- um eine Änderung der Entitätsobjekte zu ermöglichen.
-<DT CLASS="dt-description"><B>MeineApplikation-Entitätsobjekte</B><DD CLASS="dd-description"> In diesem Projekt sind einzig
- die zu beiden Projekten gehörenden Entitätsobjekte zu finden. Sollte
- eine Änderung der Entitätsobjekte erfolgen, wirkt sich die Änderung
+ um eine ï¿½nderung der Entitï¿½tsobjekte zu ermï¿½glichen.
+<DT CLASS="dt-description"><B>MeineApplikation-Entitï¿½tsobjekte</B><DD CLASS="dd-description"> In diesem Projekt sind einzig
+ die zu beiden Projekten gehï¿½renden Entitï¿½tsobjekte zu finden. Sollte
+ eine ï¿½nderung der Entitï¿½tsobjekte erfolgen, wirkt sich die ï¿½nderung
  unweigerlich auf beide Projekte aus, womit sich eine Duplikation des
- Codes vermeiden lässt. 
+ Codes vermeiden lï¿½sst. 
 </DL>
 
 <A NAME="toc17"></A>
@@ -161,45 +161,45 @@ folgt gestaltet.
 <A NAME="@default140"></A>
 Die Funktionsweise sowie der konkrete Einsatz der Bibliothek wird
 anhand einer J2ME Beispielapplikation demonstriert. Die Applikation
-ist bewusst sehr einfach gehalten. So existieren keine zusätzlichen
-<I><FONT COLOR=maroon>Forms</FONT></I> mit deren Hilfe die Entitätsobjekte manipuliert werden
-können. Eine Manipulation der Daten ist für die Demonstration nicht
-erforderlich. Die Applikation bietet allerdings die Möglichkeit zur
-visuellen Repräsentation der Daten, damit die korrekte Übertragung
+ist bewusst sehr einfach gehalten. So existieren keine zusï¿½tzlichen
+<I><FONT COLOR=maroon>Forms</FONT></I> mit deren Hilfe die Entitï¿½tsobjekte manipuliert werden
+kï¿½nnen. Eine Manipulation der Daten ist fï¿½r die Demonstration nicht
+erforderlich. Die Applikation bietet allerdings die Mï¿½glichkeit zur
+visuellen Reprï¿½sentation der Daten, damit die korrekte ï¿½bertragung
 derer verifiziert werden kann.<BR>
 <BR>
 Die Beispielapplikation ist mit Hilfe des in Netbeans integrierten
 Emulators entwickelt worden. Zur Demonstration der Bibliothek muss der
-Emulator zweimal gestartet werden. Durch die Fähigkeit des Emulators
+Emulator zweimal gestartet werden. Durch die Fï¿½higkeit des Emulators
 eine Bluetooth-Schnittstelle zu emulieren, kann die Applikation ohne
 einen vorhandenen Bluetooth-Stack getestet werden. Netbeans ist
 allerdings nicht in der Lage die Bluetooth-Schnittstelle von einer
 J2SE Applikation auf ein J2ME Projekt zu emulieren, weswegen sich die
-Beispielapplikation auf ein J2ME Programm beschränkt.<BR>
+Beispielapplikation auf ein J2ME Programm beschrï¿½nkt.<BR>
 <BR>
 Die Funktionsweise des Programms ist relativ einfach. Nachdem das
 Projekt in Netbeans importiert wurde, muss das Programm zweimal
-gestartet werden. Auf einem der beiden simulierten Geräte wird nun der
+gestartet werden. Auf einem der beiden simulierten Gerï¿½te wird nun der
 Empfangsdienst gestartet. Man kann sich nun auf Wunsch die
 vorhandenen Daten anzeigen lassen. Das Programm reagiert mit einer
-Fehlermeldung, dass keine Daten vorhanden sind. Auf dem anderen Gerät
-wird im nächsten Schritt die Übertragung der (im Code konfigurierten)
-Daten veranlasst. Ist die Übertragung der Daten abgeschlossen, wird
-ein Dialogelement angezeigt, welches das Ende der Übertragung
-signalisiert. Auf dem empfangenden Gerät können die Daten jetzt
-angezeigt werden. Die Zustandsübergänge der Beispielapplikation sind
+Fehlermeldung, dass keine Daten vorhanden sind. Auf dem anderen Gerï¿½t
+wird im nï¿½chsten Schritt die ï¿½bertragung der (im Code konfigurierten)
+Daten veranlasst. Ist die ï¿½bertragung der Daten abgeschlossen, wird
+ein Dialogelement angezeigt, welches das Ende der ï¿½bertragung
+signalisiert. Auf dem empfangenden Gerï¿½t kï¿½nnen die Daten jetzt
+angezeigt werden. Die Zustandsï¿½bergï¿½nge der Beispielapplikation sind
 in [Abb.: <A HREF="#oopdev:bspa:trans">4.3</A>], ein bebilderter Ablauf in
 [Abb.: <A HREF="#oopdev:bspa:pics">4.4</A>] dargestellt.
-<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing022.gif"><DIV CLASS="center">Abbildung 4.3: Zustandsübergänge der J2ME
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing022.gif"><DIV CLASS="center">Abbildung 4.3: Zustandsï¿½bergï¿½nge der J2ME
  Beispielapplikation</DIV><A NAME="oopdev:bspa:trans"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
-Da innerhalb der Applikation keine Möglichkeit besteht die zu
-übertragenden Daten zu manipulieren bzw. zu setzen, werden die Daten
+Da innerhalb der Applikation keine Mï¿½glichkeit besteht die zu
+ï¿½bertragenden Daten zu manipulieren bzw. zu setzen, werden die Daten
 innerhalb des Programmcodes direkt zugewiesen. Die Konfiguration eines
 <TT>Person</TT> Objekts, das die Schnittstelle
 <TT>IObexObjectPassing</TT> implementiert, erfolgt wie in Listing
 [Listing <A HREF="#oopdev:bspa:bop">2</A>] gezeigt. Das Beispiel zeigt wie zwei
 <TT>Person</TT> Objekte konfiguriert, und anschliessend mit der Klasse
-<TT>BulkObjectPusher</TT> versendet werden können.<BR>
+<TT>BulkObjectPusher</TT> versendet werden kï¿½nnen.<BR>
 <BR>
 <A NAME="@default141"></A>
 <DIV CLASS="center">Listing&nbsp;2: <A NAME="oopdev:bspa:bop"></A>Verwendung von
@@ -221,17 +221,17 @@ innerhalb des Programmcodes direkt zugewiesen. Die Konfiguration eines
 <FONT SIZE=2>  15</FONT> <B>new</B> BulkObjectPusher(transferringObjects).addObserver(<B>this</B>);</DIV><BR>
 <BR>
 Die Klassen der OOP Bibliothek sind in ihrer Anwendung sehr einfach.
-Der in [Listing <A HREF="#oopdev:bspa:bop">2</A>] gedruckte Code führt den Transfer
+Der in [Listing <A HREF="#oopdev:bspa:bop">2</A>] gedruckte Code fï¿½hrt den Transfer
 der Daten in Zeile 15 durch. Wie zu sehen ist, wird die Klasse ohne
-Zuweisung initialisiert. Eine Zuweisung auf eine lokal verfügbare
+Zuweisung initialisiert. Eine Zuweisung auf eine lokal verfï¿½gbare
 Variable ist nicht notwendig. Durch den an die Klasse
-angeschlossenen <I><FONT COLOR=maroon>Observer</FONT></I><SUP><A NAME="text68" HREF="#note68">5</A></SUP> ist es möglich, über das Ende der
-Datenübertragung informiert zu werden. Es ist weiterhin zu erkennen,
-dass dem Objekt keine Zieladresse übergeben wurde. Das ist ebenfalls
+angeschlossenen <I><FONT COLOR=maroon>Observer</FONT></I><SUP><A NAME="text68" HREF="#note68">5</A></SUP> ist es mï¿½glich, ï¿½ber das Ende der
+Datenï¿½bertragung informiert zu werden. Es ist weiterhin zu erkennen,
+dass dem Objekt keine Zieladresse ï¿½bergeben wurde. Das ist ebenfalls
 nicht notwendig, da die Bibliothek in der Lage ist, ihren
-Kommunikationspartner selbstständig zu lokalisieren.<BR>
+Kommunikationspartner selbststï¿½ndig zu lokalisieren.<BR>
 <BR>
-Um auf dem entfernten Gerät Daten empfangen zu können muss der
+Um auf dem entfernten Gerï¿½t Daten empfangen zu kï¿½nnen muss der
 <TT>ObjectReceiver</TT> instanziiert werden. Er ist, ebenso wie die
 Klassen <TT>ObjectPusher</TT> und <TT>BulkObjectPusher</TT> nicht
 blockierend implementiert. 
@@ -242,13 +242,13 @@ blockierend implementiert.
 <FONT SIZE=2>    </FONT> 
 <FONT SIZE=2>    </FONT> <B>new</B> ObjectReceiver(receivedObjects);</DIV><BR>
 <BR>
-Der vorgestellte Code in [Listing <A HREF="#oopdev:bspa:or">3</A>] empfängt die
-übertragenen Objekte und speichert sie in den Vector
+Der vorgestellte Code in [Listing <A HREF="#oopdev:bspa:or">3</A>] empfï¿½ngt die
+ï¿½bertragenen Objekte und speichert sie in den Vector
 <TT>receivedObjects</TT>, aus dem die empfangenen Daten zu einem
-späteren Zeitpunkt wieder ausgelesen und weiterverabeitet werden
-können.<BR>
+spï¿½teren Zeitpunkt wieder ausgelesen und weiterverabeitet werden
+kï¿½nnen.<BR>
 <BR>
-Damit dies alles möglich ist, muss das zu übertragende Objekt
+Damit dies alles mï¿½glich ist, muss das zu ï¿½bertragende Objekt
 lediglich das Interface <TT>IObexObjectPassing</TT> implementieren. Ein
 partieller Ausschnitt der Implementierung des <TT>Person</TT> Objekts
 ist in [Listing <A HREF="#oopdev:bspa:ioop">4</A>] dargestellt. Die restlichen
@@ -307,17 +307,17 @@ Methoden sind ausschliesslich Accessor/Mutator Methoden des Objekts.<BR>
 Die wichtigsten Elemente, des in [Listing <A HREF="#oopdev:bspa:ioop">4</A>]
 dargestellten Codes sind die Zeilen 10-12 sowie die Zeilen 36-38. Mit
 diesen Zeilen werden die Daten des Objekts in ein Byte-Array
-geschrieben (10-12) und können ebenfalls von einem Byte-Array gelesen
+geschrieben (10-12) und kï¿½nnen ebenfalls von einem Byte-Array gelesen
 werden (36-38). Dieser Mechanismus ist zur korrekten Funktionsweise der
 OOP-Bibliothek notwendig<SUP><A NAME="text69" HREF="#note69">6</A></SUP>.<BR>
 <BR>
 Der Ablauf der Beispielapplikation ist in
 [Abb.: <A HREF="#oopdev:bspa:pics">4.4</A>] dargestellt. Da die Applikation auf zwei
 Mobiltelefonen gestartet werden muss, wird im Begleittext das
-jeweilige Gerät mit &gt;&gt;1&lt;&lt; oder &gt;&gt;2&lt;&lt; markiert. Ist keine Markierung
+jeweilige Gerï¿½t mit &gt;&gt;1&lt;&lt; oder &gt;&gt;2&lt;&lt; markiert. Ist keine Markierung
 angegeben, so bezieht sich die Anzeige auf beide Telefone.
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
- [Auf beiden Telefonen muss zunächst das
+ [Auf beiden Telefonen muss zunï¿½chst das
  Programm mittels &#8220;Launch&#8221; gestartet werden.]<BR>
 <IMG SRC="ObexObjectPassing023.gif"><BR>
 
@@ -328,7 +328,7 @@ angegeben, so bezieht sich die Anzeige auf beide Telefone.
  werden.]<BR>
 <IMG SRC="ObexObjectPassing025.gif"><BR>
  [&gt;&gt;1&lt;&lt; Der Start
- des Servers muss einmalig bestätigt werden, da ein Zugriff auf das
+ des Servers muss einmalig bestï¿½tigt werden, da ein Zugriff auf das
  Bluetooth API erfolgt.]<BR>
 <IMG SRC="ObexObjectPassing026.gif"><BR>
 
@@ -336,45 +336,45 @@ angegeben, so bezieht sich die Anzeige auf beide Telefone.
  werden.]<BR>
 <IMG SRC="ObexObjectPassing027.gif"><BR>
  [&gt;&gt;1&lt;&lt; Es sind
- keine Daten verfügbar, mit &#8220;Back&#8221;
+ keine Daten verfï¿½gbar, mit &#8220;Back&#8221;
  verlassen]<BR>
 <IMG SRC="ObexObjectPassing028.gif"><BR>
 
- [&gt;&gt;2&lt;&lt; Daten sollen übertragen
+ [&gt;&gt;2&lt;&lt; Daten sollen ï¿½bertragen
  werden.]<BR>
 <IMG SRC="ObexObjectPassing029.gif"><BR>
  [&gt;&gt;2&lt;&lt; Zum senden
- &#8220;Send&#8221; wählen.]<BR>
+ &#8220;Send&#8221; wï¿½hlen.]<BR>
 <IMG SRC="ObexObjectPassing030.gif"><BR>
 
  [&gt;&gt;2&lt;&lt; Der Zugriff auf das Bluetooth API muss einmalig
- bestätigt werden.]<BR>
+ bestï¿½tigt werden.]<BR>
 <IMG SRC="ObexObjectPassing031.gif"><BR>
 
- [&gt;&gt;2&lt;&lt; Die Übertragung wird bestätigt, mit &#8220;Done&#8221;
+ [&gt;&gt;2&lt;&lt; Die ï¿½bertragung wird bestï¿½tigt, mit &#8220;Done&#8221;
  verlassen.]<BR>
 <IMG SRC="ObexObjectPassing032.gif"><BR>
  
-[&gt;&gt;1&lt;&lt; Empfangene Daten können angezeigt werden.]<BR>
+[&gt;&gt;1&lt;&lt; Empfangene Daten kï¿½nnen angezeigt werden.]<BR>
 <IMG SRC="ObexObjectPassing033.gif"><BR>
 
  <DIV CLASS="center">Abbildung 4.4: Ablauf der Beispielapplikation</DIV>
 <A NAME="oopdev:bspa:pics"></A>
 <DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 
-<HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note64" HREF="#text64"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Entwicklungsumgebung und Mobility Pack können unter
- <A HREF="http://www.netbeans.org"><TT>http://www.netbeans.org</TT></A> bezogen werden.
-<DT CLASS="dt-list"><A NAME="note65" HREF="#text65"><FONT SIZE=5>2</FONT></A><DD CLASS="dd-list">Siehe <A HREF="http://www.j2mepolish.org/"><TT>http://www.j2mepolish.org/</TT></A>
+<HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note64" HREF="#text64"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Entwicklungsumgebung und Mobility Pack kï¿½nnen unter
+ <A HREF="https://www.netbeans.org"><TT>https://www.netbeans.org</TT></A> bezogen werden.
+<DT CLASS="dt-list"><A NAME="note65" HREF="#text65"><FONT SIZE=5>2</FONT></A><DD CLASS="dd-list">Siehe <A HREF="https://www.j2mepolish.org/"><TT>https://www.j2mepolish.org/</TT></A>
 <DT CLASS="dt-list"><A NAME="note66" HREF="#text66"><FONT SIZE=5>3</FONT></A><DD CLASS="dd-list">Siehe
- <A HREF="http://www.j2mepolish.org/docs/install.html#netbeans5"><TT>http://www.j2mepolish.org/docs/install.html#netbeans5</TT></A>
-<DT CLASS="dt-list"><A NAME="note67" HREF="#text67"><FONT SIZE=5>4</FONT></A><DD CLASS="dd-list">Eine Einführung in die MIDP
- Entwicklung mit Hilfe des Mobility Packs für Netbeans ist unter
+ <A HREF="https://www.j2mepolish.org/docs/install.html#netbeans5"><TT>https://www.j2mepolish.org/docs/install.html#netbeans5</TT></A>
+<DT CLASS="dt-list"><A NAME="note67" HREF="#text67"><FONT SIZE=5>4</FONT></A><DD CLASS="dd-list">Eine Einfï¿½hrung in die MIDP
+ Entwicklung mit Hilfe des Mobility Packs fï¿½r Netbeans ist unter
  [<A HREF="ObexObjectPassing010.html#nb:mpqsg"><CITE>Net06</CITE></A>] zu finden.
 <DT CLASS="dt-list"><A NAME="note68" HREF="#text68"><FONT SIZE=5>5</FONT></A><DD CLASS="dd-list">Siehe
  [Kapitel <A HREF="ObexObjectPassing005.html#impl:design:dimpl">3.2.2</A>]
 <DT CLASS="dt-list"><A NAME="note69" HREF="#text69"><FONT SIZE=5>6</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing005.html#impl:dem">3.3</A>]
 </DL>
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="http://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="https://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
 <A HREF="ObexObjectPassing005.html"><IMG SRC="previous_motif.gif" ALT="Previous"></A>
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing007.html"><IMG SRC="next_motif.gif" ALT="Next"></A>

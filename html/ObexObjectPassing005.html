@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-            "http://www.w3.org/TR/REC-html40/loose.dtd">
+            "https://www.w3.org/TR/REC-html40/loose.dtd">
 <HTML>
 <HEAD>
 
@@ -17,71 +17,71 @@ OBEX Object Passing
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing006.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
 <HR>
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
 <H1 CLASS="chapter"><A NAME="htoc42">Kapitel&nbsp;3</A>&nbsp;&nbsp;OBEX Object Passing</H1>
 <A NAME="impl"></A>
 <A NAME="@default102"></A>
 <A NAME="@default103"></A>
-Mobile Endgeräte verfügen durch das GCF der CLDC über einen
+Mobile Endgerï¿½te verfï¿½gen durch das GCF der CLDC ï¿½ber einen
 Mechanismus, der es ihnen erlaubt, eine Verbindung zu einem anderen
-Gerät über ein Netzwerk herzustellen. Das Kommunikationsverhalten ist
-jedoch, auf Grund der fehlenden Möglichkeit Java-Objekte zu
-übertragen, als eingeschränkt einzustufen. <BR>
+Gerï¿½t ï¿½ber ein Netzwerk herzustellen. Das Kommunikationsverhalten ist
+jedoch, auf Grund der fehlenden Mï¿½glichkeit Java-Objekte zu
+ï¿½bertragen, als eingeschrï¿½nkt einzustufen. <BR>
 <BR>
-Als Vorstufe der Übertragung ist eine Serialisierung des Objekts
-notwendig, sodass dieses übertragen und beim Empfänger wieder
+Als Vorstufe der ï¿½bertragung ist eine Serialisierung des Objekts
+notwendig, sodass dieses ï¿½bertragen und beim Empfï¿½nger wieder
 deserialisiert werden kann. RMI beinhaltet einen solchen Mechanismus
-um Objekte zu übertragen. Mit dem JSR-66<SUP><A NAME="text37" HREF="#note37">1</A></SUP> &ndash; <I><FONT COLOR=maroon>RMI Optional
+um Objekte zu ï¿½bertragen. Mit dem JSR-66<SUP><A NAME="text37" HREF="#note37">1</A></SUP> &ndash; <I><FONT COLOR=maroon>RMI Optional
  Package (RMI OP)</FONT></I> &ndash; wurde
-der RMI Mechanismus, der im J2EE Umfeld häufig im Zusammenhang mit
-bspw. <I><FONT COLOR=maroon>Enterprise JavaBeans (EJB)</FONT></I> genannt wird, innerhalb der J2ME verfügbar gemacht.
-Als Nachteil dieser Lösung erweist sich jedoch der Umstand, dass die
-RMI OP Erweiterung abhängig von der CDC ist, die von dem Vorhandensein
-einer VM, welche die JVM Spezifikation vollständig unterstützt,
-abhängig ist. Ein Einsatz in Verbindung mit der CLDC ist, wegen der
-fehlenden, vollständigen JVM Unterstützung nicht
-möglich<SUP><A NAME="text38" HREF="#note38">2</A></SUP>.<BR>
+der RMI Mechanismus, der im J2EE Umfeld hï¿½ufig im Zusammenhang mit
+bspw. <I><FONT COLOR=maroon>Enterprise JavaBeans (EJB)</FONT></I> genannt wird, innerhalb der J2ME verfï¿½gbar gemacht.
+Als Nachteil dieser Lï¿½sung erweist sich jedoch der Umstand, dass die
+RMI OP Erweiterung abhï¿½ngig von der CDC ist, die von dem Vorhandensein
+einer VM, welche die JVM Spezifikation vollstï¿½ndig unterstï¿½tzt,
+abhï¿½ngig ist. Ein Einsatz in Verbindung mit der CLDC ist, wegen der
+fehlenden, vollstï¿½ndigen JVM Unterstï¿½tzung nicht
+mï¿½glich<SUP><A NAME="text38" HREF="#note38">2</A></SUP>.<BR>
 <BR>
 Es existieren allerdings andere Frameworks, die sich des Problems der
 Serialisierung von Objekten mit der J2ME annehmen. Ein Vergleich der
 Frameworks Javolution, kSOAP, Burlap/Hessian und RMI OP wurde in
-[<A HREF="ObexObjectPassing010.html#br:objser"><CITE>BSM06</CITE></A>] durchgeführt. Als Ergebnis der Untersuchung wurde
+[<A HREF="ObexObjectPassing010.html#br:objser"><CITE>BSM06</CITE></A>] durchgefï¿½hrt. Als Ergebnis der Untersuchung wurde
 festgestellt, dass keines der untersuchten Frameworks in der Lage ist,
 ein komplexes Objekt innerhalb der J2ME (auf Basis der CLDC) zu
-deserialisieren. Wäre eine Serialisierung der Objekte mit Hilfe einer
-der o.&nbsp;g. Frameworks möglich gewesen, würden sie allerdings das
-Problem der Datenübertragung &ndash; abgesehen von RMI &ndash; nicht lösen
-können.<BR>
+deserialisieren. Wï¿½re eine Serialisierung der Objekte mit Hilfe einer
+der o.&nbsp;g. Frameworks mï¿½glich gewesen, wï¿½rden sie allerdings das
+Problem der Datenï¿½bertragung &ndash; abgesehen von RMI &ndash; nicht lï¿½sen
+kï¿½nnen.<BR>
 <BR>
 Der Fokus der OOP Bibliothek liegt nicht auf der Serialisierung von
 Objekten, wie dies auf Grund der Schnittstellendefinition evtl.
-angenommen werden könnte, sondern vielmehr auf der effizienten,
-einfachen Übertragung der Daten einfacher Objekte. Tiefe Kopien von
-komplexen Objektstrukturen können, sofern sie vom Programmierer in
-eine Byte-Array-Repräsentation überführt und von dieser auch wieder
-hergestellt werden können, ebenfalls mit dem Mechanismus übertragen
+angenommen werden kï¿½nnte, sondern vielmehr auf der effizienten,
+einfachen ï¿½bertragung der Daten einfacher Objekte. Tiefe Kopien von
+komplexen Objektstrukturen kï¿½nnen, sofern sie vom Programmierer in
+eine Byte-Array-Reprï¿½sentation ï¿½berfï¿½hrt und von dieser auch wieder
+hergestellt werden kï¿½nnen, ebenfalls mit dem Mechanismus ï¿½bertragen
 werden. Die einfachste Methode jedoch ist es, die komplexe
-Objektstruktur in eine einfache Darstellung zu überführen. Falls es
-das Projekt zulässt, kann auf die CDC gewechselt werden, die einen
+Objektstruktur in eine einfache Darstellung zu ï¿½berfï¿½hren. Falls es
+das Projekt zulï¿½sst, kann auf die CDC gewechselt werden, die einen
 Mechanismus zur Serialisierung von Objekten bereitstellt, sodass die
-zu übertragenden Objekte sehr leicht in einer
-Byte-Array-Repräsentation erhalten werden können.<BR>
+zu ï¿½bertragenden Objekte sehr leicht in einer
+Byte-Array-Reprï¿½sentation erhalten werden kï¿½nnen.<BR>
 <BR>
 Das <I><FONT COLOR=maroon>OBEX Object Passing (OOP)</FONT></I> stellt eine signifikante Vereinfachung der
-Übertragung von Objekten über eine Bluetooth-Funkstrecke dar. <BR>
+ï¿½bertragung von Objekten ï¿½ber eine Bluetooth-Funkstrecke dar. <BR>
 <BR>
 Das Peer2Me Projekt<SUP><A NAME="text39" HREF="#note39">3</A></SUP>
-scheint einen, dem OOP ähnlichen, Mechanismus zu implementieren. Die
+scheint einen, dem OOP ï¿½hnlichen, Mechanismus zu implementieren. Die
 Schnittstelle <TT>Persistent</TT> des Projekts weist die selbe Signatur
 wie die Schnittstelle <TT>IObexObjectPassing</TT> der OOP Bibliothek
 auf. Die Peer2Me Bibliothek baut auf der RFCOMM Schnittstelle auf. Um
-Transportprotokollunabhängigkeit zu erreichen, wurde ein eigener
+Transportprotokollunabhï¿½ngigkeit zu erreichen, wurde ein eigener
 Mechanismus entwickelt (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#lcnm:p2me"><CITE>LN05</CITE></A><CITE>, S. 70</CITE>] und [<A HREF="ObexObjectPassing010.html#lcnm:p2me"><CITE>LN05</CITE></A><CITE>, S.
 58</CITE>]). Eine genauere Untersuchung des Projekts liess sich,
-auf Grund der späten Entdeckung, nicht mehr realisieren.<BR>
+auf Grund der spï¿½ten Entdeckung, nicht mehr realisieren.<BR>
 <BR>
 OOP setzt im Vergleich zu Peer2Me auf der OBEX Schicht auf. Die
-Transportprotokollunabhängigkeit wird beim OOP durch eben diesen
+Transportprotokollunabhï¿½ngigkeit wird beim OOP durch eben diesen
 Umstand erreicht. Das OOP passt sich wie in [Abb.: <A HREF="#impl:oopin">3.1</A>]
 dargestellt in den Bluetooth-Protokollstapel ein.
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing012.gif"><DIV CLASS="center">Abbildung 3.1: Einordnung von OOP im
@@ -92,26 +92,26 @@ dargestellt in den Bluetooth-Protokollstapel ein.
 <A NAME="@default104"></A> Die Implementierung der Bibliothek
 sowie die Umsetzung der Beispielapplikation, ist mit der Netbeans
 IDE<SUP><A NAME="text40" HREF="#note40">4</A></SUP>
-realisiert worden. Die Netbeans IDE wurde auf Grund persönlicher
-Präferenzen des Autors sowie der beispiellosen Integration des
-<I><FONT COLOR=maroon>Wireless Toolkit</FONT></I>s <I><FONT COLOR=maroon>(WTK)</FONT></I><SUP><A NAME="text41" HREF="#note41">5</A></SUP> gewählt. Die
-Integration des WTK erfolgt durch die zusätzliche Installation des
+realisiert worden. Die Netbeans IDE wurde auf Grund persï¿½nlicher
+Prï¿½ferenzen des Autors sowie der beispiellosen Integration des
+<I><FONT COLOR=maroon>Wireless Toolkit</FONT></I>s <I><FONT COLOR=maroon>(WTK)</FONT></I><SUP><A NAME="text41" HREF="#note41">5</A></SUP> gewï¿½hlt. Die
+Integration des WTK erfolgt durch die zusï¿½tzliche Installation des
 sogenannten <I><FONT COLOR=maroon>Mobility Pack</FONT></I>s, das unter der selben URL gefunden
 werden kann wie die IDE selbst. Die Applikationsentwicklung wird
 durch die gute Integration der vom WTK bereitgestellten Emulatoren
 wesentlich vereinfacht.<BR>
 <BR>
 Die Netbeans IDE ist auf nahezu allen Betriebssystemen, auf denen eine
-JVM unterstützt wird, verfügbar. Allerdings gilt dieser Umstand nur
-für die IDE selbst.<A NAME="@default105"></A> Das für die
+JVM unterstï¿½tzt wird, verfï¿½gbar. Allerdings gilt dieser Umstand nur
+fï¿½r die IDE selbst.<A NAME="@default105"></A> Das fï¿½r die
 Entwicklung von J2ME Applikationen notwendige <I><FONT COLOR=maroon>Wireless Toolkit</FONT></I>
-ist nicht für Macintosh Plattformen verfügbar. Es ist jedoch möglich,
+ist nicht fï¿½r Macintosh Plattformen verfï¿½gbar. Es ist jedoch mï¿½glich,
 durch den Einsatz eines alternativen Emulators, J2ME Applikationen auf
 dem Macintosh zu entwickeln<SUP><A NAME="text42" HREF="#note42">6</A></SUP>.<BR>
 <BR>
-Möchte man, abgesehen von Applikationen für mobile Endgeräte,
+Mï¿½chte man, abgesehen von Applikationen fï¿½r mobile Endgerï¿½te,
 Applikationen entwickeln, die auf einem Desktop-Computer verwendet
-werden sollen, ist die zusätzliche Installation eines
+werden sollen, ist die zusï¿½tzliche Installation eines
 Bluetooth-Stacks sowie einer JSR-82 Implementierung notwendig.<BR>
 <BR>
 
@@ -120,7 +120,7 @@ Bluetooth-Stacks sowie einer JSR-82 Implementierung notwendig.<BR>
 <A NAME="@default106"></A> Beim Kauf eines Bluetooth-Adapters wird der
 Stack i.&nbsp;d.&nbsp;R. vom Hersteller des Produkts mitgeliefert. Der
 Funktionsumfang des mitgelieferten Stacks ist jedoch vom Hersteller
-abhängig. Ein nicht mit dem Produkt gelieferter Bluetooth-Stack kann
+abhï¿½ngig. Ein nicht mit dem Produkt gelieferter Bluetooth-Stack kann
 (wahrscheinlich) installiert werden, jedoch ist die Beschaffung
 desselben auf legalem Wege nicht zu erreichen. Linux verwendet einen
 eigenen Bluetooth-Stack; den sogenannten BlueZ
@@ -133,25 +133,25 @@ Macintosh Plattform verwendet ebenfalls ihre Eigenentwicklung.<BR>
 <A NAME="@default107"></A>
 <A NAME="@default108"></A>
 Bei der Wahl der JSR-82 Implementierung ist ebenfalls Vorsicht
-geboten. Die Implementierungen sind abhängig vom zu Grunde liegenden
-Bluetooth-Stack. So kann es passieren, dass die gewünschte JSR-82
+geboten. Die Implementierungen sind abhï¿½ngig vom zu Grunde liegenden
+Bluetooth-Stack. So kann es passieren, dass die gewï¿½nschte JSR-82
 Implementierung nicht mit dem auf dem System installierten
 Bluetooth-Stack zusammenarbeitet. <BR>
 <BR>
-Um den JSR-82 auf realen Geräten einsetzen zu können, muss das
-Endgerät Unterstützung für diesen bereitstellen. Dies ist bei den
-meisten mobilen Endgeräten, wie z.&nbsp;B. Handys, oder PDAs gegeben. Möchte
+Um den JSR-82 auf realen Gerï¿½ten einsetzen zu kï¿½nnen, muss das
+Endgerï¿½t Unterstï¿½tzung fï¿½r diesen bereitstellen. Dies ist bei den
+meisten mobilen Endgerï¿½ten, wie z.&nbsp;B. Handys, oder PDAs gegeben. Mï¿½chte
 man allerdings auf einem Desktop-Computer eine Bluetooth-Anwendung in
-Betrieb nehmen, muss zusätzlich zum Bluetooth-Stack eine JSR-82
+Betrieb nehmen, muss zusï¿½tzlich zum Bluetooth-Stack eine JSR-82
 Implementierung installiert werden. <BR>
 <BR>
 Die meisten Implementierungen werden in Form eines Java-Archivs und
 einer Systembibliothek ausgeliefert. Es gibt allerdings auch
 Ausnahmen, wie z.&nbsp;B. die Harald-<SUP><A NAME="text44" HREF="#note44">8</A></SUP> oder
-JavaBluetooth-Implementierung<SUP><A NAME="text45" HREF="#note45">9</A></SUP>, die eine vollständig in Java
+JavaBluetooth-Implementierung<SUP><A NAME="text45" HREF="#note45">9</A></SUP>, die eine vollstï¿½ndig in Java
 realisierte JSR-82 Implementierung bereitstellen. Da die beiden
 Alternativen allerdings das <TT>javax.comm</TT> Paket verwenden, muss
-dieses zusätzlich installiert werden. Hier hat man die Wahl zwischen
+dieses zusï¿½tzlich installiert werden. Hier hat man die Wahl zwischen
 dem Paket von Sun<SUP><A NAME="text46" HREF="#note46">10</A></SUP>, und
 einer RXTX<SUP><A NAME="text47" HREF="#note47">11</A></SUP> genannten
 Implementierung. Die Installation und Konfiguration der Bibliotheken
@@ -161,66 +161,66 @@ Implementierungen, die lediglich in einem einzigen Java-Archiv
 ausgeliefert werden. Sie laden die notwendigen nativen Bibliotheken
 intern nach.<BR>
 <BR>
-Bei den verschiedenen verfügbaren JSR-82 Implementierungen muss
-zusätzlich darauf geachtet werden, ob sie den JSR-82 vollständig
-(inklusive <TT>javax.obex</TT>) implementieren. Die Spezifikation lässt
+Bei den verschiedenen verfï¿½gbaren JSR-82 Implementierungen muss
+zusï¿½tzlich darauf geachtet werden, ob sie den JSR-82 vollstï¿½ndig
+(inklusive <TT>javax.obex</TT>) implementieren. Die Spezifikation lï¿½sst
 bei der Implementierung des OBEX Protokolls die Wahl, ob OBEX im zu
 Grunde liegenden Bluetooth-System oder mit dem JSR-82 implementiert
 wird<SUP><A NAME="text48" HREF="#note48">12</A></SUP>. Dieses Faktum
 scheint von einigen JSR-82 Implementierungen falsch verstanden oder
 bewusst weggelassen zu werden. In jedem Fall sollte die JSR-82
 Implementierung die Schnittstellen exportieren bzw. sollten sie vom
-JSR-82 API angesteuert werden können.<BR>
+JSR-82 API angesteuert werden kï¿½nnen.<BR>
 <BR>
 Das Problem des fehlenden <TT>javax.obex</TT> Pakets kann durch den
 Einsatz der avetanaOBEX<SUP><A NAME="text49" HREF="#note49">13</A></SUP> Bibliothek
-kompensiert werden. Da viele mobile Endgeräte ohnehin nur den
-<TT>javax.bluetooth</TT> Teil der Spezifikation unterstützen, können
-diese Geräte durch den Einsatz der Bibliothek ebenfalls adressiert
-werden. Ein allgemeines Nachrüsten der fehlenden OBEX Unterstützung
-ist hingegen nicht möglich. Die von der CLDC gesetzten
-Sicherheitsstandards verbieten eine Nachrüstung von Funktionalität
+kompensiert werden. Da viele mobile Endgerï¿½te ohnehin nur den
+<TT>javax.bluetooth</TT> Teil der Spezifikation unterstï¿½tzen, kï¿½nnen
+diese Gerï¿½te durch den Einsatz der Bibliothek ebenfalls adressiert
+werden. Ein allgemeines Nachrï¿½sten der fehlenden OBEX Unterstï¿½tzung
+ist hingegen nicht mï¿½glich. Die von der CLDC gesetzten
+Sicherheitsstandards verbieten eine Nachrï¿½stung von Funktionalitï¿½t
 durch externe Bibliotheken<SUP><A NAME="text50" HREF="#note50">14</A></SUP>,
 was zur Folge hat, dass die Bibliothek in jeder Applikation
 mitgeliefert werden muss, was auf den ohnehin schon mit knappem
-Speicher bemessenen Geräten zusätzlichen Speicherplatz in Anspruch
+Speicher bemessenen Gerï¿½ten zusï¿½tzlichen Speicherplatz in Anspruch
 nimmt. <BR>
 <BR>
-Für die vorliegende Arbeit ist auf dem Desktop-System der mit dem
-<I><FONT COLOR=maroon>Service Pack 2</FONT></I> für Windows XP ausgelieferte Bluetooth-Stack
+Fï¿½r die vorliegende Arbeit ist auf dem Desktop-System der mit dem
+<I><FONT COLOR=maroon>Service Pack 2</FONT></I> fï¿½r Windows XP ausgelieferte Bluetooth-Stack
 verwendet worden. Als JSR-82 Implementierung ist
 BlueCove<SUP><A NAME="text51" HREF="#note51">15</A></SUP> auf Grund seiner freien
-Verfügbarkeit und einfachen Installation zum Einsatz gekommen.<BR>
+Verfï¿½gbarkeit und einfachen Installation zum Einsatz gekommen.<BR>
 <BR>
 
 <A NAME="toc12"></A>
 <H2 CLASS="section"><A NAME="htoc46">3.2</A>&nbsp;&nbsp;Design</H2>
 <A NAME="impl:design"></A>
-Das OBEX Protokoll ist prädestiniert zur Übertragung grösserer Objekte
-über ein Netzwerk. Die korrekte Fragmentierung der Daten, die
-ansonsten manuell durchgeführt werden müsste, ist innerhalb des
+Das OBEX Protokoll ist prï¿½destiniert zur ï¿½bertragung grï¿½sserer Objekte
+ï¿½ber ein Netzwerk. Die korrekte Fragmentierung der Daten, die
+ansonsten manuell durchgefï¿½hrt werden mï¿½sste, ist innerhalb des
 Protokolls vorgesehen und kann somit bei jeder OBEX Implementierung
 vorausgesetzt werden. Bei Bluetooth bspw. muss die Fragmentierung,
-sofern ein HCI vorhanden ist, spätestens von der L2CAP Implementierung
-durchgeführt werden<SUP><A NAME="text52" HREF="#note52">16</A></SUP>. Ein
-weiterer Vorteil des OBEX Protokolls besteht in der Unabhängigkeit der
-zu Grunde liegenden Transportprotokolle. So ist es bspw. möglich OBEX
-über TCP/IP zu verwenden. Dieses Verhalten sollte die Adaption des
+sofern ein HCI vorhanden ist, spï¿½testens von der L2CAP Implementierung
+durchgefï¿½hrt werden<SUP><A NAME="text52" HREF="#note52">16</A></SUP>. Ein
+weiterer Vorteil des OBEX Protokolls besteht in der Unabhï¿½ngigkeit der
+zu Grunde liegenden Transportprotokolle. So ist es bspw. mï¿½glich OBEX
+ï¿½ber TCP/IP zu verwenden. Dieses Verhalten sollte die Adaption des
 OOP Verfahrens auf andere Transportprotokolle wesentlich vereinfachen.
-Für die Proof-Of-Concept Implementierung wurde OBEX über RFCOMM
-gewählt<SUP><A NAME="text53" HREF="#note53">17</A></SUP>. Eine paketorientierte
-Übersicht über die OOP Bibliothek ist in [Abb.: <A HREF="#impl:design:pov">3.2</A>]
+Fï¿½r die Proof-Of-Concept Implementierung wurde OBEX ï¿½ber RFCOMM
+gewï¿½hlt<SUP><A NAME="text53" HREF="#note53">17</A></SUP>. Eine paketorientierte
+ï¿½bersicht ï¿½ber die OOP Bibliothek ist in [Abb.: <A HREF="#impl:design:pov">3.2</A>]
 zu sehen.
-<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing013.gif"><DIV CLASS="center">Abbildung 3.2: Paketübersicht der OBEX Object
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing013.gif"><DIV CLASS="center">Abbildung 3.2: Paketï¿½bersicht der OBEX Object
  Passing Bibliothek</DIV><A NAME="impl:design:pov"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 Der Aufbau der Bibliothek ist relativ simpel gehalten. Das &gt;&gt;oop&lt;&lt;
 Paket beinhaltet lediglich das Interface der Bibliothek sowie die
 Konstanten. Das &gt;&gt;util&lt;&lt; Paket beinhaltet Klassen, die zur
 Realisierung der Bibliothek notwendig waren. Das &gt;&gt;impl&lt;&lt; Paket
-beinhaltet diejenigen Klassen, welche die Übertragung der Daten letzten
-Endes realisieren. Das &gt;&gt;exceptions&lt;&lt; Paket enthält die von der OOP
-Bibliothek definierten Ausnahmen. Die Funktionalität der Klassen der
-jeweiligen Pakete wird im folgenden erläutert.<BR>
+beinhaltet diejenigen Klassen, welche die ï¿½bertragung der Daten letzten
+Endes realisieren. Das &gt;&gt;exceptions&lt;&lt; Paket enthï¿½lt die von der OOP
+Bibliothek definierten Ausnahmen. Die Funktionalitï¿½t der Klassen der
+jeweiligen Pakete wird im folgenden erlï¿½utert.<BR>
 <BR>
 
 <H3 CLASS="subsection"><A NAME="htoc47">3.2.1</A>&nbsp;&nbsp;Paket &gt;&gt;oop&lt;&lt;</H3>
@@ -229,53 +229,53 @@ jeweiligen Pakete wird im folgenden erläutert.<BR>
 <A NAME="@default110"></A>
 Wie in [Abb.: <A HREF="#impl:design:oopc">3.3</A>] zu sehen ist, befinden sich
 lediglich zwei Klassen im &gt;&gt;oop&lt;&lt; Paket. Die Klassen haben folgende
-Funktionalität: 
+Funktionalitï¿½t: 
 <DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
 <A NAME="@default111"></A><B>IObexObjectPassing</B><DD CLASS="dd-description"> Dieses
- Interface muss von Entitätsobjekten, welche die Daten kapseln,
- implementiert werden, um übertragen werden zu können. Es zwingt
+ Interface muss von Entitï¿½tsobjekten, welche die Daten kapseln,
+ implementiert werden, um ï¿½bertragen werden zu kï¿½nnen. Es zwingt
  den Programmierer dazu, die Methoden <TT>setObjectData(byte[]
  objectData)</TT> und <TT>getAsByteArray()</TT> zu implementieren, die
  zur korrekten Funktionsweise der Bibliothek notwendig sind. 
-<DT CLASS="dt-description"><A NAME="@default112"></A><B>Constants</B><DD CLASS="dd-description"> Diese Klasse enthält die in
+<DT CLASS="dt-description"><A NAME="@default112"></A><B>Constants</B><DD CLASS="dd-description"> Diese Klasse enthï¿½lt die in
  der Bibliothek verwendeten Konstanten, sodass diese an einer
- zentralen Stelle geändert werden können.
+ zentralen Stelle geï¿½ndert werden kï¿½nnen.
 </DL>
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing014.gif"><DIV CLASS="center">Abbildung 3.3: Klassen des &gt;&gt;oop&lt;&lt; Pakets</DIV><A NAME="impl:design:oopc"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 Durch Implementierung des <TT>IObexObjectPassing</TT> Interfaces ist
-zusätzlich eine einfache Weiterverarbeitung der Daten möglich, sollen
-diese persistent auf dem Gerät gespeichert werden. Begründet werden
-kann dies durch die Limiterung, welchen den mobilen Endgeräten
+zusï¿½tzlich eine einfache Weiterverarbeitung der Daten mï¿½glich, sollen
+diese persistent auf dem Gerï¿½t gespeichert werden. Begrï¿½ndet werden
+kann dies durch die Limiterung, welchen den mobilen Endgerï¿½ten
 auferlegt ist. Da sie laut der CLDC keine Kenntnis eines Dateisystems
-vorweisen müssen<SUP><A NAME="text54" HREF="#note54">18</A></SUP>, ist ein
-alternativer Mechanismus im MIDP zur Verfügung gestellt worden; das
+vorweisen mï¿½ssen<SUP><A NAME="text54" HREF="#note54">18</A></SUP>, ist ein
+alternativer Mechanismus im MIDP zur Verfï¿½gung gestellt worden; das
 RMS<SUP><A NAME="text55" HREF="#note55">19</A></SUP>. Lese- und
-Schreiboperationen auf das RMS können jedoch ausschliesslich in
-Byte-Strömen durchgeführt werden. Durch die Implementierung der
-<TT>IObexObjectPassing</TT> Schnittstelle sind die Entitätsobjekte
+Schreiboperationen auf das RMS kï¿½nnen jedoch ausschliesslich in
+Byte-Strï¿½men durchgefï¿½hrt werden. Durch die Implementierung der
+<TT>IObexObjectPassing</TT> Schnittstelle sind die Entitï¿½tsobjekte
 bereits auf diese Aufgabe vorbereitet. Auf den Umgang mit dem RMS soll
-an dieser Stelle jedoch nicht näher eingegangen werden<SUP><A NAME="text56" HREF="#note56">20</A></SUP>.<BR>
+an dieser Stelle jedoch nicht nï¿½her eingegangen werden<SUP><A NAME="text56" HREF="#note56">20</A></SUP>.<BR>
 <BR>
 Die Bibliothek wurde bewusst mit einer Schnittstelle und nicht als
-abstrakte Basisklasse modelliert. Gemäss Balzert wird eine
+abstrakte Basisklasse modelliert. Gemï¿½ss Balzert wird eine
 Schnittstelle wie folgt beschrieben:
 <BLOCKQUOTE CLASS="quotation">
  <I>&#8222;Es werden <B>funktionale Abstraktionen</B> in Form
  von Operationssignaturen bereitgestellt, die das &gt;&gt;Was&lt;&lt;, aber
  </I>nicht<I> das &gt;&gt;Wie&lt;&lt; festlegen. Eine Schnittstelle
- besteht also im Allgemeinen nur aus Operationssignaturen, d.&nbsp;h. sie besitzt keine Operationsrümpfe und keine Attribute.
- Schnittstellen können jedoch in Vererbungsstrukturen verwendet
- werden. Eine Schnittstelle ist äquivalent zu einer Klasse, die
- keine Attribute und ausschließlich <B>abstrakte Operationen</B>
+ besteht also im Allgemeinen nur aus Operationssignaturen, d.&nbsp;h. sie besitzt keine Operationsrï¿½mpfe und keine Attribute.
+ Schnittstellen kï¿½nnen jedoch in Vererbungsstrukturen verwendet
+ werden. Eine Schnittstelle ist ï¿½quivalent zu einer Klasse, die
+ keine Attribute und ausschlieï¿½lich <B>abstrakte Operationen</B>
  besitzt.&#8220;</I> [<A HREF="ObexObjectPassing010.html#bl:ldswt"><CITE>Bal00</CITE></A><CITE>, S. 817</CITE>]
 </BLOCKQUOTE>
 Da in der Java Programmiersprache allerdings der Mechanismus der
-Mehrfachvererbung nicht vorgesehen ist, wäre die Modellierung als
-abstrakte Basisklasse für den Programmierer unvorteilhaft gewesen, da
+Mehrfachvererbung nicht vorgesehen ist, wï¿½re die Modellierung als
+abstrakte Basisklasse fï¿½r den Programmierer unvorteilhaft gewesen, da
 eine Schnittstelle, im Gegensatz zur abstrakten Basisklasse, auf n-ter
 Stufe der Erbhierarchie implementiert werden kann, wohingegen die
 abstrakte Basisklasse an der Wurzel der Erbhierarchie implementiert
-werden müsste. 
+werden mï¿½sste. 
 
 
 <H3 CLASS="subsection"><A NAME="htoc48">3.2.2</A>&nbsp;&nbsp;Paket &gt;&gt;impl&lt;&lt;</H3>
@@ -284,14 +284,14 @@ werden müsste.
 <A NAME="@default114"></A>
 <A NAME="@default115"></A><A NAME="@default116"></A>Wie in
 [Abb.: <A HREF="#impl:design:implc">3.5</A>] zu erkennen ist leiten diejenigen
-Klassen, die zur Übertragung verwendet werden, von der Observer Klasse
+Klassen, die zur ï¿½bertragung verwendet werden, von der Observer Klasse
 im &gt;&gt;util&lt;&lt; Paket ab. Das Observer-Pattern, oder zu deutsch
-Beobachter-Muster, ermöglicht es, Klassen, die von einem Objekt
-abhängig sind, zu informieren, dass sich der Zustand des zu
-überwachenden Objekts geändert hat. Dieses Pattern wird häufig in der
-Programmierung graphischer Oberflächen eingesetzt, wenn eine graphische
-Repräsentation der Daten automatisch geändert werden soll, sobald sich
-der Datenbestand ändert. Die Struktur des Patterns ist in
+Beobachter-Muster, ermï¿½glicht es, Klassen, die von einem Objekt
+abhï¿½ngig sind, zu informieren, dass sich der Zustand des zu
+ï¿½berwachenden Objekts geï¿½ndert hat. Dieses Pattern wird hï¿½ufig in der
+Programmierung graphischer Oberflï¿½chen eingesetzt, wenn eine graphische
+Reprï¿½sentation der Daten automatisch geï¿½ndert werden soll, sobald sich
+der Datenbestand ï¿½ndert. Die Struktur des Patterns ist in
 [Abb.: <A HREF="#impl:design:observerp">3.4</A>] abgebildet.
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing015.gif"><DIV CLASS="center">Abbildung 3.4: Struktur des
  Observer-Patterns (Vgl.&nbsp;: [<A HREF="ObexObjectPassing010.html#bl:ldswt"><CITE>Bal00</CITE></A><CITE>, S. 849</CITE>])</DIV><A NAME="impl:design:observerp"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
@@ -300,7 +300,7 @@ Die Klassen <TT>ObjectPusher</TT>, <TT>ObjectReceiver</TT> und
 dabei die in [Abb.: <A HREF="#impl:design:observerp">3.4</A>] als <I><FONT COLOR=maroon>Concrete
  Subject</FONT></I> bezeichnete Klasse dar.
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing016.gif"><DIV CLASS="center">Abbildung 3.5: Klassen des &gt;&gt;impl&lt;&lt; Pakets</DIV><A NAME="impl:design:implc"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
-Die Funktionalität der im &gt;&gt;impl&lt;&lt; Paket enthaltenen Klassen ist
+Die Funktionalitï¿½t der im &gt;&gt;impl&lt;&lt; Paket enthaltenen Klassen ist
 folgende: 
 <DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
 <A NAME="@default117"></A><B>ObjectReceiver</B><DD CLASS="dd-description"> Die
@@ -312,24 +312,24 @@ folgende:
  Interface <TT>IObexObjectPassing</TT> implementiert, zu versenden.
 <DT CLASS="dt-description"><A NAME="@default119"></A><B>BulkObjectPusher</B><DD CLASS="dd-description"> Die Klasse
  <TT>BulkObjectPusher</TT> ist, wie der Name schon andeutet, dazu
- gedacht mehrere Objekte sequenziell in einem Aufruf zu übertragen.
+ gedacht mehrere Objekte sequenziell in einem Aufruf zu ï¿½bertragen.
 <DT CLASS="dt-description"><A NAME="@default120"></A><B>ReceiverRequestHandler</B><DD CLASS="dd-description">
- Diese Klasse ist notwendig, da in Java die Möglichkeit der
+ Diese Klasse ist notwendig, da in Java die Mï¿½glichkeit der
  Mehrfachvererbung nicht gegeben ist. Sie wird innerhalb der Klasse
  <TT>ObjectReceiver</TT> verwendet und bei der Initiierung einer
  Verbindung durch einen Client instanziert. Die Behandlung der
- <SPAN STYLE="font-variant:small-caps">PUT</SPAN> Anfrage<SUP><A NAME="text57" HREF="#note57">21</A></SUP> wird durch sie durchgeführt.
+ <SPAN STYLE="font-variant:small-caps">PUT</SPAN> Anfrage<SUP><A NAME="text57" HREF="#note57">21</A></SUP> wird durch sie durchgefï¿½hrt.
 </DL>
 Den Klassen <TT>ObjectReceiver</TT>, <TT>ObjectPusher</TT> und
 <TT>BulkObjectPusher</TT> ist gemein, dass sie in einem separaten
 Thread ablaufen. Dies ist bei der Anwendung der Klassen von Vorteil,
-da sie den weiteren Programmablauf nicht stören. Der Transfer
-der Daten wird dadurch im Hintergrund durchgeführt. Um über die
+da sie den weiteren Programmablauf nicht stï¿½ren. Der Transfer
+der Daten wird dadurch im Hintergrund durchgefï¿½hrt. Um ï¿½ber die
 Beendigung des Datentransfers informiert zu werden, muss die
 aufrufende Klasse das Interface <TT>Observer</TT> implementieren. Die
 Verwendung der angesprochenen Klassen ist auch ohne Implementierung
-des <TT>Observer</TT> Interfaces möglich, jedoch verliert man die
-Möglichkeit über die Beendigung der Übertragung informiert zu werden.
+des <TT>Observer</TT> Interfaces mï¿½glich, jedoch verliert man die
+Mï¿½glichkeit ï¿½ber die Beendigung der ï¿½bertragung informiert zu werden.
 
 <H3 CLASS="subsection"><A NAME="htoc49">3.2.3</A>&nbsp;&nbsp;Paket &gt;&gt;util&lt;&lt;</H3>
 <A NAME="impl:design:dutil"></A>
@@ -353,19 +353,19 @@ notwendig waren [Abb.: <A HREF="#impl:design:utilc">3.6</A>].
  geachtet. 
 <DT CLASS="dt-description"><B>OOPFinder</B><DD CLASS="dd-description"> Diese Klasse ist hilfreich, wenn die Methode
  <TT>DiscoveryAgent.selectService()</TT> von der verwendeten JSR-82
- Implementierung nicht unterstützt wird<SUP><A NAME="text58" HREF="#note58">22</A></SUP>. Diese Klasse stellt die Methode
+ Implementierung nicht unterstï¿½tzt wird<SUP><A NAME="text58" HREF="#note58">22</A></SUP>. Diese Klasse stellt die Methode
  <TT>getConnectionURL()</TT> bereit, welche das Verhalten der Methode
  <TT>DiscoveryAgent.selectService()</TT> imitiert.
 <DT CLASS="dt-description"><B>InspectBT</B><DD CLASS="dd-description"> Diese Klasse stellt die Methode
- <TT>getAllProperties()</TT> zur Verfügung, mit deren Hilfe sämtliche
+ <TT>getAllProperties()</TT> zur Verfï¿½gung, mit deren Hilfe sï¿½mtliche
  Eigenschaften des zu Grunde liegenden Bluetooth-Systems als String
- erhalten werden können. Sämtliche abgefragten Eigenschaften sind
- dabei, inklusive Erklärung, in [Tab.: <A HREF="ObexObjectPassing004.html#tgl:jbt:dp:dpt">2.6</A>]
+ erhalten werden kï¿½nnen. Sï¿½mtliche abgefragten Eigenschaften sind
+ dabei, inklusive Erklï¿½rung, in [Tab.: <A HREF="ObexObjectPassing004.html#tgl:jbt:dp:dpt">2.6</A>]
  aufgelistet.
 </DL>
-Möchte man auf einem J2SE System aus bestimmten Gründen die
+Mï¿½chte man auf einem J2SE System aus bestimmten Grï¿½nden die
 <I><FONT COLOR=maroon>Observable</FONT></I> und <I><FONT COLOR=maroon>Observer</FONT></I> Klassen der J2SE verwenden,
-müssen, dank der Signaturgleichheit der Klassen, lediglich die
+mï¿½ssen, dank der Signaturgleichheit der Klassen, lediglich die
 <TT>import</TT> Anweisungen der Bibliothek angepasst werden.
 
 
@@ -374,13 +374,13 @@ müssen, dank der Signaturgleichheit der Klassen, lediglich die
 <A NAME="@default123"></A>
 <A NAME="@default124"></A>
 Das &gt;&gt;exceptions&lt;&lt; Paket definiert die in der Bibliothek verwendeten
-Ausnahmen. Das Paket enthält momentan lediglich eine Ausnahme
+Ausnahmen. Das Paket enthï¿½lt momentan lediglich eine Ausnahme
 [Abb.: <A HREF="#impl:design:exceptionsc">3.7</A>].
 <BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV><IMG SRC="ObexObjectPassing018.gif"><DIV CLASS="center">Abbildung 3.7: Klassen des &gt;&gt;exceptions&lt;&lt;
  Pakets</DIV><A NAME="impl:design:exceptionsc"></A><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 <DL CLASS="description" COMPACT=compact><DT CLASS="dt-description">
 <B>ObjectNotPassableException</B><DD CLASS="dd-description"> Diese Ausnahme wird geworfen wenn
- das zu übertragende Objekt die Schnittstelle <TT>IObexObjectPassing</TT>
+ das zu ï¿½bertragende Objekt die Schnittstelle <TT>IObexObjectPassing</TT>
  nicht implementiert.
 </DL>
 <A NAME="toc13"></A>
@@ -391,13 +391,13 @@ Ausnahmen. Das Paket enthält momentan lediglich eine Ausnahme
 <A NAME="@default127"></A>
 <A NAME="@default128"></A>
 Die Funktionsweise des <I><FONT COLOR=maroon>OBEX Object Passing</FONT></I> wird anhand des
-Sequenzdiagramms in [Abb.: <A HREF="#impl:dem:opseq">3.8</A>] im Folgenden erklärt.
+Sequenzdiagramms in [Abb.: <A HREF="#impl:dem:opseq">3.8</A>] im Folgenden erklï¿½rt.
 Das dargestellte Diagramm zeigt den Versand eines einzelnen
 Datenobjekts. Auf den Versand mehrerer Datenobjekte, der durch den
 <TT>BulkObjectPusher</TT> realisiert ist, wird nicht eingegangen. Beim
-<TT>BulkObjectPusher</TT> wird lediglich für jedes zu übertragende
+<TT>BulkObjectPusher</TT> wird lediglich fï¿½r jedes zu ï¿½bertragende
 Objekt die Klasse <TT>ObjectPusher</TT> aufgerufen. Die Funktionsweise
-des <TT>ObjectReceiver</TT>s wird im Zuge der Erklärung des
+des <TT>ObjectReceiver</TT>s wird im Zuge der Erklï¿½rung des
 <TT>ObjectPusher</TT>s behandelt. Weitere Informationen zur
 Implementierung des <TT>ObjectReceiver</TT>s sind in
 [Kapitel <A HREF="#impl:dem:or">3.3.1</A>] zu finden.
@@ -408,128 +408,128 @@ die interne Thread-Erzeugung, die Methode <TT>run()</TT> auf, in der die
 eigentliche Arbeit des Objekts verrichtet wird.
 <OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">[Schritt 1.1)]
 In diesem Schritt wird die URL der Verbindung ermittelt, um das
- mobile Endgerät ansprechen zu können.
-<LI CLASS="li-enumerate">Die Verbindung zum entfernten Gerät wird hergestellt und die
+ mobile Endgerï¿½t ansprechen zu kï¿½nnen.
+<LI CLASS="li-enumerate">Die Verbindung zum entfernten Gerï¿½t wird hergestellt und die
  Sitzung etabliert.
 <LI CLASS="li-enumerate">Mit Hilfe der vorhandenen Sitzung wird ein <TT>HeaderSet</TT> erzeugt.
 <LI CLASS="li-enumerate">In das erzeugte <TT>HeaderSet</TT> wird der Name der zu
- übertragenden Klasse in das Feld <TT>HeaderSet.NAME</TT> gesetzt.
-<LI CLASS="li-enumerate">Der OBEX Transfer wird eröffnet und das <TT>HeaderSet</TT> zum
- entfernten Gerät übertragen.
-<LI CLASS="li-enumerate">Nachdem ein Ausgabestrom geöffnet wurde, werden die Daten mit
+ ï¿½bertragenden Klasse in das Feld <TT>HeaderSet.NAME</TT> gesetzt.
+<LI CLASS="li-enumerate">Der OBEX Transfer wird erï¿½ffnet und das <TT>HeaderSet</TT> zum
+ entfernten Gerï¿½t ï¿½bertragen.
+<LI CLASS="li-enumerate">Nachdem ein Ausgabestrom geï¿½ffnet wurde, werden die Daten mit
  der Methode <TT>getAsByteArray()</TT> aus dem Objekt extrahiert und
- zum entfernten Gerät übertragen. Dieses liest die eintreffenden
- Daten und speichert sie zunächst temporär in einer Variablen ab. Der
+ zum entfernten Gerï¿½t ï¿½bertragen. Dieses liest die eintreffenden
+ Daten und speichert sie zunï¿½chst temporï¿½r in einer Variablen ab. Der
  <TT>ObjectReceiver</TT> erzeugt aus der im <TT>HeaderSet</TT>
- übermittelten Information des Klassennamens, mit Hilfe des
- <I><FONT COLOR=maroon>Classloaders</FONT></I> ein neues Objekt des übermittelten Typs. Nachdem
+ ï¿½bermittelten Information des Klassennamens, mit Hilfe des
+ <I><FONT COLOR=maroon>Classloaders</FONT></I> ein neues Objekt des ï¿½bermittelten Typs. Nachdem
  die Erzeugung abgeschlossen ist, werden die empfangenen Daten mit
  Hilfe der Methode <TT>setObjectData()</TT> in das erzeugte Objekt
- geschrieben. Das Objekt wird im nächsten Schritt in einem
- <TT>Vector</TT> gespeichert, sodass dieses später zugänglich ist.
-<LI CLASS="li-enumerate">Der Zustand des Objekts wird auf geändert gesetzt, da die
- Übertragung der Daten abgeschlossen ist.
-<LI CLASS="li-enumerate">Die angeschlossenen <TT>Observer</TT> werden über das Ende der
- Übertragung informiert. (Die Klasse <TT>BulkObjectPusher</TT>
+ geschrieben. Das Objekt wird im nï¿½chsten Schritt in einem
+ <TT>Vector</TT> gespeichert, sodass dieses spï¿½ter zugï¿½nglich ist.
+<LI CLASS="li-enumerate">Der Zustand des Objekts wird auf geï¿½ndert gesetzt, da die
+ ï¿½bertragung der Daten abgeschlossen ist.
+<LI CLASS="li-enumerate">Die angeschlossenen <TT>Observer</TT> werden ï¿½ber das Ende der
+ ï¿½bertragung informiert. (Die Klasse <TT>BulkObjectPusher</TT>
  realisiert durch diese Benachrichtigung ihr sequenzielles senden der
  Objekte).
 </OL>
 
 <H3 CLASS="subsection"><A NAME="htoc52">3.3.1</A>&nbsp;&nbsp;ObjectReceiver</H3>
 <A NAME="impl:dem:or"></A>
-Die Implementierung des <TT>ObjectReceiver</TT>s verändert, bedingt
-durch die Tatsache, dass sie einen Dienst zur Verfügung stellt, den
-Auffindbarkeitszustand des Geräts. Das Gerät wird in den GIAC
+Die Implementierung des <TT>ObjectReceiver</TT>s verï¿½ndert, bedingt
+durch die Tatsache, dass sie einen Dienst zur Verfï¿½gung stellt, den
+Auffindbarkeitszustand des Gerï¿½ts. Das Gerï¿½t wird in den GIAC
 Modus<SUP><A NAME="text59" HREF="#note59">23</A></SUP> versetzt, um permanent
-auffindbar zu sein. Ist dieses Verhalten nicht gewünscht, so muss es,
-in der aktuellen Version der Bibliothek, im Quellcode geändert werden.
+auffindbar zu sein. Ist dieses Verhalten nicht gewï¿½nscht, so muss es,
+in der aktuellen Version der Bibliothek, im Quellcode geï¿½ndert werden.
 Die Registrierung des Dienstes in der SDDB<SUP><A NAME="text60" HREF="#note60">24</A></SUP> wird von der avetanaOBEX Bibliothek, beim
 Aufruf der Methode <TT>OBEXConnector.open()</TT>, vorgenommen. Diese
 Registrierung ist notwendig, damit der OOP Dienst gefunden werden
 kann. Die Implementierung der avetanaOBEX Bibliothek weist an dieser
-Stelle jedoch einen kleinen Schönheitsfehler auf; so wird der Dienst in
+Stelle jedoch einen kleinen Schï¿½nheitsfehler auf; so wird der Dienst in
 der SDDB als SPP Dienst, anstelle eines OBEX Dienstes eingetragen, was
-jedoch die Funktion nicht weiter stört.<BR>
+jedoch die Funktion nicht weiter stï¿½rt.<BR>
 <BR>
-Ist die Änderung des Auffindbarkeitszustands, sowie die Registrierung
+Ist die ï¿½nderung des Auffindbarkeitszustands, sowie die Registrierung
 in der SDDB abgeschlossen, wartet das Objekt auf eingehende
-Verbindungen. Da bei einem eintreffenden Client ein nebenläufiger
+Verbindungen. Da bei einem eintreffenden Client ein nebenlï¿½ufiger
 Prozess gestartet wird, erfolgt in der <TT>ObjectReceiver</TT> Klasse
 eine synchronisation der Prozesse des <TT>ReceiverRequestHandler</TT>s
 und der <TT>ObjectReceiver</TT> Klasse selbst. Der
 <TT>ObjectReceiver</TT> wartet auf die Termination der
-<TT>ReceiverRequestHandler</TT> Klasse bis er mit seiner Ausführung
-fortfährt. 
+<TT>ReceiverRequestHandler</TT> Klasse bis er mit seiner Ausfï¿½hrung
+fortfï¿½hrt. 
 
 <A NAME="toc14"></A>
 <H2 CLASS="section"><A NAME="htoc53">3.4</A>&nbsp;&nbsp;Tests</H2>
 <A NAME="impl:tests"></A>
 <A NAME="@default129"></A>
 <A NAME="@default130"></A>
-Es sind im Rahmen der Entwicklung der Bibliothek rudimentäre Tests
-durchgeführt worden. Diese Tests sind auf Grund des relativ hohen
+Es sind im Rahmen der Entwicklung der Bibliothek rudimentï¿½re Tests
+durchgefï¿½hrt worden. Diese Tests sind auf Grund des relativ hohen
 Einarbeitungsaufwands nicht mit einem automatisierten Test-Rahmenwerk
 wie z.&nbsp;B. JUnit<SUP><A NAME="text61" HREF="#note61">25</A></SUP>
-durchgeführt worden. Tests sollten wegen der Affinität des Entwicklers
+durchgefï¿½hrt worden. Tests sollten wegen der Affinitï¿½t des Entwicklers
 zu seinem Projekt, normalerweise niemals vom Entwickler selbst
-durchgeführt werden. Da die Tests jedoch lediglich die während der
-Entwicklungsphase durchgeführten Testszenarien reflektieren, möge dies
-entschuldigt werden. Die durchgeführten Testfälle sind in
+durchgefï¿½hrt werden. Da die Tests jedoch lediglich die wï¿½hrend der
+Entwicklungsphase durchgefï¿½hrten Testszenarien reflektieren, mï¿½ge dies
+entschuldigt werden. Die durchgefï¿½hrten Testfï¿½lle sind in
 [Tab.: <A HREF="#impl:tests:tftab">3.1</A>] zusammengefasst.
 <BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
  <TABLE CELLSPACING=2 CELLPADDING=0>
 <TR><TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Testbeschreibung</SPAN></TD>
 <TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Erwartetes Ergebnis</SPAN></TD>
-<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Test Erfüllt</SPAN></TD>
+<TD VALIGN=top ALIGN=left><SPAN STYLE="font-variant:small-caps">Test Erfï¿½llt</SPAN></TD>
 </TR>
-<TR><TD VALIGN=top ALIGN=left>Es wird versucht ein Objekt zu übertragen, dass die Schnittstelle
+<TR><TD VALIGN=top ALIGN=left>Es wird versucht ein Objekt zu ï¿½bertragen, dass die Schnittstelle
  <TT>IObexObjectPassing</TT> nicht implementiert.</TD>
-<TD VALIGN=top ALIGN=left>Die Übertragung
+<TD VALIGN=top ALIGN=left>Die ï¿½bertragung
  wird abgebrochen.</TD>
 <TD VALIGN=top ALIGN=left>Ja</TD>
 </TR>
-<TR><TD VALIGN=top ALIGN=left>Sind die Daten am Empfangsgerät korrekt rekonstruiert worden?</TD>
+<TR><TD VALIGN=top ALIGN=left>Sind die Daten am Empfangsgerï¿½t korrekt rekonstruiert worden?</TD>
 <TD VALIGN=top ALIGN=left>Korrekte Rekonstruktion der Daten.</TD>
 <TD VALIGN=top ALIGN=left>Ja</TD>
 </TR>
-<TR><TD VALIGN=top ALIGN=left>Es existieren zwei Geräte auf denen der Server
+<TR><TD VALIGN=top ALIGN=left>Es existieren zwei Gerï¿½te auf denen der Server
  <TT>ObjectReceiver</TT> gestartet wurde.</TD>
 <TD VALIGN=top ALIGN=left>Die
- Implementierung informiert den Anwender, dass mehrere Geräte
- verfügbar sind.</TD>
+ Implementierung informiert den Anwender, dass mehrere Gerï¿½te
+ verfï¿½gbar sind.</TD>
 <TD VALIGN=top ALIGN=left>Nein<SUP><A NAME="text62" HREF="#note62">26</A></SUP></TD>
 </TR>
-<TR><TD VALIGN=top ALIGN=left>Es wird versucht zu senden, jedoch ist am Empfangsgerät keine
+<TR><TD VALIGN=top ALIGN=left>Es wird versucht zu senden, jedoch ist am Empfangsgerï¿½t keine
  <TT>ObjectReceiver</TT> Instanz erzeugt worden.</TD>
 <TD VALIGN=top ALIGN=left>Die Methode <TT>OOPFinder.getConnectionURL()</TT> liefert
  <TT>null</TT>.</TD>
 <TD VALIGN=top ALIGN=left>Ja</TD>
 </TR>
-<TR><TD VALIGN=top ALIGN=left>Wird nach einer abgelehnten Verbindung durch das BCC eine erneute Rückfrage an
+<TR><TD VALIGN=top ALIGN=left>Wird nach einer abgelehnten Verbindung durch das BCC eine erneute Rï¿½ckfrage an
  den Benutzer gestellt?</TD>
-<TD VALIGN=top ALIGN=left>Rückfrage wird erneut gestellt.</TD>
+<TD VALIGN=top ALIGN=left>Rï¿½ckfrage wird erneut gestellt.</TD>
 <TD VALIGN=top ALIGN=left>Nein<SUP><A NAME="text63" HREF="#note63">27</A></SUP></TD>
 </TR>
-<TR><TD VALIGN=top ALIGN=left>Besteht die Möglichkeit <TT>ObjectReceiver</TT> und <TT>BulkObjectPusher</TT>
- parallel auf einem Gerät zu instanziieren?</TD>
-<TD VALIGN=top ALIGN=left>Beide können parallel
+<TR><TD VALIGN=top ALIGN=left>Besteht die Mï¿½glichkeit <TT>ObjectReceiver</TT> und <TT>BulkObjectPusher</TT>
+ parallel auf einem Gerï¿½t zu instanziieren?</TD>
+<TD VALIGN=top ALIGN=left>Beide kï¿½nnen parallel
  gestartet werden.</TD>
 <TD VALIGN=top ALIGN=left>Ja</TD>
 </TR></TABLE>
-<DIV CLASS="center">Tabelle 3.1: Während der Entwicklung durchgeführte Testfälle</DIV>
+<DIV CLASS="center">Tabelle 3.1: Wï¿½hrend der Entwicklung durchgefï¿½hrte Testfï¿½lle</DIV>
 <A NAME="impl:tests:tftab"></A>
 <DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE>
 Die Testreihe konnte auf Grund mangelnder Hardware nicht auf zwei
 reale Mobiltelefone ausgedehnt werden. Der Versuch mit Hilfe der
-Bibliothek Daten von einem Laptop auf ein Mobiltelefon zu übertragen,
-schlug ebenfalls fehl. Das entfernte Gerät konnte weder vom Laptop
+Bibliothek Daten von einem Laptop auf ein Mobiltelefon zu ï¿½bertragen,
+schlug ebenfalls fehl. Das entfernte Gerï¿½t konnte weder vom Laptop
 noch vom Mobiltelefon aus gefunden werden. <BR>
 <BR>
-Eine Untersuchung der Eigenschaften des Geräts, mit Hilfe der Klasse
-<TT>InspectBT</TT>, förderte zu Tage, dass das verwendete Mobiltelefon
-(Nokia 6230) während es mit einem Gerät gekoppelt ist, weder auf eine
+Eine Untersuchung der Eigenschaften des Gerï¿½ts, mit Hilfe der Klasse
+<TT>InspectBT</TT>, fï¿½rderte zu Tage, dass das verwendete Mobiltelefon
+(Nokia 6230) wï¿½hrend es mit einem Gerï¿½t gekoppelt ist, weder auf eine
 Suchanfrage antworten, noch eine initiieren kann. Dieses Verhalten
-jedoch ist für die korrekte Funktionsweise der OOP Bibliothek
+jedoch ist fï¿½r die korrekte Funktionsweise der OOP Bibliothek
 relevant.<BR>
 <BR>
 Die verwendete JSR-82 Implementierung des Laptops lieferte bei allen
@@ -537,40 +537,40 @@ abgefragten Eigenschaften <TT>null</TT> als Ergebnis. Das bedeutet, dass
 die Eigenschaft nicht implementiert ist oder die JSR-82
 Implementierung falsch reagiert. Weiterhin bedeutet dies, dass selbst bei
 korrektem Verhalten des Mobiltelefons, immer noch die verwendete JSR-82
-Implementierung fehlerhaft sein könnte. <BR>
+Implementierung fehlerhaft sein kï¿½nnte. <BR>
 <BR>
 
 <HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note37" HREF="#text37"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Siehe
- <A HREF="http://www.jcp.org/en/jsr/detail?id=66"><TT>http://www.jcp.org/en/jsr/detail?id=66</TT></A>
+ <A HREF="https://www.jcp.org/en/jsr/detail?id=66"><TT>https://www.jcp.org/en/jsr/detail?id=66</TT></A>
 <DT CLASS="dt-list"><A NAME="note38" HREF="#text38"><FONT SIZE=5>2</FONT></A><DD CLASS="dd-list">Architekturelle Einordnung siehe [Abb.
  <A HREF="ObexObjectPassing004.html#tgl:j2me:ein">2.3</A>, S. <A HREF="ObexObjectPassing004.html#tgl:j2me:ein">??</A>]
-<DT CLASS="dt-list"><A NAME="note39" HREF="#text39"><FONT SIZE=5>3</FONT></A><DD CLASS="dd-list">Siehe <A HREF="http://www.peer2me.org/"><TT>http://www.peer2me.org/</TT></A>
-<DT CLASS="dt-list"><A NAME="note40" HREF="#text40"><FONT SIZE=5>4</FONT></A><DD CLASS="dd-list">Erhältlich unter <A HREF="http://www.netbeans.org/"><TT>http://www.netbeans.org/</TT></A>
-<DT CLASS="dt-list"><A NAME="note41" HREF="#text41"><FONT SIZE=5>5</FONT></A><DD CLASS="dd-list">Separat erhältlich unter
- <A HREF="http://java.sun.com/products/sjwtoolkit/"><TT>http://java.sun.com/products/sjwtoolkit/</TT></A>
+<DT CLASS="dt-list"><A NAME="note39" HREF="#text39"><FONT SIZE=5>3</FONT></A><DD CLASS="dd-list">Siehe <A HREF="https://www.peer2me.org/"><TT>https://www.peer2me.org/</TT></A>
+<DT CLASS="dt-list"><A NAME="note40" HREF="#text40"><FONT SIZE=5>4</FONT></A><DD CLASS="dd-list">Erhï¿½ltlich unter <A HREFhttps:////www.netbeans.org/"><Thttps:////www.netbeans.org/</TT></A>
+<DT CLASS="dt-list"><A NAME="note41" HREF="#text41"><FONT SIZE=5>5</FONT></A><DD CLASS="dd-list">Separat erhï¿½ltlich unter
+ <A HREF="https://java.sun.com/products/sjwtoolkit/"><TT>https://java.sun.com/products/sjwtoolkit/</TT></A>
 <DT CLASS="dt-list"><A NAME="note42" HREF="#text42"><FONT SIZE=5>6</FONT></A><DD CLASS="dd-list">Anleitung zur Konfiguration der
  IDE unter [<A HREF="ObexObjectPassing010.html#lh:macos"><CITE>Has06</CITE></A>]
-<DT CLASS="dt-list"><A NAME="note43" HREF="#text43"><FONT SIZE=5>7</FONT></A><DD CLASS="dd-list">Erhältlich unter <A HREF="http://www.bluez.org/"><TT>http://www.bluez.org/</TT></A>
+<DT CLASS="dt-list"><A NAME="note43" HREF="#text43"><FONT SIZE=5>7</FONT></A><DD CLASS="dd-list">Erhï¿½ltlich unter <A HREFhttps:////www.bluez.org/"><Thttps:////www.bluez.org/</TT></A>
 <DT CLASS="dt-list"><A NAME="note44" HREF="#text44"><FONT SIZE=5>8</FONT></A><DD CLASS="dd-list">Siehe
- <A HREF="http://www.control.lth.se/~johane/harald/"><TT>http://www.control.lth.se/~johane/harald/</TT></A>
+ <A HREF="https://www.control.lth.se/~johane/harald/"><TT>https://www.control.lth.se/~johane/harald/</TT></A>
 <DT CLASS="dt-list"><A NAME="note45" HREF="#text45"><FONT SIZE=5>9</FONT></A><DD CLASS="dd-list">Siehe
- <A HREF="http://www.javabluetooth.org/"><TT>http://www.javabluetooth.org/</TT></A>
+ <A HREF="https://www.javabluetooth.org/"><TT>https://www.javabluetooth.org/</TT></A>
 <DT CLASS="dt-list"><A NAME="note46" HREF="#text46"><FONT SIZE=5>10</FONT></A><DD CLASS="dd-list">Siehe
- <A HREF="http://www.sun.com/download/products.xml?id=43208d3d"><TT>http://www.sun.com/download/products.xml?id=43208d3d</TT></A>
-<DT CLASS="dt-list"><A NAME="note47" HREF="#text47"><FONT SIZE=5>11</FONT></A><DD CLASS="dd-list">Siehe <A HREF="http://www.rxtx.org/"><TT>http://www.rxtx.org/</TT></A>
+ <A HREF="https://www.sun.com/download/products.xml?id=43208d3d"><TT>https://www.sun.com/download/products.xml?id=43208d3d</TT></A>
+<DT CLASS="dt-list"><A NAME="note47" HREF="#text47"><FONT SIZE=5>11</FONT></A><DD CLASS="dd-list">Siehe <A HREF="https://www.rxtx.org/"><TT>https://www.rxtx.org/</TT></A>
 <DT CLASS="dt-list"><A NAME="note48" HREF="#text48"><FONT SIZE=5>12</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:jbt:anf:obeximpl">2.5.1</A>]
-<DT CLASS="dt-list"><A NAME="note49" HREF="#text49"><FONT SIZE=5>13</FONT></A><DD CLASS="dd-list">Erhältlich unter
- <A HREF="http://sourceforge.net/projects/avetanaobex/"><TT>http://sourceforge.net/projects/avetanaobex/</TT></A>
+<DT CLASS="dt-list"><A NAME="note49" HREF="#text49"><FONT SIZE=5>13</FONT></A><DD CLASS="dd-list">Erhï¿½ltlich unter
+ <A HREF="https://sourceforge.net/projects/avetanaobex/"><TT>https://sourceforge.net/projects/avetanaobex/</TT></A>
 <DT CLASS="dt-list"><A NAME="note50" HREF="#text50"><FONT SIZE=5>14</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:cldc:sec:als">2.3.2</A>]
-<DT CLASS="dt-list"><A NAME="note51" HREF="#text51"><FONT SIZE=5>15</FONT></A><DD CLASS="dd-list">Erhältlich unter
- <A HREF="http://sourceforge.net/projects/bluecove/"><TT>http://sourceforge.net/projects/bluecove/</TT></A>;
+<DT CLASS="dt-list"><A NAME="note51" HREF="#text51"><FONT SIZE=5>15</FONT></A><DD CLASS="dd-list">Erhï¿½ltlich unter
+ <A HREF="https://sourceforge.net/projects/bluecove/"><TT>https://sourceforge.net/projects/bluecove/</TT></A>;
  Installationsanleitung unter [<A HREF="ObexObjectPassing010.html#bc:doc"><CITE>Lab06</CITE></A>]
 <DT CLASS="dt-list"><A NAME="note52" HREF="#text52"><FONT SIZE=5>16</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:bt:l2cap">2.1.3</A>]
 <DT CLASS="dt-list"><A NAME="note53" HREF="#text53"><FONT SIZE=5>17</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:jbt:comm">2.5.8</A>]
 <DT CLASS="dt-list"><A NAME="note54" HREF="#text54"><FONT SIZE=5>18</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:cldc:fs">2.3</A>]
 <DT CLASS="dt-list"><A NAME="note55" HREF="#text55"><FONT SIZE=5>19</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:midp:rms">2.4.1</A>]
 <DT CLASS="dt-list"><A NAME="note56" HREF="#text56"><FONT SIZE=5>20</FONT></A><DD CLASS="dd-list">Eine
- Einführung ist unter [<A HREF="ObexObjectPassing010.html#sg:rms"><CITE>Gho06</CITE></A>] zu finden.
+ Einfï¿½hrung ist unter [<A HREF="ObexObjectPassing010.html#sg:rms"><CITE>Gho06</CITE></A>] zu finden.
 <DT CLASS="dt-list"><A NAME="note57" HREF="#text57"><FONT SIZE=5>21</FONT></A><DD CLASS="dd-list">Siehe
  [Tab.: <A HREF="ObexObjectPassing004.html#tgl:jbt:comm:obex:ops">2.8</A>]
 <DT CLASS="dt-list"><A NAME="note58" HREF="#text58"><FONT SIZE=5>22</FONT></A><DD CLASS="dd-list">Dies ist z.&nbsp;B. beim
@@ -578,13 +578,13 @@ Implementierung fehlerhaft sein könnte. <BR>
 <DT CLASS="dt-list"><A NAME="note59" HREF="#text59"><FONT SIZE=5>23</FONT></A><DD CLASS="dd-list">Siehe [Kapitel <A HREF="ObexObjectPassing004.html#tgl:bt:gap:disc">2.4</A>]
 <DT CLASS="dt-list"><A NAME="note60" HREF="#text60"><FONT SIZE=5>24</FONT></A><DD CLASS="dd-list">Siehe
  [Kapitel <A HREF="ObexObjectPassing004.html#tgl:jbt:cs">2.5.5</A>]
-<DT CLASS="dt-list"><A NAME="note61" HREF="#text61"><FONT SIZE=5>25</FONT></A><DD CLASS="dd-list">Erhältlich unter <A HREF="http://www.junit.org/"><TT>http://www.junit.org/</TT></A>
-<DT CLASS="dt-list"><A NAME="note62" HREF="#text62"><FONT SIZE=5>26</FONT></A><DD CLASS="dd-list">Die Implementierung wählt das
- erste verfügbare Gerät.
-<DT CLASS="dt-list"><A NAME="note63" HREF="#text63"><FONT SIZE=5>27</FONT></A><DD CLASS="dd-list">Ergebnis ist abhängig von der Implementierung des
+<DT CLASS="dt-list"><A NAME="note61" HREF="#text61"><FONT SIZE=5>25</FONT></A><DD CLASS="dd-list">Erhï¿½ltlich unter <A HREFhttps:////www.junit.org/"><Thttps:////www.junit.org/</TT></A>
+<DT CLASS="dt-list"><A NAME="note62" HREF="#text62"><FONT SIZE=5>26</FONT></A><DD CLASS="dd-list">Die Implementierung wï¿½hlt das
+ erste verfï¿½gbare Gerï¿½t.
+<DT CLASS="dt-list"><A NAME="note63" HREF="#text63"><FONT SIZE=5>27</FONT></A><DD CLASS="dd-list">Ergebnis ist abhï¿½ngig von der Implementierung des
  BCC [<A HREF="ObexObjectPassing010.html#sm:jsr82"><CITE>M+05</CITE></A><CITE>, S. 53</CITE>]
 </DL>
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="http://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="https://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
 <A HREF="ObexObjectPassing004.html"><IMG SRC="previous_motif.gif" ALT="Previous"></A>
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing006.html"><IMG SRC="next_motif.gif" ALT="Next"></A>

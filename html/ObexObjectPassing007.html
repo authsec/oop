@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-            "http://www.w3.org/TR/REC-html40/loose.dtd">
+            "https://www.w3.org/TR/REC-html40/loose.dtd">
 <HTML>
 <HEAD>
 
@@ -17,65 +17,65 @@ Konklusion und Ausblick
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing008.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
 <HR>
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A></DIV>
 <H1 CLASS="chapter"><A NAME="htoc60">Kapitel&nbsp;5</A>&nbsp;&nbsp;Konklusion und Ausblick</H1>
 <A NAME="konkl"></A>
 Durch den Einsatz der OOP Bibliothek wird die Entwicklung von
-Applikationen, die Daten über eine Bluetooth Funkstrecke versenden
-möchten, wesentlich vereinfacht. Durch die Implementierung des von
-der Bibliothek vorgegebenen Interfaces erhält man zusätzlich die
-Möglichkeit, die erstellten Objekte direkt mit dem RMS zu verwenden,
-was den Zugewinn durch den Einsatz der Bibliothek erhöht. <BR>
+Applikationen, die Daten ï¿½ber eine Bluetooth Funkstrecke versenden
+mï¿½chten, wesentlich vereinfacht. Durch die Implementierung des von
+der Bibliothek vorgegebenen Interfaces erhï¿½lt man zusï¿½tzlich die
+Mï¿½glichkeit, die erstellten Objekte direkt mit dem RMS zu verwenden,
+was den Zugewinn durch den Einsatz der Bibliothek erhï¿½ht. <BR>
 <BR>
 Die notwendigen Zeilen Code, die normalerweise zum Verbindungsauf- und
--abbau geschrieben werden müssten, sinken durch den Einsatz der
+-abbau geschrieben werden mï¿½ssten, sinken durch den Einsatz der
 Bibliothek auf ein Minimum. Mit welchem minimalen Aufwand eine
 Applikation erstellt werden kann, die in der Lage ist Daten zu einem
-entfernten Endgerät zu senden, ist in Kapitel <A HREF="ObexObjectPassing006.html#oopdev">4</A>
-demonstriert worden. Wieviel Aufwand es bedeuten würde die selbe
+entfernten Endgerï¿½t zu senden, ist in Kapitel <A HREF="ObexObjectPassing006.html#oopdev">4</A>
+demonstriert worden. Wieviel Aufwand es bedeuten wï¿½rde die selbe
 Applikation mit Hilfe des Peer2Me Frameworks zu entwickeln, konnte auf
-Grund der späten Entdeckung, nicht evaluiert werden.<BR>
+Grund der spï¿½ten Entdeckung, nicht evaluiert werden.<BR>
 <BR>
 Beim Umgang mit der Bluetooth-Technologie war festzustellen, dass sich
-die Anwendungsentwicklung für mobile Endgeräte, teilweise
+die Anwendungsentwicklung fï¿½r mobile Endgerï¿½te, teilweise
 problematisch darstellt. So ist bspw. bei vielen Mobiltelefonen der
 JSR-82 lediglich teilweise implementiert, was zur Folge hat, dass die
-OBEX Bibliotheken nachgerüstet werden müssen, was auf Kosten der
-geringen Speicherkapazität der Geräte teuer erkauft werden muss. Die
+OBEX Bibliotheken nachgerï¿½stet werden mï¿½ssen, was auf Kosten der
+geringen Speicherkapazitï¿½t der Gerï¿½te teuer erkauft werden muss. Die
 strikten Sicherheitsmechanismen der J2ME Architektur legen einem in
 diesem Fall ebenfalls Steine in den Weg. So ist eine globale
-Nachrüstung der OBEX-Funktionalität, auf Grund des Verbots der
-nachträglichen Installation externer Bibliotheken, nicht möglich. Als
-weiteres Problem stellt sich die Vielzahl verfügbarer Bluetooth-Stacks
-dar. Möchte man eine Applikation für ein Desktop-System schreiben, so
-muss für fast jeden verfügbaren Bluetooth-Stack eine entsprechende
-Binärdatei zur Verfügung gestellt werden.<BR>
+Nachrï¿½stung der OBEX-Funktionalitï¿½t, auf Grund des Verbots der
+nachtrï¿½glichen Installation externer Bibliotheken, nicht mï¿½glich. Als
+weiteres Problem stellt sich die Vielzahl verfï¿½gbarer Bluetooth-Stacks
+dar. Mï¿½chte man eine Applikation fï¿½r ein Desktop-System schreiben, so
+muss fï¿½r fast jeden verfï¿½gbaren Bluetooth-Stack eine entsprechende
+Binï¿½rdatei zur Verfï¿½gung gestellt werden.<BR>
 <BR>
 Die Sicherheit der Bluetooth-Architektur sollte jedoch nicht
-überschätzt werden. Die Behauptung, dass sich Bluetooth wegen seiner
-kurzen Distanz nur schwer abhören lasse, konnte erfolgreich widerlegt
-werden. Mit Hilfe spezieller Richtantennen ist es möglich, Geräte aus
-Entfernungen bis zu 1.6 Km anzusteuern und erfolgreich auszuspähen
+ï¿½berschï¿½tzt werden. Die Behauptung, dass sich Bluetooth wegen seiner
+kurzen Distanz nur schwer abhï¿½ren lasse, konnte erfolgreich widerlegt
+werden. Mit Hilfe spezieller Richtantennen ist es mï¿½glich, Gerï¿½te aus
+Entfernungen bis zu 1.6 Km anzusteuern und erfolgreich auszuspï¿½hen
 [<A HREF="ObexObjectPassing010.html#wired:btsec"><CITE>Zet04</CITE></A><CITE>, S. 2</CITE>]. Allein durch die Tatsache, dass es sich bei
 Bluetooth um eine Kurzstreckenfunktechnologie handelt, sollte man sich
 demnach nicht in falscher Sicherheit wiegen.<BR>
 <BR>
-Bezüglich der Sicherheit der Bibliothek gilt es zu prüfen, ob sich im
-konkreten Einsatz, der OBEX Header manipulieren lässt, sodass das
-Gerät dazu veranlasst werden kann, eine nicht den Daten zugehörige
+Bezï¿½glich der Sicherheit der Bibliothek gilt es zu prï¿½fen, ob sich im
+konkreten Einsatz, der OBEX Header manipulieren lï¿½sst, sodass das
+Gerï¿½t dazu veranlasst werden kann, eine nicht den Daten zugehï¿½rige
 Klasse zu laden.<BR>
 <BR>
-Durch die Transportprotokollunabhängigkeit des OBEX Protokolls lässt
+Durch die Transportprotokollunabhï¿½ngigkeit des OBEX Protokolls lï¿½sst
 sich die Bibliothek leicht auf andere Transportprotokolle portieren.
-Eine Weiterentwicklung der Bibliothek, die zusätzliche
-Transportprotokolle unterstützt, wäre in diesem Zusammenhang
-vorstellbar. So wäre es in Zukunft denkbar, dass die eingangs erwähnte
-&#8222;Einkaufszettel&#8220;-Applikation das mobile Endgerät über Bluetooth und
-den vorhandenen Desktop-Computer über TCP/IP ansteuert.
+Eine Weiterentwicklung der Bibliothek, die zusï¿½tzliche
+Transportprotokolle unterstï¿½tzt, wï¿½re in diesem Zusammenhang
+vorstellbar. So wï¿½re es in Zukunft denkbar, dass die eingangs erwï¿½hnte
+&#8222;Einkaufszettel&#8220;-Applikation das mobile Endgerï¿½t ï¿½ber Bluetooth und
+den vorhandenen Desktop-Computer ï¿½ber TCP/IP ansteuert.
 <BR>
 <BR>
 
-<DIV CLASS="flushright"><A HREF="http://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="http://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
+<DIV CLASS="flushright"><A HREF="https://oop.coffeecrew.org"><FONT SIZE=2>OBEX Object Passing Home</FONT></A><FONT SIZE=2> </FONT><A HREF="../dox/ObexObjectPassing.pdf"><FONT SIZE=2>(PDF)</FONT></A><FONT SIZE=2> </FONT><A HREF="https://www.coffeecrew.org"><FONT SIZE=2><IMG SRC="ccgoff.png" alt="CCGLogo" width="16" height="16"></FONT></A></DIV><HR>
 <A HREF="ObexObjectPassing006.html"><IMG SRC="previous_motif.gif" ALT="Previous"></A>
 <A HREF="index.html"><IMG SRC="contents_motif.gif" ALT="Up"></A>
 <A HREF="ObexObjectPassing008.html"><IMG SRC="next_motif.gif" ALT="Next"></A>
